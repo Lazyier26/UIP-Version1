@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat';
+            background-color: #e8e8e8;
+            line-height: 1.6;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .attendance-btn {
+            background: #145374;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px 10px 30px;
+        }
+
+        .page-title {
+            font-size: 35px;
+            font-weight: 900;
+            color: #000;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .top-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Contact Info Box */
+        .contact-info {
+            background-color: #145374;
+            color: white;
+            padding: 35px;
+            border-radius: 8px;
+            height:fit-content;
+        }
+
+        .email-label {
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .email {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 35px;
+        }
+
+        .follow-label {
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .facebook-icon, .instagram-icon, .spotify-icon, .youtube-icon {
+            height: 55px;
+            width: 55px;
+            display: flex;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background-color: #D9D9D9;
+            padding: 35px;
+            border-radius: 8px;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #000;
+            margin-bottom: 25px;
+            font-weight: 100;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #000;
+            font-weight: 900;
+            font-size: 15px;
+        }
+
+        .required {
+            color: #FF0000;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #FB7847;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        /* Internship Section */
+        .internship-section {
+            background-color: #D9D9D9;
+            padding: 35px;
+            border-radius: 8px;
+        }
+
+        .internship-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 12px;
+        }
+
+        .internship-subtitle {
+            color: #000;
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .internship-btn {
+            background: #FB7847;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .benefits-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            color: #000;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .benefits-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkmark-icon {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        /* Footer */
+        .footer {
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h2>UIP Inc.</h2>
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>  
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Contact Us</h1>
+        
+        <!-- Top Section -->
+        <div class="top-section">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="email-label">EMAIL</div>
+                    <div class="email">info@uip.ph</div>
+                    
+                    <div class="follow-label">FOLLOW US</div>
+                    <div class="social-icons">
+                        <a href="#" class="facebook-icon"><img src="facebook.png"></a>
+                        <a href="#" class="instagram-icon"><img src="instagram.png"></a>
+                        <a href="#" class="spotify-icon"><img src="spotify.png"></a>
+                        <a href="#" class="youtube-icon"><img src="youtube.png"></a>
+                    </div>
+                </div>
+
+                <!-- Internship Section -->
+                <div class="internship-section">
+                    <h2 class="internship-title">WANT TO INTERN WITH US?</h2>
+                    <p class="internship-subtitle">Join our team! Send your application and become one of us.</p>
+                    
+                    <button class="internship-btn">Internship</button>
+                    
+                    <div class="benefits-container">
+                        <ul class="benefits-list">
+                            <li>
+                                <a href="#" class="checkmark-icon"><img src="check.png"></a>
+                                <div>Benefit from a flexible internship schedule tailored to your needs.</div>
+                            </li>
+                            <li>
+                                <a href="#" class="checkmark-icon"><img src="check.png"></a>
+                                <div>Gain experience in a variety of internship roles across different departments.</div>
+                            </li>
+                            <li>
+                               <a href="#" class="checkmark-icon"><img src="check.png"></a>
+                                <div>Improve and develop your professional skills through hands-on training and real-world tasks.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2 class="form-title">GET IN TOUCH</h2>
+                <p class="form-subtitle">Need assistance or have feedback?<br>Send us a message!</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name: <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name: <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email: <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">How can we help you? <span class="required">*</span></label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h2 div="main-title">Unified Internship Program</h2> <h3 div="sub-title">Incorporated</h3>
+        <p><b>Extra Link:</b></p>
+        <a href="#">About</a>
+        <a href="#">FAQs</a>
+        <a href="#">Internships</a>
+        <a href="#">Attedance Tracker</a>
+        
+        <p><b>Contact Us</b></p>
+        <a href="mailto:info@uip.com">info@uip.com</a>
+        <hr>
+        <p>Terms of Service</p> 
+        <p>Privacy Policy</p>
+        <p>&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
+    </footer>
+</body>
+</html>
