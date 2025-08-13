@@ -1,0 +1,75 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --font-family: 'Montserrat', sans-serif;
+    --font-size: 18px;
+    --color-text: #ffffff;
+    --color-bg: #021D2B;
+    --header-height: 3.5rem;
+
+    --z-tooltip: 10;
+    --z-index:100;
+
+}
+/* responsive typography */
+@media screen and (min-width:1024px) {
+    :root{
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+
+/* Base */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--color-text);
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 1120px;
+    background-color: var(--color-bg);
+    z-index: var(--z-index);
+}
+
+.nav{
+    height: var(--header-height);
+}
+
+.nav-data{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.logo-link{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--color-text);
+}
