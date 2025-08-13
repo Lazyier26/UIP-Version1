@@ -49,7 +49,7 @@ a{
     top: 0;
     left: 0;
     width: 100%;
-    max-width: 1120px;
+    max-width: 990px;
     background-color: var(--color-bg);
     z-index: var(--z-index);
 }
@@ -63,7 +63,7 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 .logo-link{
