@@ -1,177 +1,1535 @@
-<!DOCTYPE html>
+</style>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UIP Inc. - Unified Internship Program</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-    <!-- Remove index.js from rel="stylesheet" -->
-</head>
-<body>
-    <!-- Registration Section -->
-    <section id="registration" class="registration">
-        <div class="container registration-container">
-            <div class="section-header">
-                <h2>Ready to Start Your Journey?</h2>
-                <p>Choose your path and begin your professional development with UIP's comprehensive internship program.</p>
+    <title>UIP Inc. | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">UIP</div>
+                <span class="company-name">UIP Inc.</span>
             </div>
-            <div class="registration-grid">
-                <div class="registration-card">
-                    <h3><i class="fas fa-user-plus"></i> Incoming Interns</h3>
-                    <p>Are you a student looking to gain practical experience? Register now to join our comprehensive internship program and connect with leading companies across the Philippines.</p>
-                    <button class="register-btn" onclick="toggleForm('incoming')">Register as Incoming Intern</button>
-                    <div class="registration-form" id="incoming-form">
-                        <form id="incoming-form-form" method="POST" action="/submit-incoming">
-                            <div class="form-group">
-                                <label for="incoming-email">Email Address <span class="required-asterisk">*</span></label>
-                                <input type="email" id="incoming-email" name="email" placeholder="Enter your email address" required>
-                                <div class="form-error" id="error-incoming-email">Valid Email is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-name">Full Name (First and Last Name) <span class="required-asterisk">*</span></label>
-                                <input type="text" id="incoming-name" name="name" placeholder="Enter your full name" required>
-                                <div class="form-error" id="error-incoming-name">Full Name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-contact">Contact Number <span class="required-asterisk">*</span></label>
-                                <input type="tel" id="incoming-contact" name="contact" placeholder="Enter your contact number" required pattern="^[0-9+\-\s()]{7,}$">
-                                <div class="form-error" id="error-incoming-contact">Contact Number is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-birthday">Birthday <span class="required-asterisk">*</span></label>
-                                <input type="date" id="incoming-birthday" name="birthday" required>
-                                <div class="form-error" id="error-incoming-birthday">Valid date is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-address">Your Complete Address <span class="required-asterisk">*</span></label>
-                                <input type="text" id="incoming-address" name="address" placeholder="Enter your address" required>
-                                <div class="form-error" id="error-incoming-address">Valid Address is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-school">School/University <span class="required-asterisk">*</span></label>
-                                <input type="text" id="incoming-school" name="school" placeholder="Enter your school name" required>
-                                <div class="form-error" id="error-incoming-school">School/University is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-course">Course or Program <span class="required-asterisk">*</span></label>
-                                <input type="text" id="incoming-course" name="course" placeholder="Enter your course or program" required>
-                                <div class="form-error" id="error-incoming-course">Course/Program is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-program">College Program <span class="required-asterisk">*</span></label>
-                                <input type="text" id="incoming-program" name="program" placeholder="Enter your college program" required>
-                                <div class="form-error" id="error-incoming-program">College Program is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-school-address">School Address <span class="required-asterisk">*</span></label>
-                                <input type="text" id="incoming-school-address" name="school_address" placeholder="Enter your school address" required>
-                                <div class="form-error" id="error-incoming-school-address">School Address is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label>ON WHAT DAY ARE YOU AVAILABLE? (Select all that apply).
-                                    <br>
-                                    <small>Disclaimer: There is no guarantee that schedule will be followed. Schedule will depend on company's operating hours.</small>
-                                    <span class="required-asterisk">*</span>
-                                </label>
-                                <div id="incoming-days-checkboxes" style="display: flex; flex-direction: column; gap: 8px;">
-                                    <label style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="checkbox" name="days[]" value="monday" style="width: 22px; height: 22px;">
-                                        Monday
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="checkbox" name="days[]" value="tuesday" style="width: 22px; height: 22px;">
-                                        Tuesday
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="checkbox" name="days[]" value="wednesday" style="width: 22px; height: 22px;">
-                                        Wednesday
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="checkbox" name="days[]" value="thursday" style="width: 22px; height: 22px;">
-                                        Thursday
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="checkbox" name="days[]" value="friday" style="width: 22px; height: 22px;">
-                                        Friday
-                                    </label>
+            
+            <ul class="nav-links">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="program_page.html">Program</a></li>
+                <li><a href="Faqs.html">Faqs</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+            </ul>
+
+            <button class="attendance-btn" onclick="handleAttendanceClick()">
+                Attendance Tracker
+            </button>
+
+            <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+        <!-- Registration Section -->
+        <section id="registration" class="registration">
+            <div class="container registration-container">
+                <div class="section-header">
+                    <h2>Ready to Start? 
+                        Apply now</h2>
+                    <p>If you've been waiting for the perfect moment to start this is it. Hit apply and make your next move with confidence. </p>
+                    <button class="register-btn pulse-animation" onclick="toggleForm('incoming')">Register as Incoming Intern</button>
+                </div>
+                
+                <div class="registration-grid">
+                    <div class="registration-card">
+                        <div class="registration-form" id="incoming-form">
+                            <form id="incoming-form-form" method="POST" action="/submit-incoming">
+                                <div class="form-group">
+                                    <label for="incoming-name">Full Name (First and Last Name) <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="incoming-name" name="name" placeholder="Enter your full name" required>
+                                    <div class="form-error" id="error-incoming-name">Full Name is required.</div>
                                 </div>
-                                <div class="form-error" id="error-incoming-days">Please select at least one available day.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-ojt-hours">Total Number of OJT Hours <span class="required-asterisk">*</span></label>
-                                <input type="number" id="incoming-ojt-hours" name="ojt_hours" placeholder="Enter total OJT hours" required min="1">
-                                <div class="form-error" id="error-incoming-ojt-hours">Total OJT Hours is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-cv">UPLOAD CV/RESUME <span class="required-asterisk">*</span></label>
-                                <small>Upload 1 supported file: PDF. Max 100 MB.</small>
-                                <input type="file" id="incoming-cv" name="cv" accept=".pdf" required>
-                                <div class="form-error" id="error-incoming-cv">Please upload your CV or resume.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-picture">UPLOAD 2x2 PICTURE <span class="required-asterisk">*</span></label>
-                                <small>Upload 1 supported file: image. Max 100 MB.</small>
-                                <input type="file" id="incoming-picture" name="picture" accept=".jpg,.jpeg,.png" required>
-                                <div class="form-error" id="error-incoming-picture">Please upload your 2x2 picture.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-endorsement">UPLOAD ENDORSEMENT LETTER (This can be provided during internship).</label>
-                                <small>Upload 1 supported file. Max 100 MB.</small>
-                                <input type="file" id="incoming-endorsement" name="endorsement" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-                                <div class="form-error" id="error-incoming-endorsement">Please upload your endorsement letter.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="incoming-moa">UPLOAD MOA (This can be provided during internship).</label>
-                                <small>Upload 1 supported file. Max 100 MB.</small>
-                                <input type="file" id="incoming-moa" name="moa" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-                                <div class="form-error" id="error-incoming-moa">Please upload your MOA.</div>
-                            </div>
-                            <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                                <input type="checkbox" id="terms-checkbox" required style="width: 22px; height: 22px;">
-                                <label for="terms-checkbox" style="margin: 0;">
-                                    I agree to the <a href="#" onclick="showTerms(event)">Terms and Conditions</a> <span class="required-asterisk">*</span>
-                                </label>
-                                <div class="form-error" id="error-terms" style="flex-basis: 100%;">You must agree to the Terms and Conditions.</div>
-                            </div>
-                            <button type="submit" class="register-btn">Submit Registration</button>
-                        </form>
-                        <!-- Terms and Conditions Modal -->
-                        <div id="terms-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;">
-                            <div style="background:#fff; max-width:600px; width:90%; max-height:80vh; overflow-y:auto; padding:32px; border-radius:8px; position:relative;">
-                                <h2>Terms and Conditions</h2>
-                                <div style="font-size:15px; line-height:1.6;">
-                                    <!-- Terms content unchanged -->
-                                    <!-- ... -->
+                                <div class="form-group">
+                                    <label for="incoming-email">Email Address <span class="required-asterisk">*</span></label>
+                                    <input type="email" id="incoming-email" name="email" placeholder="Enter your email address" required>
+                                    <div class="form-error" id="error-incoming-email">Valid Email is required.</div>
                                 </div>
-                                <button onclick="closeTerms()" style="margin-top:24px; padding:8px 24px; background:#007bff; color:#fff; border:none; border-radius:4px; cursor:pointer;">Close</button>
-                            </div>
+                                <div class="form-group">
+                                    <label for="incoming-contact">Contact Number <span class="required-asterisk">*</span></label>
+                                    <input type="tel" id="incoming-contact" name="contact" placeholder="Enter your contact number" required pattern="^[0-9+\-\s()]{7,}$">
+                                    <div class="form-error" id="error-incoming-contact">Contact Number is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-birthday">Birthday <span class="required-asterisk">*</span></label>
+                                    <input type="date" id="incoming-birthday" name="birthday" required>
+                                    <div class="form-error" id="error-incoming-birthday">Valid date is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-address">Your Complete Address <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="incoming-address" name="address" placeholder="Enter your address" required>
+                                    <div class="form-error" id="error-incoming-address">Valid Address is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-school">Name of University <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="incoming-school" name="school" placeholder="Enter your school name" required>
+                                    <div class="form-error" id="error-incoming-school">School/University is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-course">Course or Program <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="incoming-course" name="course" placeholder="Enter your course or program" required>
+                                    <div class="form-error" id="error-incoming-course">Course or Program is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-program">College Program <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="incoming-program" name="program" placeholder="Enter your college program" required>
+                                    <div class="form-error" id="error-incoming-program">College Program is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-school-address">University Address <span class="required-asterisk">*</span></label>
+                                    <input type="text" id="incoming-school-address" name="school_address" placeholder="Enter your school address" required>
+                                    <div class="form-error" id="error-incoming-school-address">University Address is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-ojt-hours">Total Number of OJT Hours <span class="required-asterisk">*</span></label>
+                                    <input type="number" id="incoming-ojt-hours" name="ojt_hours" placeholder="Enter total OJT hours" required min="1">
+                                    <div class="form-error" id="error-incoming-ojt-hours">Total OJT Hours is required.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>ON WHAT DAY ARE YOU AVAILABLE? (Select all that apply).
+                                        <br>
+                                        <small>Disclaimer: There is no guarantee that schedule will be followed. Schedule will depend on company's operating hours.</small>
+                                        <span class="required-asterisk">*</span>
+                                    </label>
+                                    <div id="incoming-days-checkboxes" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                        <label style="display: flex; align-items: center; gap: 12px;">
+                                            <input type="checkbox" name="days[]" value="monday" style="width: 22px; height: 22px;">
+                                            Monday
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 12px;">
+                                            <input type="checkbox" name="days[]" value="tuesday" style="width: 22px; height: 22px;">
+                                            Tuesday
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 12px;">
+                                            <input type="checkbox" name="days[]" value="wednesday" style="width: 22px; height: 22px;">
+                                            Wednesday
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 12px;">
+                                            <input type="checkbox" name="days[]" value="thursday" style="width: 22px; height: 22px;">
+                                            Thursday
+                                        </label>
+                                        <label style="display: flex; align-items: center; gap: 12px;">
+                                            <input type="checkbox" name="days[]" value="friday" style="width: 22px; height: 22px;">
+                                            Friday
+                                        </label>
+                                    </div>
+                                    <div class="form-error" id="error-incoming-days">Please select at least one available day.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-cv">UPLOAD CV/RESUME <span class="required-asterisk">*</span></label>
+                                    <small>Accepted file type: PDF. Max. File Size: 10MB</small>
+                                    <input type="file" id="incoming-cv" name="cv" accept=".pdf" required>
+                                    <div class="form-error" id="error-incoming-cv">Please upload your CV or resume.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-picture">UPLOAD 2x2 PICTURE <span class="required-asterisk">*</span></label>
+                                    <small>Accepted file type: jpeg. Max. File Size: 10MB</small>
+                                    <input type="file" id="incoming-picture" name="picture" accept=".jpg,.jpeg,.png" required>
+                                    <div class="form-error" id="error-incoming-picture">Please upload your 2x2 picture.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-endorsement">UPLOAD ENDORSEMENT LETTER (This can be provided during internship).</label>
+                                    <small>Accepted file type: PDF. Max. File Size: 10MB</small>
+                                    <input type="file" id="incoming-endorsement" name="endorsement" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                    <div class="form-error" id="error-incoming-endorsement">Please upload your endorsement letter.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incoming-moa">UPLOAD MOA (This can be provided during internship).</label>
+                                    <small>Accepted file type: PDF. Max. File Size: 10MB</small>
+                                    <input type="file" id="incoming-moa" name="moa" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                    <div class="form-error" id="error-incoming-moa">Please upload your MOA.</div>
+                                </div>
+                                
+                                <!--  Terms and Conditions Section -->
+                                <div class="form-group">
+                                    <div class="terms-checkbox-group">
+                                        <input type="checkbox" id="terms-checkbox" required>
+                                        <div class="terms-label-text">
+                                            I agree to the <span class="terms-link" onclick="showTerms(event)">Terms and Conditions</span> <span class="required-asterisk">*</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-error" id="error-terms">You must agree to the Terms and Conditions.</div>
+                                </div>
+                                
+                                <button type="submit" class="register-btn">Submit Registration</button>
+                                <div class="success-message" id="success-message">
+                                    Registration submitted successfully! We'll contact you soon.
+                                </div>
+                            </form>
                         </div>
-                        <script>
-                        function showTerms(e) {
-                            e.preventDefault();
-                            document.getElementById('terms-modal').style.display = 'flex';
-                            document.getElementById('terms-modal').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                        function closeTerms() {
-                            document.getElementById('terms-modal').style.display = 'none';
-                        }
-                        </script>
                     </div>
                 </div>
-                <!-- You can add more registration cards for other user types here -->
+            </div>
+        </section>
+        
+        <!-- Terms and Conditions Modal -->
+        <div class="modal-overlay" id="terms-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeTerms()">&times;</button>
+                <h2 class="modal-title">Terms and Conditions</h2>
+                <div class="modal-body">
+                    <h3>GENERAL TERMS</h3>
+                    <p>
+                        By accessing and placing an order with the Unified Internship Program (UIP), you confirm that you are in agreement with and bound by the terms of service contained in the Terms &amp; Conditions outlined below.<br><br>
+                        These terms and conditions of use ("Terms") constitute a legal agreement between you, the UIP and its partnered companies (referred to in these Terms &amp; Conditions as "us," "we," or "our"), the providers of the Internship Unified Program Website (which are collectively referred to in these Terms &amp; Conditions as the "Internship Unified Program Services"). Use of this Site constitutes your unconditional acceptance of these Terms herein and by all terms, policies, and guidelines incorporated by reference. These Terms apply to your use of this Site and do not alter in any way the terms or conditions of any other agreement you may have with the UIP and its partnered companies. If you are using the Site on behalf of any entity, you further represent and warrant that you are authorized to accept these Terms on such entity's behalf, and that such entity agrees to indemnify the UIP for violations of these Terms. If you do not agree with these terms, please do not use this Site.
+                    </p>
+                    
+                    <h4>Registration Data and Account Security</h4>
+                    <ul>
+                        <li>Provide accurate, current, and complete information about yourself as may be prompted by any registration forms on the Site ("Registration Data").</li>
+                        <li>Maintain and promptly update the Registration Form, and any other information you provide to the UIP, to keep it accurate, current, and complete.</li>
+                        <li>Maintain the security of your password and identification.</li>
+                        <li>Notify UIP admins immediately of any unauthorized use of your account or any other breach of security.</li>
+                        <li>Accept all responsibility for any and all activities that occur under your account.</li>
+                        <li>Accept all risks of unauthorized access to the Registration Data and any other information you provide to the UIP.</li>
+                    </ul>
+                    <p>
+                        Please refer to our Privacy Policy for more details on how we collect data.
+                    </p>
+                    
+                    <h4>Most Important Terms &amp; Conditions for the Unified Internship Program and Partnered Companies</h4>
+                    <p>
+                        These Terms, specifically for the Unified Internship Program and its partnered companies, are in addition to the other generic Terms &amp; Conditions listed on the page, which are common to all users of the site and which you are required to go through. Any violation of these Terms may result in appropriate action being taken.
+                    </p>
+                    
+                    <h5>Accepting of Applicants T&amp;Cs:</h5>
+                    <ol>
+                        <li>Any assignment(s) that we may give to applicants to assess their suitability for the Job should be fair and relevant to the job profile.</li>
+                        <li>All our communications with applicants (through email, discord chat, or otherwise) should be professional and must not contain any obscene or offensive content.</li>
+                        <li>Once we hire any applicant(s) for our job, we must provide them with an acceptance letter clearly detailing all the important details (such as role &amp; responsibilities, starting date, and complete address and contact details of the company's organization).</li>
+                        <li>If we come across any suspicious activity, content, or behavior on the UIP website by an applicant or another user, we will immediately take any necessary actions that can be taken.</li>
+                    </ol>
+                    
+                    <h5>Applicant data usage T&amp;Cs:</h5>
+                    <ol>
+                        <li>You can use the applicants' data that you receive for your job solely for the purpose of hiring. Any attempt to send any other communication (promotional content, for example) to the applicants or any other usage of the data is strictly prohibited.</li>
+                        <li>The Unified Internship Program and its partnered companies are strictly prohibited from transferring/selling/sharing applicants' data to any other entity. Any such attempt would be liable for legal action against the organization.</li>
+                    </ol>
+                    
+                    <h4>Terms &amp; Conditions for Applicants</h4>
+                    <p>
+                        These Terms, specifically for applicants, are in addition to the other generic Terms &amp; Conditions listed on the page, which are common to all users of the site and which you are required to go through. Any violation of these TERMS &amp; CONDITIONS may result in, but is not limited to, an applicant's application being declined and/or terminated and/or suitable legal action being initiated against him/her by the Unified Internship Program and its partnered companies.
+                    </p>
+                    <ul>
+                        <li>If you have applied for an internship on the Unified Internship Program (UIP) website, once your application status has been approved or received an acceptance letter from the Unified Internship Program regarding your application, you must attend the onboarding seminar.</li>
+                        <li>Once you are part of the internship program, you must make every possible effort to join and start your task on time. Not showing up or habitual absenteeism creates poor morale and reduces the credibility of the UIP community at large. Any such behavior will not only result in your termination or dismissal from the Unified Internship Program and its partnered companies, but we will also report it to your college administration wherever applicable.</li>
+                        <li>You must provide accurate and complete information at the time of creating an account on the Unified Internship Program (UIP). Any misrepresentation of information, hiding of material information, or impersonation would result in your application being declined on the site, and you being reported to your college administration wherever applicable.</li>
+                        <li>You are strictly prohibited from transferring/selling/sharing the Unified Internship Program and its partnered companies' data (contact details, etc.) for free or for a fee with any other entity. Any such attempt would result in your termination and/or permanent blocking and would be liable for legal action against you.</li>
+                        <li>The Unified Internship Program (UIP) focuses on cultivating and sustaining a diverse internship environment and culture and maximizing interns' potential by expanding professional opportunities through learning and development.</li>
+                        <li>You agree to have gone through the 'Onboarding Process" of these Terms and have understood the same.</li>
+                        <li>While it is our endeavor to provide you with accurate and reliable information, it is always possible for an error to occur. Hence, you must conduct your own due diligence and research about your job/role and take full responsibility for the same. You further agree to have read and understood the 'Disclaimers' section of these Terms and explicitly and specifically agree to it.</li>
+                        <li>If you come across any suspicious activity, content, or behavior on the Unified Internship Program (UIP) by an admin or another user, you must report it to the Unified Internship Program immediately so that necessary actions can be taken. This is both your duty and obligation.</li>
+                    </ul>
+                    
+                    <h4>Disclaimers</h4>
+                    <p>
+                        This Site and its content are provided "as is" and the Unified Internship Program and its partnered companies, directors, employees, content providers, agents, and affiliates exclude, to the fullest extent permitted by applicable law, any warranty, express or implied, including, without limitation, any implied warranties of merchantability, satisfactory quality, or fitness for a particular purpose. The Unified Internship Program and its partnered companies will not be liable for any damages of any kind arising from the use of this site. The functions embodied on or in the materials of this site are not warranted to be uninterrupted or without error. You, not the Unified Internship Program and its partnered companies, assume the entire cost of all necessary care or correction due to your use of this site or content. The Unified Internship Program and its partnered companies make no warranty that the site or the content is free from infection by viruses or anything else that has contaminating or destructive properties. The Unified Internship Program and its partnered companies use reasonable efforts to ensure the accuracy, correctness, and reliability of the content, but we make no representations or warranties for the same. Images of people or places displayed on the Site are either the property of, or used with permission by, the Unified Internship Program and its partnered companies or third parties. The use of these images by you, or anyone else authorized by you, is prohibited unless specifically permitted by these Terms or specific permission provided elsewhere on the Site. Any unauthorized use of the images may violate copyright laws, trademark laws, the laws of privacy and publicity, and communications regulations and statutes.
+                    </p>
+
+                    <h4>Modifications</h4>
+                    <p>
+                        The Unified Internship Program and its partnered companies reserve the right to modify these Terms at any time. Such modifications shall be effective immediately upon posting on the site. You agree to review these Terms periodically to be aware of such modifications, and your continued access or use of the Site shall be deemed your conclusive acceptance of the modified Terms.
+                    </p>
+                </div>
+                <button class="modal-accept-btn" onclick="closeTerms()">I Understand</button>
             </div>
         </div>
-    </section>
-    <script>
-    // Toggle registration form visibility
-    function toggleForm(type) {
-        var form = document.getElementById(type + '-form');
-        if (form) {
-            form.classList.toggle('active');
+
+        <!-- Floating Action Button -->
+        <div class="fab" onclick="scrollToTop()" title="Back to Top">
+            ↑
+        </div>
+
+        <script>
+        // Toggle registration form visibility
+        function toggleForm(type) {
+            var form = document.getElementById(type + '-form');
+            if (form) {
+                form.classList.toggle('active');
+            }
         }
-    }
-    </script>
-</body>
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide FAB based on scroll position
+        window.addEventListener('scroll', function() {
+            const fab = document.querySelector('.fab');
+            if (window.scrollY > 300) {
+                fab.style.opacity = '1';
+                fab.style.pointerEvents = 'all';
+            } else {
+                fab.style.opacity = '0';
+                fab.style.pointerEvents = 'none';
+            }
+        });
+
+        // FIXED Terms and Conditions Functions
+        function showTerms(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const modal = document.getElementById('terms-modal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeTerms() {
+            const modal = document.getElementById('terms-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('terms-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTerms();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTerms();
+            }
+        });
+            
+        // Form validation and submission
+        document.getElementById('incoming-form-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if terms are agreed
+            const termsCheckbox = document.getElementById('terms-checkbox');
+            const errorTerms = document.getElementById('error-terms');
+            
+            if (!termsCheckbox.checked) {
+                errorTerms.classList.add('show');
+                termsCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            } else {
+                errorTerms.classList.remove('show');
+            }
+            
+            // Simulate form submission with loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                const successMessage = document.getElementById('success-message');
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+
+        // Navigation
+         function handleAttendanceClick() {
+            alert('Attendance Tracker clicked!');
+            // Add your attendance tracker functionality here
+        }
+
+        function toggleMobileMenu() {
+            // Mobile menu functionality can be added here
+            console.log('Mobile menu toggle clicked');
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active state management
+        const currentPage = window.location.hash || '#home';
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.style.color = '#a0c4ff';
+            }
+        });
+
+        // Input focus animations
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+        });
+
+        // Initialize FAB visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const fab = document.querySelector('.fab');
+            fab.style.opacity = '0';
+            fab.style.pointerEvents = 'none';
+            fab.style.transition = 'all 0.3s ease';
+        });
+
+        // Form validation for required fields
+        function validateForm() {
+            let isValid = true;
+            const requiredFields = document.querySelectorAll('input[required]');
+            
+            requiredFields.forEach(field => {
+                const errorElement = document.getElementById('error-' + field.id.replace('incoming-', ''));
+                if (!field.value.trim()) {
+                    if (errorElement) {
+                        errorElement.classList.add('show');
+                    }
+                    isValid = false;
+                } else {
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                    }
+                }
+            });
+
+            // Validate checkboxes for days
+            const daysCheckboxes = document.querySelectorAll('input[name="days[]"]:checked');
+            const errorDays = document.getElementById('error-incoming-days');
+            if (daysCheckboxes.length === 0) {
+                errorDays.classList.add('show');
+                isValid = false;
+            } else {
+                errorDays.classList.remove('show');
+            }
+
+            return isValid;
+        }
+
+        // Real-time validation on input
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('blur', function() {
+                const errorElement = document.getElementById('error-' + this.id.replace('incoming-', ''));
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    if (errorElement) {
+                        errorElement.classList.add('show');
+                    }
+                } else {
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                    }
+                }
+            });
+        });
+        </script>
+        
+        <footer>
+            <h2 div="main-title">Unified Internship Program</h2> <h3 div="sub-title">Incorporated</h3>
+            <p><b>Extra Link:</b></p>
+            <a href="About.html">About</a>
+            <a href="Faqs.html">FAQs</a>
+            <a href="Registration.html">Internships</a>
+            <a href="#">Attendance Tracker</a>
+            
+            <p><b>Contact Us</b></p>
+            <a href="mailto:info@uip.com">info@uip.com</a>
+            <hr>
+            <p>Terms of Service</p> 
+            <p>Privacy Policy</p>
+            <p>&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
+        </footer> 
+
+
+            <style>
+                /* Reset and Base Styles */
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+
+                    :root {
+                        --glass-bg: rgba(255, 255, 255, 0.1);
+                        --glass-border: rgba(255, 255, 255, 0.2);
+                        --shadow-light: 0 10px 40px rgba(0, 0, 0, 0.1);
+                        --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.2);
+                    }
+
+                    body {
+                        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                        position: relative;
+                        overflow-x: hidden;
+                    }
+
+                    /* Animated Background */
+                    body::before {
+                        content: '';
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: 
+                            radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 118, 117, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 40%, rgba(79, 172, 254, 0.2) 0%, transparent 50%);
+                        z-index: -2;
+                        animation: backgroundFloat 20s ease-in-out infinite;
+                    }
+
+                    @keyframes backgroundFloat {
+                        0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+                        33% { transform: translate(30px, -30px) rotate(120deg); }
+                        66% { transform: translate(-20px, 20px) rotate(240deg); }
+                    }
+
+                    /* Navigation Styles with Enhanced Glassmorphism */
+                           .navbar {
+                            background: rgba(26, 54, 93, 0.9);
+                            backdrop-filter: blur(20px);
+                            padding: 0;
+                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            z-index: 1000;
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                            transition: all 0.3s ease;
+                        }
+
+                        .navbar.scrolled {
+                            background: rgba(26, 54, 93, 0.95);
+                            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+                        }
+
+                        .nav-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            max-width: 1200px;
+                            margin: 0 auto;
+                            padding: 0 20px;
+                            height: 70px;
+                        }
+
+                        .logo-section {
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                        }
+
+                        .logo {
+                            width: 45px;
+                            height: 45px;
+                            background: linear-gradient(135deg, #e53e3e, #dd6b20, #d69e2e);
+                            border-radius: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-weight: bold;
+                            color: white;
+                            font-size: 16px;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                            box-shadow: 0 8px 25px rgba(229, 62, 62, 0.3);
+                            position: relative;
+                            overflow: hidden;
+                            transition: all 0.3s ease;
+                        }
+
+                        .logo::before {
+                            content: '';
+                            position: absolute;
+                            top: -50%;
+                            left: -50%;
+                            width: 200%;
+                            height: 200%;
+                            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+                            transform: rotate(45deg);
+                            transition: all 0.6s ease;
+                            opacity: 0;
+                        }
+
+                        .logo:hover {
+                            transform: scale(1.05);
+                            box-shadow: 0 12px 35px rgba(229, 62, 62, 0.4);
+                        }
+
+                        .logo:hover::before {
+                            opacity: 1;
+                            transform: rotate(45deg) translate(50%, 50%);
+                        }
+
+                        .company-name {
+                            color: white;
+                            font-size: 24px;
+                            font-weight: 700;
+                            letter-spacing: 0.5px;
+                            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                        }
+
+                        .nav-links {
+                            display: flex;
+                            align-items: center;
+                            gap: 40px;
+                            list-style: none;
+                        }
+
+                        .nav-links a {
+                            color: rgba(255, 255, 255, 0.9);
+                            text-decoration: none;
+                            font-size: 18px;
+                            font-weight: 500;
+                            padding: 12px 18px;
+                            position: relative;
+                            transition: all 0.3s ease;
+                            border-radius: 25px;
+                            backdrop-filter: blur(10px);
+                        }
+
+                        .nav-links a:hover {
+                            color: #a0c4ff;
+                            transform: translateY(-3px);
+                            background: rgba(160, 196, 255, 0.1);
+                            border: 1px solid rgba(160, 196, 255, 0.2);
+                            box-shadow: 0 8px 25px rgba(160, 196, 255, 0.2);
+                        }
+
+                        .nav-links a::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 8px;
+                            left: 18px;
+                            width: 0;
+                            height: 2px;
+                            background: linear-gradient(90deg, #a0c4ff, #7dd3fc);
+                            transition: width 0.3s ease;
+                        }
+
+                        .nav-links a:hover::after {
+                            width: calc(100% - 36px);
+                        }
+
+                        .attendance-btn {
+                            background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
+                            color: white;
+                            padding: 12px 28px;
+                            border: none;
+                            border-radius: 30px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.4s ease;
+                            box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .attendance-btn::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: -100%;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+                            transition: left 0.6s ease;
+                        }
+
+                        .attendance-btn:hover::before {
+                            left: 100%;
+                        }
+
+                        .attendance-btn:hover {
+                            background: linear-gradient(135deg, #2c5aa0 0%, #2a4a7b 100%);
+                            transform: translateY(-4px);
+                            box-shadow: 0 15px 35px rgba(49, 130, 206, 0.4);
+                        }
+
+                        .attendance-btn:active {
+                            transform: translateY(-2px);
+                        }
+
+
+                    /* Registration Section with Enhanced Design */
+                    .registration {
+                        background: linear-gradient(135deg, #f1f3f4 0%, #e8eaf6 100%);
+                        min-height: 100vh;
+                        padding: 4rem 0;
+                        position: relative;
+                        margin-top: 70px;
+                    }
+
+                    /* Floating particles */
+                    .registration::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-image: 
+                            radial-gradient(circle at 25% 25%, rgba(79, 172, 254, 0.1) 1px, transparent 1px),
+                            radial-gradient(circle at 75% 75%, rgba(245, 87, 108, 0.1) 1px, transparent 1px);
+                        background-size: 100px 100px, 150px 150px;
+                        animation: float 15s ease-in-out infinite;
+                        z-index: 1;
+                    }
+
+                    @keyframes float {
+                        0%, 100% { transform: translate(0, 0); }
+                        33% { transform: translate(20px, -20px); }
+                        66% { transform: translate(-10px, 10px); }
+                    }
+
+                    .container {
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 2rem;
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    .registration-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    .section-header {
+                        text-align: center;
+                        margin-bottom: 4rem;
+                        max-width: 600px;
+                        animation: fadeInUp 1s ease-out;
+                    }
+
+                    @keyframes fadeInUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(50px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    .section-header h2 {
+                        font-size: 3rem;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        margin-bottom: 1.5rem;
+                        font-weight: 800;
+                        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .section-header p {
+                        font-size: 1.2rem;
+                        color: #718096;
+                        margin-bottom: 2.5rem;
+                        line-height: 1.8;
+                    }
+
+                    /* Enhanced Registration Button */
+                    .register-btn {
+                        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+                        color: white;
+                        border: none;
+                        padding: 1.2rem 3rem;
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        border-radius: 50px;
+                        cursor: pointer;
+                        transition: all 0.4s ease;
+                        box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+                        position: relative;
+                        overflow: hidden;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+
+                    .register-btn::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+                        transition: left 0.6s ease;
+                    }
+
+                    .register-btn:hover::before {
+                        left: 100%;
+                    }
+
+                    .register-btn:hover {
+                        transform: translateY(-5px) scale(1.05);
+                        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
+                    }
+
+                    .register-btn:active {
+                        transform: translateY(-3px) scale(1.02);
+                    }
+
+                    /* Registration Grid and Card with Glassmorphism */
+                    .registration-grid {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .registration-card {
+                        background: rgba(255, 255, 255, 0.25);
+                        backdrop-filter: blur(20px);
+                        border-radius: 24px;
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                        width: 100%;
+                        max-width: 700px;
+                        position: relative;
+                    }
+
+                    .registration-card::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 4px;
+                        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+                    }
+
+                    .registration-form {
+                        padding: 3rem;
+                        display: none;
+                        animation: slideInForm 0.6s ease-out;
+                    }
+
+                    .registration-form.active {
+                        display: block;
+                    }
+
+                    @keyframes slideInForm {
+                        from {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    /* Enhanced Form Styles */
+                    .form-group {
+                        margin-bottom: 2rem;
+                        position: relative;
+                    }
+
+                    .form-group label {
+                        display: block;
+                        margin-bottom: 0.75rem;
+                        font-weight: 600;
+                        color: #2d3748;
+                        font-size: 0.95rem;
+                    }
+
+                    .form-group small {
+                        display: block;
+                        color: #718096;
+                        font-size: 0.85rem;
+                        margin-bottom: 0.5rem;
+                        font-style: italic;
+                    }
+
+                    .required-asterisk {
+                        color: #e53e3e;
+                        margin-left: 3px;
+                    }
+
+                    /* Enhanced Input Styles */
+                    .form-group input[type="text"],
+                    .form-group input[type="email"],
+                    .form-group input[type="tel"],
+                    .form-group input[type="date"],
+                    .form-group input[type="number"],
+                    .form-group input[type="file"] {
+                        width: 100%;
+                        padding: 1rem 1.5rem;
+                        border: 2px solid rgba(255, 255, 255, 0.3);
+                        border-radius: 12px;
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+                        background: rgba(255, 255, 255, 0.5);
+                        backdrop-filter: blur(10px);
+                    }
+
+                    .form-group input:focus {
+                        outline: none;
+                        border-color: #4299e1;
+                        background: rgba(255, 255, 255, 0.8);
+                        box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.1);
+                        transform: translateY(-2px);
+                    }
+
+                    .form-group input::placeholder {
+                        color: rgba(160, 174, 192, 0.8);
+                    }
+
+                    /* Enhanced File Input Styles */
+                    .form-group input[type="file"] {
+                        padding: 1.5rem;
+                        border: 2px dashed rgba(66, 153, 225, 0.4);
+                        background: rgba(66, 153, 225, 0.05);
+                        cursor: pointer;
+                        text-align: center;
+                        position: relative;
+                    }
+
+                    .form-group input[type="file"]:hover {
+                        border-color: #4299e1;
+                        background: rgba(66, 153, 225, 0.1);
+                        transform: translateY(-2px);
+                        box-shadow: 0 5px 15px rgba(66, 153, 225, 0.1);
+                    }
+
+                    /* Enhanced Checkbox Styles */
+                    .form-group input[type="checkbox"] {
+                        appearance: none;
+                        width: 24px;
+                        height: 24px;
+                        border: 2px solid #4299e1;
+                        border-radius: 6px;
+                        background: white;
+                        margin-right: 12px;
+                        cursor: pointer;
+                        position: relative;
+                        transition: all 0.3s ease;
+                        flex-shrink: 0;
+                    }
+
+                    .form-group input[type="checkbox"]:checked {
+                        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                        border-color: #4facfe;
+                        transform: scale(1.1);
+                    }
+
+                    .form-group input[type="checkbox"]:checked::after {
+                        content: '✓';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: white;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    /* Enhanced Days Selection */
+                    #incoming-days-checkboxes {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 1rem;
+                        margin-top: 1rem;
+                        padding: 1.5rem;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 16px;
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        backdrop-filter: blur(10px);
+                    }
+
+                    #incoming-days-checkboxes label {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        padding: 1rem;
+                        border-radius: 12px;
+                        transition: all 0.3s ease;
+                        background: rgba(255, 255, 255, 0.2);
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                    }
+
+                    #incoming-days-checkboxes label:hover {
+                        background: rgba(255, 255, 255, 0.4);
+                        transform: translateY(-2px);
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                    }
+
+                    /* Error Messages with Animation */
+                    .form-error {
+                        color: #e53e3e;
+                        font-size: 0.875rem;
+                        margin-top: 0.5rem;
+                        display: none;
+                        animation: shake 0.5s ease-in-out;
+                    }
+
+                    @keyframes shake {
+                        0%, 100% { transform: translateX(0); }
+                        25% { transform: translateX(-5px); }
+                        75% { transform: translateX(5px); }
+                    }
+
+                    .form-error.show {
+                        display: block;
+                    }
+
+                    /* Terms and Conditions Section - FIXED */
+                    .terms-checkbox-group {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 12px;
+                        margin-bottom: 1rem;
+                        padding: 1.5rem;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 16px;
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        backdrop-filter: blur(10px);
+                    }
+
+                    .terms-checkbox-group input[type="checkbox"] {
+                        margin: 0;
+                        margin-top: 2px;
+                    }
+
+                    .terms-label-text {
+                        flex: 1;
+                        font-weight: 500;
+                        color: #2d3748;
+                        line-height: 1.5;
+                        margin: 0;
+                    }
+
+                    /* Terms and Conditions Link */
+                    .terms-link {
+                        color: #4299e1;
+                        text-decoration: none;
+                        font-weight: 600;
+                        position: relative;
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                    }
+
+                    .terms-link::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        width: 0;
+                        height: 2px;
+                        background: linear-gradient(90deg, #4299e1, #63b3ed);
+                        transition: width 0.3s ease;
+                    }
+
+                    .terms-link:hover {
+                        color: #2b6cb0;
+                        transform: translateY(-1px);
+                    }
+
+                    .terms-link:hover::after {
+                        width: 100%;
+                    }
+
+                    /* Enhanced Modal Styles */
+                    .modal-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background: rgba(0, 0, 0, 0.75);
+                        z-index: 9999;
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        backdrop-filter: blur(10px);
+                        padding: 20px;
+                        box-sizing: border-box;
+                    }
+
+                    .modal-overlay.show {
+                        display: flex;
+                    }
+
+                    .modal-content {
+                        background: rgba(255, 255, 255, 0.98);
+                        backdrop-filter: blur(20px);
+                        max-width: 800px;
+                        width: 100%;
+                        max-height: 90vh;
+                        overflow-y: auto;
+                        padding: 3rem;
+                        border-radius: 24px;
+                        position: relative;
+                        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                        animation: modalSlideIn 0.4s ease-out;
+                    }
+
+                    @keyframes modalSlideIn {
+                        from {
+                            opacity: 0;
+                            transform: translateY(-50px) scale(0.9);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0) scale(1);
+                        }
+                    }
+
+                    .modal-close {
+                        position: absolute;
+                        top: 20px;
+                        right: 25px;
+                        background: none;
+                        border: none;
+                        font-size: 28px;
+                        cursor: pointer;
+                        color: #666;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        transition: all 0.3s ease;
+                    }
+
+                    .modal-close:hover {
+                        background: rgba(0, 0, 0, 0.1);
+                        color: #333;
+                        transform: rotate(90deg);
+                    }
+
+                    .modal-title {
+                        margin-bottom: 1.5rem;
+                        color: #2d3748;
+                        font-size: 1.8rem;
+                        font-weight: 700;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-align: center;
+                    }
+
+                    .modal-body {
+                        font-size: 15px;
+                        line-height: 1.7;
+                        color: #4a5568;
+                    }
+
+                    .modal-body h3 {
+                        color: #2d3748;
+                        font-size: 1.3rem;
+                        margin: 2rem 0 1rem 0;
+                        font-weight: 600;
+                    }
+
+                    .modal-body h4 {
+                        color: #2d3748;
+                        font-size: 1.1rem;
+                        margin: 1.5rem 0 0.75rem 0;
+                        font-weight: 600;
+                    }
+
+                    .modal-body h5 {
+                        color: #2d3748;
+                        font-size: 1rem;
+                        margin: 1.25rem 0 0.5rem 0;
+                        font-weight: 600;
+                    }
+
+                    .modal-body ul, .modal-body ol {
+                        margin: 1rem 0;
+                        padding-left: 2rem;
+                    }
+
+                    .modal-body li {
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .modal-body p {
+                        margin-bottom: 1rem;
+                    }
+
+                    .modal-accept-btn {
+                        margin-top: 2rem;
+                        padding: 1rem 2rem;
+                        background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+                        color: #fff;
+                        border: none;
+                        border-radius: 12px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .modal-accept-btn:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 12px 35px rgba(66, 153, 225, 0.4);
+                    }
+
+                    /* Enhanced Footer Styles */
+                    footer {
+                        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+                        color: #fff;
+                        padding: 4rem 2rem 2rem;
+                        text-align: center;
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                    footer::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background: linear-gradient(90deg, transparent, #4facfe, #00f2fe, transparent);
+                    }
+
+                    footer h2, footer h3 {
+                        display: inline-block;
+                        margin-bottom: 2rem;
+                    }
+
+                    footer h2 {
+                        font-size: 2rem;
+                        margin-right: 0.5rem;
+                        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: 700;
+                    }
+
+                    footer h3 {
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        color: #a0aec0;
+                    }
+
+                    footer p {
+                        margin: 1.5rem 0;
+                        font-weight: 600;
+                        color: #e2e8f0;
+                    }
+
+                    footer a {
+                        color: rgba(129, 199, 132, 0.9);
+                        text-decoration: none;
+                        margin: 0 1.5rem;
+                        padding: 0.5rem 1rem;
+                        border-radius: 20px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                        display: inline-block;
+                    }
+
+                    footer a::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: linear-gradient(135deg, rgba(129, 199, 132, 0.1), rgba(165, 214, 167, 0.1));
+                        border-radius: 20px;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    footer a:hover {
+                        color: #a5d6a7;
+                        transform: translateY(-2px);
+                    }
+
+                    footer a:hover::before {
+                        opacity: 1;
+                    }
+
+                    footer hr {
+                        border: none;
+                        height: 1px;
+                        background: linear-gradient(90deg, transparent, #4a5568, transparent);
+                        margin: 2rem 0 1rem;
+                    }
+
+                    footer p:last-child {
+                        color: #a0aec0;
+                        font-size: 0.9rem;
+                        font-weight: 400;
+                    }
+
+                    /* Responsive Design */
+                    @media (max-width: 768px) {
+                        .nav-container {
+                            padding: 0 15px;
+                            height: 60px;
+                        }
+
+                        .nav-links {
+                            display: none;
+                        }
+
+                        .company-name {
+                            font-size: 20px;
+                        }
+
+                        .attendance-btn {
+                            padding: 10px 20px;
+                            font-size: 14px;
+                        }
+
+                        .logo {
+                            width: 35px;
+                            height: 35px;
+                            font-size: 14px;
+                        }
+                        
+                        .section-header h2 {
+                            font-size: 2rem;
+                        }
+                        
+                        .registration-form {
+                            padding: 2rem;
+                        }
+                        
+                        .container {
+                            padding: 0 1rem;
+                        }
+                        
+                        #incoming-days-checkboxes {
+                            grid-template-columns: 1fr;
+                        }
+
+                        .registration {
+                            margin-top: 60px;
+                        }
+
+                        .modal-content {
+                            padding: 2rem;
+                            margin: 10px;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .section-header h2 {
+                            font-size: 1.75rem;
+                        }
+                        
+                        .register-btn {
+                            padding: 0.875rem 1.5rem;
+                            font-size: 1rem;
+                        }
+                        
+                        .registration-form {
+                            padding: 1.5rem;
+                        }
+                        
+                        .modal-content {
+                            padding: 1.5rem;
+                            margin: 5px;
+                        }
+
+                        .modal-title {
+                            font-size: 1.5rem;
+                        }
+                    }
+
+                    /* Custom scrollbar for modal */
+                    .modal-content::-webkit-scrollbar {
+                        width: 8px;
+                    }
+
+                    .modal-content::-webkit-scrollbar-track {
+                        background: rgba(241, 241, 241, 0.5);
+                        border-radius: 4px;
+                    }
+
+                    .modal-content::-webkit-scrollbar-thumb {
+                        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                        border-radius: 4px;
+                    }
+
+                    .modal-content::-webkit-scrollbar-thumb:hover {
+                        background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
+                    }
+
+                     /* Mobile menu toggle (hidden by default) */
+                    .mobile-toggle {
+                        display: none;
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 24px;
+                        cursor: pointer;
+                        padding: 8px;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                    }
+
+                    .mobile-toggle:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        transform: scale(1.1);
+                    }
+
+                    @media (max-width: 768px) {
+                        .mobile-toggle {
+                            display: block;
+                        }
+                    }
+
+                    /* Success Animation */
+                    .success-message {
+                        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+                        color: white;
+                        padding: 1rem;
+                        border-radius: 12px;
+                        margin-top: 1rem;
+                        display: none;
+                        animation: slideInUp 0.5s ease-out;
+                    }
+
+                    @keyframes slideInUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(20px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    /* Loading Animation */
+                    .loading {
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        border: 3px solid rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        border-top-color: white;
+                        animation: spin 1s ease-in-out infinite;
+                    }
+
+                    @keyframes spin {
+                        to { transform: rotate(360deg); }
+                    }
+
+                    /* Floating Action Button */
+                    .fab {
+                        position: fixed;
+                        bottom: 30px;
+                        right: 30px;
+                        width: 60px;
+                        height: 60px;
+                        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 24px;
+                        cursor: pointer;
+                        box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+                        transition: all 0.3s ease;
+                        z-index: 1000;
+                        backdrop-filter: blur(10px);
+                    }
+
+                    .fab:hover {
+                        transform: translateY(-5px) scale(1.1);
+                        box-shadow: 0 15px 40px rgba(245, 87, 108, 0.5);
+                    }
+
+                    /* Pulse Animation for Important Elements */
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.05); }
+                        100% { transform: scale(1); }
+                    }
+
+                    .pulse-animation {
+                        animation: pulse 2s ease-in-out infinite;
+                    }
+
+                    /* Smooth Scrolling Behavior */
+                    html {
+                        scroll-behavior: smooth;
+                    }
+
+                    /* Focus States for Accessibility */
+                    *:focus {
+                        outline: 3px solid rgba(66, 153, 225, 0.5);
+                        outline-offset: 2px;
+                    }
+
+                    .nav-links a:focus,
+                    .attendance-btn:focus,
+                    .register-btn:focus,
+                    button:focus {
+                        outline: 3px solid rgba(255, 255, 255, 0.5);
+                        outline-offset: 2px;
+                    }
+            </style>
+           </body>
 </html>
