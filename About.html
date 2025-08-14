@@ -3,115 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Unified Internship Program</title>
+    <title>About | UIP</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat';
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+
+        }
+
+        .attendance-tracker {
+            background-color: #4299e1 !important;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* About Us Section */
+        .about-header {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .about-header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #021D2B;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .aboutlogos-item {
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+
+        .growth-position {
+            display: flex; 
+            justify-content: center; 
+            margin-bottom: 20px;
+        }
+
+        .targetedskills-leadership-position {
+            display: flex; 
+            gap: 80px; 
+            justify-content: center;
+        }
+
+        .stat-icon img {
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .stat-text h3 {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #FB7847;
+        }
+
+        /* Work from Home Section */
+        .wfh-section {
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #000000;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .wfh-illustration {
+            display: flex;
+            justify-content: center;
+        }
+
+        .wfh-illustration img {
+            width:325px; 
+            height:325px; 
+            border-radius:50%;
+        }
+        }
+
+        .wfh-content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .wfh-content p {
+            font-size: 16px;
+        }
+
+        /* Mission and Vision Section */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .mission-card, .vision-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-card {
+            background: #2c5282;
+            color: white;
+        }
+
+        .vision-card {
+            background: #2c5282;
+            color: white;
+        }
+
+        .mission-card h3, .vision-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .partners-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #1e3a5f;
+        }
+
+        .partners-section > p {
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .partner-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .vocoease-logo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .aureal-logo {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+        }
+
+        .visvis-logo {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        .anafara-logo {
+            background: linear-gradient(45deg, #43e97b, #38f9d7);
+        }
+
+        .partner-card h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #1e3a5f;
+        }
+
+        .partner-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+
+        .faq-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #1e3a5f;
+        }
+
+        .faq-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #e53e3e;
+        }
+
+        .faq-section p {
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .faq-btn {
+            background-color: #fd7f4a;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .faq-btn:hover {
+            background-color: #e56b3d;
+        }
+
+        .faq-characters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .character {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .character:nth-child(1) {
+            background-color: #fbb6ce;
+        }
+
+        .character:nth-child(2) {
+            background-color: #a7f3d0;
+        }
+
+        /* Footer */
+        footer {
+        }
+
+    </style>
 </head>
 <body>
-    <!-- HEADER SECTION - LEFT BLANK -->
+    <!-- HEADER SECTION -->
     <header>
-        <h2>UIP Inc.</h2>
-        <a href="Home.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="Services.html">Services</a>
-        <a href="Contact.html">Contact</a>  
     </header>
 
     <!-- MAIN CONTENT -->
     <main>
-        <section>
+        <section class="about-header">
             <h1>ABOUT US</h1>
-            
-            <div>
-                <p>The Unified Internship Program (UIP), founded in 2019 as part of the Australia Learning System (ALS), began by arranging internships for graduating students. The COVID-19 pandemic, however, necessitated a significant shift.</p>
-                
-                <p>UIP transformed into a fully online, non-profit organization, now specializing in work-from-home internships. This adaptation allowed the program to continue meeting student and institutional needs through online connections while maintaining efficiency with our highly committed team.</p>
+        </section>
+
+        <section class="about-content">
+            <div class="about-text">
+                <p>The Unified Internship Program (UIP), founded in 2010 as part of the Alternative Learning System (ALS), began by arranging internships for graduating students. The COVID-19 pandemic, however, necessitated a significant shift.</p>
+                <p>UIP transformed into a fully online, non-profit organization, now specializing in work-from-home internship opportunities. This allows the program to continue meeting student and institutional needs through online connections and distance learning, all overseen by a committed team.</p>
             </div>
 
-            <div>
-                <h2>Growth</h2>
-                <h2>Targeted Skills</h2>
-                <h2>Leadership</h2>
+            <div class="stats-container">
+                <div class="growth-position">
+                        <div class="aboutlogos-item">
+                            <div class="stat-icon">
+                                <img src="growth.png" alt="Growth">
+                            </div>
+                            <div class="stat-text">
+                                <h3>Growth</h3>
+                            </div>
+                        </div>
+                </div>
+                <div class="targetedskills-leadership-position">
+                            <div class="aboutlogos-item">
+                                <div class="stat-icon">
+                                    <img src="targetedskills.png" alt="Targeted Skills">
+                                </div>
+                                <div class="stat-text" style="text-align: center;">
+                                    <h3>Targeted Skills</h3>
+                                </div>
+                            </div>
+
+                            <div class="aboutlogos-item">
+                                <div class="stat-icon">
+                                    <img src="leadership.png" alt="Leadership">
+                                </div>
+                                <div class="stat-text" style="text-align: center;">
+                                    <h3>Leadership</h3>
+                                </div>
+                            </div>
+                </div>
             </div>
         </section>
 
-        <section>
-            <div>
-                <img src="person-working-laptop.png" alt="Person working on laptop">
+        <section class="wfh-section">
+            <div class="wfh-illustration">
+                <img src="workfromhome.png" alt="Work From Home">
             </div>
-            <div>
+            <div class="wfh-content">
                 <h2>UNIFIED INTERNSHIP PROGRAM IS NOW 100% WORK FROM HOME</h2>
-                <p>Please feel with a hundred percent effectiveness</p>
+                <p>Hassle free with a hundred percent effectiveness!</p>
             </div>
         </section>
 
-        <section>
-            <div>
+        <section class="mission-vision">
+            <div class="mission-card">
                 <h3>OUR MISSION</h3>
                 <p>Our mission is to help students identify and actualize their unique career and educational goals. Through individualized advisement, exploration of resources, and opportunities for experiential education, we work to introduce career opportunities, ultimately preparing them for postgraduate and workforce success.</p>
             </div>
             
-            <div>
+            <div class="vision-card">
                 <h3>OUR VISION</h3>
                 <p>Our vision is to help students identify and actualize their unique career and educational goals. Through individualized advisement, exploration of resources, and opportunities for experiential education, we work to introduce career opportunities, ultimately preparing them for postgraduate and workforce success.</p>
             </div>
         </section>
 
-        <section>
+        <section class="partners-section">
             <h2>Meet Our Partners</h2>
             <p>We're stronger together. Explore the network of trusted partners who help us deliver exceptional results.</p>
 
-            <div>
-                <div>
-                    <img src="vocoease-logo.png" alt="VocoEase Logo">
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo vocoease-logo">VE</div>
                     <h4>VocoEase</h4>
                     <p>A distinguished firm specializing in the provision of technical support and customer service staffing solutions for a diverse range of organizations. As a well-established enterprise, we excel in providing tailored technical support solutions, catering to diverse businesses.</p>
                 </div>
 
-                <div>
-                    <img src="aureal-logo.png" alt="Aureal Industry Corp Logo">
+                <div class="partner-card">
+                    <div class="partner-logo aureal-logo">AI</div>
                     <h4>Aureal Industry Corp.</h4>
                     <p>A great partner for our customers. For our clients, their consumers, and their team, we promise to defy expectations, create experiences that go above and beyond, and challenge and inspire one another. This promise is supported by four core principles that encourage real positive change for both people and the environment and enable us to follow through our commitments.</p>
                 </div>
 
-                <div>
-                    <img src="visvis-logo.png" alt="Visvis Travel and Tours Logo">
+                <div class="partner-card">
+                    <div class="partner-logo visvis-logo">VT</div>
                     <h4>Visvis Travel and Tours</h4>
                     <p>A traveling agency that was founded in the year 2020 that has a bottom-up approach and strategic partners in the tourism industry. We are specialized in offering a wide variety of travel accommodations and booking delivery. They also provide a diverse range of travel services to meet the needs of travelers, leisure, and the interest of tourists.</p>
                 </div>
 
-                <div>
-                    <img src="anafara-logo.png" alt="Anafara Logo">
+                <div class="partner-card">
+                    <div class="partner-logo anafara-logo">A</div>
                     <h4>Anafara</h4>
                     <p>Specialized in providing a quality for wholesale and retail products, Anafara makes sure to meet your needs. We create value by applying our in-depth, specialized knowledge and drawing on lessons learnt. We offer to ease the everyday tasks of the business community through our A-to-Z solutions.</p>
                 </div>
             </div>
         </section>
 
-        <section>
+        <section class="faq-section">
             <h2>Have Questions?</h2>
             <h3>We've Got answers!</h3>
             <p>Explore Our Frequently Asked Questions to Find Detailed Answers and Helpful Information</p>
-            <button>Visit FAQs</button>
-            <div>
-                <img src="faq-characters.png" alt="FAQ Characters">
+            <button class="faq-btn">Visit FAQs</button>
+            <div class="faq-characters">
+                <div class="character">❌</div>
+                <div class="character">✅</div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER SECTION - LEFT BLANK -->
+    <!-- FOOTER SECTION -->
     <footer>
-        <h2 div="main-title">Unified Internship Program</h2> <h3 div="sub-title">Incorporated</h3>
-        <p><b>Extra Link:</b></p>
-        <a href="#">About</a>
-        <a href="#">FAQs</a>
-        <a href="#">Internships</a>
-        <a href="#">Attedance Tracker</a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Unified Internship Program</h2>
+                <h3>Incorporated</h3>
+            </div>
+            
+            <div class="footer-section">
+                <p><b>Extra Link:</b></p>
+                <a href="#">About</a>
+                <a href="#">FAQs</a>
+                <a href="#">Internships</a>
+                <a href="#">Attendance Tracker</a>
+            </div>
+            
+            <div class="footer-section">
+                <p><b>Contact Us</b></p>
+                <a href="mailto:info@uip.com">info@uip.com</a>
+            </div>
+        </div>
         
-        <p><b>Contact Us</b></p>
-        <a href="mailto:info@uip.com">info@uip.com</a>
-        <hr>
-        <p>Terms of Service</p> 
-        <p>Privacy Policy</p>
-        <p>&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
+        <div class="footer-bottom">
+            <div>
+                <p>Terms of Service</p>
+                <p>Privacy Policy</p>
+            </div>
+            <p>&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
