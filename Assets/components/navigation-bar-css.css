@@ -1,50 +1,56 @@
-/* font */
+/* FONT & VARIABLES*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root{
+:root {
     --font-family: 'Montserrat', sans-serif;
     --font-size: 18px;
     --color-text: #ffffff;
     --color-bg: #021D2B;
     --header-height: 3.5rem;
-
+    --body-color: #021D2B;
+    --title-color: #ffffff;
+    --first-color-lighten: #0a3d52;
+    --font-semi-bold: 600;
     --z-tooltip: 10;
-    --z-index:100;
-
+    --z-index: 999 ;
 }
-/* responsive typography */
-@media screen and (min-width:1024px) {
-    :root{
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+    :root {
         --normal-font-size: 1rem;
         --small-font-size: .875rem;
         --smaller-font-size: .813rem;
     }
 }
 
-
-/* Base */
-*{
+/* BASE STYLES*/
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: var(--color-text);
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.container{
+.container {
     max-width: 1120px;
     margin-inline: 1.5rem;
 }
 
-.header{
+ul {
+    list-style: none;
+}
+
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -52,24 +58,160 @@ a{
     max-width: 990px;
     background-color: var(--color-bg);
     z-index: var(--z-index);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.nav{
+.nav {
     height: var(--header-height);
 }
 
-.nav-data{
+.nav-data {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
-.logo-link{
-    display: flex;
+.logo-link {
+    display: inline-flex;
     align-items: center;
     gap: 1rem;
     text-decoration: none;
     color: var(--color-text);
+}
+
+/*NAV TOGGLE (HAMBURGER)*/
+.nav-toggle {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.nav-link {
+    list-style: none;
+    color: var(--color-text);
+}
+
+.nav-toggle-menu,
+.nav-toggle-close {
+    font-size: 1.25rem;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    inset: 0;
+    cursor: pointer;
+    transition: opacity .1s, transform .4s;
+    color: var(--color-text);
+}
+
+.nav-toggle-close {
+    opacity: 0;
+}
+
+/*TOGGLE ANIMATION*/
+.nav-toggle {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: none; 
+}
+
+.nav-toggle-menu,
+.nav-toggle-close {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    position: absolute;
+    display: grid;
+    place-items: center;
+    inset: 0;
+    cursor: pointer;
+    transition: opacity 0s ease, transform 0.1s ease;
+}
+
+.nav-toggle-close {
+    opacity: 0;
+}
+
+.show-icon .nav-toggle-menu {
+    opacity: 0;
+}
+
+.show-icon .nav-toggle-close {
+    opacity: 1;
+}
+
+/*MOBILE NAVIGATION*/
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: block; 
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 4.0rem;
+        right: -250px;
+        font-weight: 200;
+        width: 250px;
+        height: 100%;
+        background-color: #021d2b71;
+        padding: 2rem 1.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -7px 0 10px rgba(0, 0, 0, 0.2);
+        z-index: var(--z-index);
+        backdrop-filter: blur(10px);
+        border-top-left-radius: 30px;
+        border: solid 1px #021d2b21;
+        background: linear-gradient(to bottom, #021d2bf6, rgba(234, 233, 233, 0.817));
+        /* display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start; */
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: #4c6aaf;
+    }
+
+    .show-menu {
+        right: 0;
+    }
+
+    .nav-toggle {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    .nav-toggle:not(.show-icon) .ri-menu-line {
+        display: inline-block;
+    }
+    .nav-toggle.show-icon .ri-menu-fold-fill {
+        display: inline-block;
+    }
+}
+
+.nav-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-toggle {
+    margin-left: auto;
+    position: relative;
+    right: 0;
 }
