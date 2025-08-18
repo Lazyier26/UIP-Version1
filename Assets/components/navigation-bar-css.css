@@ -3,10 +3,10 @@
 
 :root {
     --font-family: 'Montserrat', sans-serif;
-    --font-size: 18px;
+    --font-size: 20px;
     --color-text: #ffffff;
     --color-bg: #021D2B;
-    --header-height: 3.5rem;
+    --header-height: 9.5rem;
     --body-color: #021D2B;
     --title-color: #ffffff;
     --first-color-lighten: #0a3d52;
@@ -55,21 +55,16 @@ ul {
     top: 0;
     left: 0;
     width: 100%;
-    max-width: 990px;
     background-color: var(--color-bg);
-    z-index: var(--z-index);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.nav {
-    height: var(--header-height);
-}
 
 .nav-data {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-block: 1rem;
 }
 
 .logo-link {
@@ -80,7 +75,7 @@ ul {
     color: var(--color-text);
 }
 
-/*NAV TOGGLE (HAMBURGER)*/
+/*NAV TOGGLE DESIGN*/
 .nav-toggle {
     position: relative;
     width: 32px;
@@ -102,6 +97,7 @@ ul {
     cursor: pointer;
     transition: opacity .1s, transform .4s;
     color: var(--color-text);
+
 }
 
 .nav-toggle-close {
@@ -141,10 +137,60 @@ ul {
     opacity: 1;
 }
 
+/* DESKTOP NAVIGATION */
+@media screen and (min-width:913px){
+    .header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    
+    .nav-menu {
+        display: flex;
+        justify-content: center;
+        flex: 1;  
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        font-weight: 500;
+        font-size: var(--font-size);
+    }
+
+    
+    .attendance-button {
+        margin-left: auto;
+    }
+
+}
+
+
+
 /*MOBILE NAVIGATION*/
-@media screen and (max-width: 768px) {
+.nav-menu h2{
+    display: none;
+}
+
+@media screen and (max-width: 913px) {
     .nav-toggle {
         display: block; 
+    }
+
+    .nav-menu h2{
+        display: block;
     }
 
     .nav-menu {
