@@ -39,6 +39,8 @@
         .about-header {
             text-align: left;
             margin-bottom: 40px;
+            border-radius: 15px 15px 0 0; 
+            padding: 40px 40px 0 40px;
         }
 
         .about-header h1 {
@@ -53,6 +55,8 @@
             grid-template-columns: 2fr 1fr;
             gap: 100px;
             margin-bottom: 40px;
+            border-radius: 0 0 15px 15px; 
+            padding: 0 40px 40px 40px;
         }
 
         .about-text p {
@@ -126,6 +130,7 @@
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 30px;
+            color: #FFFFFF;
         }
 
         .wfh-illustration {
@@ -164,7 +169,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 140px;
-            margin: 70px 175px;
+            margin: 30px 130px;
         }
 
         .mission-card, .vision-card {
@@ -191,73 +196,85 @@
         }
 
         .partners-section h2 {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             margin-top: 10px;
             margin-bottom: 10px;
-            color: #000000
+            color: #000000;
         }
 
         .partners-section > p {
             margin-bottom: 40px;
-            font-size: 16px;
+            font-size: 20px;
+            font-weight: 500;
             text-align: center;
             color: #000000;
         }
 
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            
             gap: 30px;
             margin-bottom: 40px;
         }
 
         .partner-card {
-            background: white;
+            background: #D9D9D9;
             padding: 30px 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 4px 6px #bcbcbc;
+            text-align: left;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         .partner-logo {
             width: 80px;
             height: 80px;
-            margin: 0 auto 15px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            color: white;
-            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
         }
 
-        .vocoease-logo {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .aureal-logo {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-        }
-
-        .visvis-logo {
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-        }
-
+        .vocoease-logo,
+        .aureal-logo,
+        .visvis-logo,
         .anafara-logo {
-            background: linear-gradient(45deg, #43e97b, #38f9d7);
+            width: 150px;
+            height: 150px;
         }
 
-        .partner-card h4 {
+        .position {
+            position: relative;
+            display: flex;
+        }
+
+        .content-section {
+            flex: 1;
+        }
+
+        .company-name h4 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #1e3a5f;
+            text-align: left;
+            color: #000000;
         }
 
-        .partner-card p {
-            font-size: 14px;
-            color: #666;
+        .company-description p {
+            font-size: 16px;
+            text-align: justify;
+            color: #000000;
             line-height: 1.5;
         }
 
@@ -418,27 +435,61 @@
 
             <div class="partners-grid">
                 <div class="partner-card">
-                    <div class="partner-logo vocoease-logo">VE</div>
-                    <h4>VocoEase</h4>
-                    <p>A distinguished firm specializing in the provision of technical support and customer service staffing solutions for a diverse range of organizations. As a well-established enterprise, we excel in providing tailored technical support solutions, catering to diverse businesses.</p>
+                    <div class="partner-logo vocoease-logo">
+                        <img src="assets/images/vocoeaselogo.png" alt="VocoEase Logo">
+                    </div>
+                    
+                    <div class="content-section">
+                        <h4 class="company-name">
+                            VocoEase
+                        </h4>
+                        <p class="company-description">
+                            VocoEase is a leading provider of innovative solutions, dedicated to enhancing communication and collaboration in the digital age. Our mission is to empower individuals and organizations with cutting-edge tools that simplify and streamline their workflows.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="partner-card">
-                    <div class="partner-logo aureal-logo">AI</div>
-                    <h4>Aureal Industry Corp.</h4>
-                    <p>A great partner for our customers. For our clients, their consumers, and their team, we promise to defy expectations, create experiences that go above and beyond, and challenge and inspire one another. This promise is supported by four core principles that encourage real positive change for both people and the environment and enable us to follow through our commitments.</p>
+                    <div class="partner-logo aureal-logo">
+                        <img src="assets/images/aureallogo.png" alt="Aureal Logo">
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="company-name">
+                            Aureal Industry Corp.
+                        </h4>
+                        <p class="company-description">
+                            A great partner for our customers. For our clients, their consumers, and their team, we promise to defy expectations, create experiences that go above and beyond, and produce results that are unthinkable. This pledge is supported by four core principles that encourage real positive change for both people and the environment and enable us to follow through our promises.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="partner-card">
-                    <div class="partner-logo visvis-logo">VT</div>
-                    <h4>Visvis Travel and Tours</h4>
-                    <p>A traveling agency that was founded in the year 2020 that has a bottom-up approach and strategic partners in the tourism industry. We are specialized in offering a wide variety of travel accommodations and booking delivery. They also provide a diverse range of travel services to meet the needs of travelers, leisure, and the interest of tourists.</p>
+                    <div class="partner-logo visvis-logo">
+                        <img src="assets/images/visvislogo.png" alt="Visvis Logo">
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="company-name">
+                            Visvis Travel and Tours
+                        </h4>
+                        <p class="company-description">
+                            A traveling agency that was founded in the year 2020 that has a bottom-up approach and strategic partners in the tourism industry. We are specialized in offering a wide variety of travel accommodations and booking delivery. They also provide a diverse range of travel services to meet the needs of travelers, leisure, and the interest of tourists.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="partner-card">
-                    <div class="partner-logo anafara-logo">A</div>
-                    <h4>Anafara</h4>
-                    <p>Specialized in providing a quality for wholesale and retail products, Anafara makes sure to meet your needs. We create value by applying our in-depth, specialized knowledge and drawing on lessons learnt. We offer to ease the everyday tasks of the business community through our A-to-Z solutions.</p>
+                    <div class="partner-logo anafara-logo">
+                        <img src="assets/images/anafaralogo.png" alt="Anafara Logo">
+                    </div>
+
+                    <div class="content-section">
+                        <h4 class="company-name">
+                            Anafara
+                        </h4>
+                        <p class="company-description">
+                            Specialized in providing supplies for wholesale market and retail products. Anafara makes sure to meet your needs. We create value by applying our in-depth, specialized knowledge and drawing on lessons learnt. We offer to ease the everyday tasks of the business community through our A-to-Z solutions.
                 </div>
             </div>
         </section>
