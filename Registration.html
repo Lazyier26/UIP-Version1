@@ -13,11 +13,13 @@
         <!-- Registration Section -->
         <section id="registration" class="registration">
             <div class="container registration-container">
-                <div class="section-header">
-                    <h2>Ready to Start? 
-                        Apply now</h2>
-                    <p>If you've been waiting for the perfect moment to start this is it. Hit apply and make your next move with confidence. </p>
-                    <button class="register-btn pulse-animation" onclick="toggleForm('incoming')">Register as Incoming Intern</button>
+                <div class="section-header"> 
+                    <div class="rgt-illustration">
+                        <img src="assets/images/Registering.png" alt="Registration Illustration" class="rgt-image">
+                    </div>
+                        <h2>Ready to Start? Apply now</h2> 
+                        <p>If you've been waiting for the perfect moment to start this is it. Hit apply and make your next move with confidence. </p> 
+                    <button class="register-btn pulse-animation" onclick="toggleForm('incoming')">Register as Incoming Intern</button> 
                 </div>
                 
                 <div class="registration-grid">
@@ -475,6 +477,15 @@
                         position: relative;
                         margin-top: 70px;
                     }
+                     .rgt-illustration {
+                        display: flex;
+                        justify-content: center;
+                    }
+                    /* .rgt-image {
+                        width:325px; 
+                        height:325px; 
+                        border-radius:50%;
+                    } */
 
                     /* Floating particles */
                     .registration::before {
