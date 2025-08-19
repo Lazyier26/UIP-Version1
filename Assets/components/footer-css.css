@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-family: 'Montserrat', sans-serif;
+    --font-size: 20px;
+    --color-text: #ffffff;
+    --color-bg: #021D2B;
+    --header-height: 9.5rem;
+    --body-color: #021D2B;
+    --title-color: #ffffff;
+    --first-color-lighten: #0a3d52;
+    --font-semi-bold: 500;
+    --z-tooltip: 10;
+    --z-index: 999 ;
+    --secondary-color-bg: #FB7847;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+    :root {
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    text-decoration: none;
+    list-style: none;
+}
+
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--body-color);
+    color: var(--color-text);
+    padding: 100px 0 30px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+}  
+
+.row{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col{
+    flex-basis: 25%;
+    padding: 10px;
+}
+
+.col h3{
+    width: fit-content;
+    margin-bottom:20px ;
+    font-size: 25px;
+    font-weight: var(--font-semi-bold);
+    position: relative;
+}
+
+.email{
+    width: fit-content;
+    font-size: 19px;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-text);
+}
+
+ul li{
+    font-size: 19px;
+    padding: 5px 0;
+}
+
+ul li a{
+    color: var(--color-text);
+}
