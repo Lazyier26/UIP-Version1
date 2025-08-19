@@ -1,3 +1,4 @@
+/* ========NAVIGATION BAR========= */
 /* FONT & VARIABLES*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -35,6 +36,7 @@
     list-style: none;
 }
 
+/* fix issue of none content moving when sidebar is open */
 html {
     overflow-y: overlay;
 }
@@ -42,10 +44,11 @@ html {
 body{
     min-height: 100vh;
     color: var(--color-text);
+
 }
 
 header{
-    position: fixed;
+    position: relative;
     width: 100%;
     top: 0;
     right: 0;
@@ -224,7 +227,7 @@ h3 span{
         backdrop-filter: blur(10px);
         border-radius: 50px 0 50px 50px;
         padding: 2rem 2rem;
-        background: linear-gradient(to bottom, #021d2bf6, rgba(234, 233, 233, 0.817));   
+        background: linear-gradient(to bottom, #021d2bf6, rgba(234, 233, 233, 0.817));    
     }
 
     body.sidebar-open{
@@ -259,7 +262,7 @@ h3 span{
     }
 
     .navbar.open{
-        right: 0%;
+        right: 0;
     }
 
     .nav-link{
@@ -287,7 +290,47 @@ h3 span{
       width: 100%;
     }
 
-
-    
 }
 
+/* ========NAVIGATION END DESIGN========= */
+
+/* ========HOME PAGE DESIGN========= */
+
+.hero-top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.Title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #021D2B;
+}
+
+.Title h1{
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.Title h2{
+    font-size: 2rem;
+    color: #FB7847;
+    display: flex;
+    justify-content: center;
+} 
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.title-paragraph{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
