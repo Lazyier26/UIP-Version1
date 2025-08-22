@@ -45,7 +45,7 @@ body{
 }
 
 header{
-    position: fixed;
+    position: relative;
     width: 100%;
     top: 0;
     right: 0;
@@ -53,7 +53,7 @@ header{
     display: flex;
     align-items: center;
     background: transparent;
-    padding: 20px 5%;
+    padding: 10px 5%;
     transition: all .5s ease;
     background-color: var(--body-color);
     box-shadow: 0 5px 9px rgba(8, 34, 81, 0.308);
@@ -76,6 +76,7 @@ header{
 h3 span{
     font-size: 1.5rem;
     font-weight: 400;
+    font-size: clamp(0.1rem, 0.8rem + 1vw, 2rem);
 }
 
 .nav{
@@ -213,8 +214,7 @@ h3 span{
         position: fixed;
         top: 90px;
         right: -100%;
-        width: 350px;
-        min-height: 50vh;
+        width: 60%;
         height: auto;
         z-index: 9999;
         flex-direction: column;
@@ -224,7 +224,7 @@ h3 span{
         backdrop-filter: blur(10px);
         border-radius: 50px 0 50px 50px;
         padding: 2rem 2rem;
-        background: linear-gradient(to bottom, #021d2bf6, rgba(234, 233, 233, 0.817));   
+        background: linear-gradient(to bottom, #021d2bf6, rgba(234, 233, 233, 0.817));    
     }
 
     body.sidebar-open{
@@ -259,7 +259,7 @@ h3 span{
     }
 
     .navbar.open{
-        right: 0%;
+        right: 0;
     }
 
     .nav-link{
@@ -287,7 +287,12 @@ h3 span{
       width: 100%;
     }
 
-
-    
 }
 
+@media (max-width: 400px) {
+    .navbar {
+        width: 100%;
+        border-radius: 0;
+    }
+
+}

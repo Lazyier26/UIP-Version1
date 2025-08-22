@@ -35,7 +35,7 @@
 
 footer{
     width: 100%;
-    position: absolute;
+    position: static;
     bottom: 0;
     background-color: var(--body-color);
     color: var(--color-text);
@@ -43,6 +43,7 @@ footer{
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
     padding-bottom: 50px;
+    transition: all 0.3s ease;
 }  
 
 .row{
@@ -52,11 +53,13 @@ footer{
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
+    transition: all 0.5s ease;
 }
 
 .col{
     flex-basis: 25%;
     padding: 10px;
+    transition: all 0.5s ease;
 }
 
 .col h3{
@@ -65,23 +68,37 @@ footer{
     font-size: 25px;
     font-weight: var(--font-semi-bold);
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .email{
     width: fit-content;
     font-size: 20px;
     color: var(--color-text);
+    transition: all 0.3s ease;
 
 }
 
-ul li{
+.col ul li{
     font-size: 20px;
     padding-bottom: 18px;
 
 }
 
-ul li a{
+.col ul li a{
     color: var(--color-text);
+}
+
+.logo-link-footer{
+    flex-shrink: 0;
+}
+
+.logo-link-footer img{
+    width: clamp(70px, 20vw,80px);
+    height: auto;
+    margin-right: 0.8rem;
+    display: block;
+    transition: all 0.3s ease;
 }
 
 .social-icon img{
@@ -95,11 +112,15 @@ ul li a{
 .hero-footer{
     display: flex;
     align-items: center;
-    gap: 10px;
+}
+
+.hero-footer h2{
+    padding-bottom: 1rem;
 }
 
 .hero-footer img{
     margin-bottom: 1rem;
+    margin-right: 1rem;
 }
 
 .title-wrapper{
@@ -107,8 +128,16 @@ ul li a{
     flex-direction: column;
 }
 
-.hero-footer h2{
+@media (min-width: 1120px) {
+  .hero-footer h2 {
     white-space: nowrap;
+    font-size: clamp(18px, 2vw, 24px);
+    transition: all 0.3s ease;
+  }
+}
+
+.hero-footer h3{
+    font-size: clamp(17px, 2vw, 22px);  
 }
 
 hr{
@@ -120,11 +149,13 @@ hr{
     margin-bottom: 30px;
 }
 
+
 .property {
     display: flex;
     align-items: center;
     gap: 2rem;
     color: #ffffff;
+    margin-right: 20px;
 }
 
 .property a{
@@ -132,10 +163,18 @@ hr{
 }
 
 .copyright{
+    display: flex;
     text-align: center;
     font-size: 14px;
     color: var(--color-text);
 }
+
+@media (max-width: 812px) {
+    .copyright {
+        margin-top: 10px;
+    }
+}
+
 
 /* UNDERLINE HOVER EFFECTS */
 .footer-link, 
@@ -178,4 +217,5 @@ li a:hover::after {
     .col:nth-child(2), .col:nth-child(3){
         flex-basis: 100%;
     }
-} 
+}
+
