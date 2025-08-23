@@ -381,7 +381,7 @@ h3 span{
     font-size: 20px; 
     text-align: center; 
     color: #021D2B;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* BUTTON JOIN US */
@@ -525,7 +525,7 @@ h3 span{
     max-width: 700px;
     margin: 0 auto;
     text-align: right;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1rem;
 
 }
@@ -546,6 +546,132 @@ h3 span{
     }
 }
 
+/* TESTIMONAL SECTION */
+
+.testimonial {
+    display: flex;
+    justify-content: center;  /* centers horizontally */
+    align-items: center;      /* centers vertically if parent has height */
+    margin: 2rem 0;
+}
+
+.sub-title{
+    text-align: center;
+    margin: 2rem 0; 
+    padding-top: 1.5rem;
+}
+
+.sub-title h2{
+    color: #021D2B;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.sub-title p{
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #021D2B;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-top: 1rem;
+}
+
+.partnership-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 20px;
+}
+
+.partnership-logo img{
+    max-width: 15%;
+    height: auto;
+}
+
+.marquee-container{
+    font-size: 1.5rem;
+    padding-block: 8px;
+    border-block: 1px solid #021D2B;
+    overflow: hidden;
+    user-select: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.marquee-container ul{
+    display: flex;
+    flex-shrink: 0;
+    min-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    animation: scroll 20s linear infinite;
+}
+
+.marquee-container ul[aria-hidden="true"] {
+  animation-delay: 45s; 
+}
+
+@keyframes scroll{
+    to{
+        transform: translateX(calc(-200% - 30px));
+    }
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #021D2B;
+  white-space: nowrap;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #FB7847;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* .marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 5px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #021D2B;
+  cursor: pointer;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #FB7847;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-150%); /* move by half because we duplicated content
+  } */
 
 /*======== FOOTER =========*/
 footer{
