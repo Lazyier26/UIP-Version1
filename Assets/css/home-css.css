@@ -1,3 +1,4 @@
+/* ========NAVIGATION BAR========= */
 /* FONT & VARIABLES*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -50,9 +51,7 @@ body{
 
 }
 
-/* ========NAVIGATION BAR========= */
-
-/* header{
+header{
     position: relative;
     width: 100%;
     top: 0;
@@ -302,6 +301,7 @@ h3 span{
         width: 100%;
         border-radius: 0;
     }
+
 }
 /* ========NAVIGATION END DESIGN========= */
 
@@ -523,52 +523,6 @@ h3 span{
 }
 
 
-/* SECOND SECTION */
-.second-section{
-    background-color: #EFEEEA;
-}
-
-.sub-title-second{
-    color: #021D2B;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    gap: 20px;  
-    padding: 3rem;
-}
-
-.sub-title-second h2{
-    margin: 0 auto;
-    font-size: 2.2rem;
-
-}
-
-.sub-title-second p{
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: right;
-    font-weight: 600;
-    font-size: 1.1rem;
-
-}
-
-@media (max-width:850px) {
-    .sub-title-second{
-        flex-direction: column;
-        text-align: center;
-    }
-
-  .sub-title-second h2 {
-        margin: 0;
-        font-size: clamp(1.8rem, 2vw + 1rem, 2.2rem); 
-    }
-    .sub-title-second p{
-        text-align: center;
-        font-size: clamp(0.6rem, 1vw + 0.8rem, 1.1rem);
-    }
-}
-
-
 /*======== FOOTER =========*/
 footer{
     width: 100%;
@@ -675,7 +629,6 @@ footer{
 
 .hero-footer h3{
     font-size: clamp(17px, 2vw, 22px);
-      /*asjdbajksdbajkdbsad  */
 }
 
 hr{

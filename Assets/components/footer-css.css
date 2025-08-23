@@ -33,7 +33,9 @@
     list-style: none;
 }
 
-footer {
+/*======== FOOTER =========*/
+
+footer{
     width: 100%;
     position: static;
     bottom: 0;
@@ -137,7 +139,7 @@ footer {
 }
 
 .hero-footer h3{
-    font-size: clamp(17px, 2vw, 22px);  
+    font-size: clamp(17px, 2vw, 22px);
 }
 
 hr{
@@ -148,6 +150,7 @@ hr{
     margin-top: 25px;
     margin-bottom: 30px;
 }
+
 
 .property {
     display: flex;
@@ -217,4 +220,3 @@ li a:hover::after {
         flex-basis: 100%;
     }
 }
-

@@ -44,6 +44,8 @@ body{
     color: var(--color-text);
 }
 
+/* this is the start of navbar elements */
+
 header{
     position: relative;
     width: 100%;
@@ -259,7 +261,7 @@ h3 span{
     }
 
     .navbar.open{
-        right: 0%;
+        right: 0;
     }
 
     .nav-link{

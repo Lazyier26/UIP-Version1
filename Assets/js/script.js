@@ -47,7 +47,6 @@ var swiper = new Swiper(".swiper", {
   }
 });
 
-// initialize title on load
 document.querySelector(".swiper-title").textContent =
   document.querySelector(".swiper-slide-active").getAttribute("data-title");
 
