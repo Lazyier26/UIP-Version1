@@ -78,24 +78,10 @@ const slider = document.getElementById("slider");
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 2; // scroll speed
+      const walk = (x - startX) * 2; 
       slider.scrollLeft = scrollLeft - walk;
     });
 
-    // ✅ Touch support (for mobile)
-    slider.addEventListener("touchstart", (e) => {
-      isDown = true;
-      startX = e.touches[0].pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
+// UNIV
 
-    slider.addEventListener("touchend", () => {
-      isDown = false;
-    });
 
-    slider.addEventListener("touchmove", (e) => {
-      if (!isDown) return;
-      const x = e.touches[0].pageX - slider.offsetLeft;
-      const walk = (x - startX) * 2;
-      slider.scrollLeft = scrollLeft - walk;
-    });
