@@ -36,7 +36,7 @@
     text-decoration: none;
     list-style: none;
     max-width: 100%;
-}
+} */
 
 /* fix issue of none content moving when sidebar is open */
 html {
@@ -150,7 +150,7 @@ h3 span{
     align-items: center;
     justify-content: space-between;
     width: 100%;
-}
+} 
 
 /* RESPONSIVE STYLES */
 @media (max-width: 1250px) {
@@ -292,9 +292,8 @@ h3 span{
 
     .nav-link:hover::after{
       width: 100%;
-    }
+}}  
 
-}
 
 @media (max-width: 400px) {
     .navbar {
@@ -440,22 +439,19 @@ h3 span{
 
 /* AWARD GALLERY SLIDER */
 
-
-
-/* AWARD GALLERY SLIDER RESPONSIVE */
-.swiper{
+.swiper1{
     width: 100%;
     padding: 50px 0;
 }
 
-.swiper-slide{
+.swiper1 .swiper-slide{
     position: relative;
     width: 320px;
     aspect-ratio: 5/4;
     border-radius: 14px;
 }
 
-.swiper-slide img{
+.swiper1 .swiper-slide img{
     display: block;
     width: 100%;
     height: 100%;
@@ -463,7 +459,7 @@ h3 span{
     user-select: none;
 }
 
-.swiper-title {
+.swiper1 .swiper-title {
     padding-top: 10px;
     text-align: center;
     font-size: .8rem;
@@ -473,7 +469,6 @@ h3 span{
     margin: 0 auto;
     font-weight: var(--font-semi-bold);
     
-    /* text clamp */
     display: -webkit-box;
     -webkit-line-clamp: 2;  
     -webkit-box-orient: vertical;
@@ -514,12 +509,14 @@ h3 span{
 
 .sub-title-second{
     color: #021D2B;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
     gap: 20px;  
     padding: 3rem;
     line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .sub-title-second h2{
@@ -529,11 +526,7 @@ h3 span{
 }
 
 .sub-title-second p{
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: right;
-    font-weight: 500;
-    font-size: 1.1rem;
+    margin-top: 1rem;
 
 }
 
@@ -553,7 +546,7 @@ h3 span{
     }
 }
 
-/* TESTIMONAL SECTION */
+/* TESTIMONAL VIDEO SECTION */
 
 .testimonial {
     display: flex;
@@ -694,7 +687,8 @@ h3 span{
 .search-container {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-bottom: 2rem;
+    
 }
 
 .search-bar {
@@ -706,6 +700,7 @@ h3 span{
     border-radius: 60px;
     overflow: hidden;
     padding: 0 5px;
+    user-select: none;
 }
 
 .search-bar input{
@@ -740,6 +735,49 @@ h3 span{
 }
 
 /* UNIV CAROUSEL */
+.mySwiper2 {
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.mySwiper2 .swiper-slide {
+    background: linear-gradient(to bottom, #021D2B, #0A3D52);
+    color: #fff;
+    border-radius: 15px; 
+    padding: 2rem;
+    text-align: center;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0.9; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mySwiper2 .swiper-slide h2,
+.mySwiper2 .swiper-slide p{
+    margin-block: 0.5rem ;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #ffffff; 
+  background: rgba(2, 29, 43, 0.6); 
+  border-radius: 50%;        
+  width: 40px;                
+  height: 40px;               
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
 
 
 /*======== FOOTER =========*/
