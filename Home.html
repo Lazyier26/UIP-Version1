@@ -140,13 +140,15 @@
       </ul>
   </div>
 </section>
+
+
     <!-- THIRD SECTION -->
       <h2 class="sub-title-third">Partnered Universities</h2>
       <div class="search-container">
-      <form action="/search" class="search-bar" method="GET">
-        <input type="text" name="q" placeholder="Search...">
-        <button type="submit"><i class="ri-search-line search-button"></i></button>
+      <form id="searchForm" class="search-bar">
+        <input type="text" id="searchInput" name="q" placeholder="Search Universities">
       </form>
+      <ul id="searchResults" class="search-results"></ul>
       </div>
 
  <div class="swiper mySwiper2">
@@ -175,16 +177,23 @@
       <div class="swiper-slide"><h2>UE</h2><p>University of the East</p></div>
       <div class="swiper-slide"><h2>ADU</h2><p>Adamson University</p></div>
     </div>
-    <!-- Navigation buttons -->
+
+    <!-- swiper buttons -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
   </div>
-
-    <div class="container">
-        <h2>Empower Tomorrow's Leaders</h2>
-        <p>Support the Future! Your generosity enables us to offer meaningful internship opportunities that shape the careers of bright young minds. Together, we're fostering talent and driving innovation. Thank you for making a difference!</p>
-        <button class="donate-button">DONATE</button>
-    </div>  
+<br>
+<br>
+<br>
+<br>
+    <!-- DONATION SECTION -->
+    <div class="donation-container">
+        <div class="donation-content">
+            <h2>Empower Tomorrow's Leaders</h2>
+            <p>Support the Future! Your generosity enables us to offer meaningful internship opportunities that shape the careers of bright young minds. Together, we're fostering talent and driving innovation. Thank you for making a difference!</p>
+            <button class="donate-button">DONATE</button>
+        </div>
+     </div>
 
     <!-- Footer -->
      <footer>
@@ -220,6 +229,7 @@
                 <li><a href="/About.html">About</a></li>
                 <li><a href="/Faqs.html">FAQs</a></li>
                 <li><a href="/program_page.html">Internships</a></li>
+                <li><a href="/Developer.html">Developer</a></li>
                 <li><a href="#">Attedance Tracker</a></li>
             </ul>
         </div>
@@ -236,6 +246,7 @@
         <p class="copyright">&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
     </footer> 
 
+    <!-- SCRIPT LINK -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="/Assets/js/script.js"></script>
