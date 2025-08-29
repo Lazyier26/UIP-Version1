@@ -3,85 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Assets/css/program.css">
     <title>UIP Inc. | Program</title>
 </head>
 <body>
       <!-- Navigation Bar -->
-    <nav>
-        <h2>UIP Inc.</h2>
-        <a href="Home.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="Services.html">Services</a>
-        <a href="Contact.html">Contact</a>  
-    </nav>
+    <header>
+         <a href="Home.html" class="logo-link">
+            <img src="/Assets/images/logo-uip.webp" alt="UIP logo" width="64" height="64">
+            <h3>UIP <span>Inc.</span></h3></a>
+        
+        <div class="navbar">
+        <ul class="nav">
+            <li><a href="Home.html" class="nav-link">Home</a></li>
+            <li><a href="About.html" class="nav-link">About</a></li>
+            <li><a href="Program.html" class="nav-link">Program</a></li>
+            <li><a href="FAQs.html" class="nav-link">FAQ's</a></li>
+            <li><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="attendance-button">
+            <a href="#" class="attendance-button-link">Attendance Tracker</a>
+        </div>
+        </div>    
+        <div class="nav-toggle" id="nav-toggle">
+            <i class="ri-menu-line open-icon"></i>
+            <i class="ri-menu-fold-fill close-icon"></i>
+         </div>
+        </div>
+    </header>
 
     <!-- Main content -->
-    <!-- First Section - hero section -->
-     <h2>Grow your future with us</h2>
-     <!--note: add line here  -->
-    <p>Our internship program is built to help you grow — personally and professionally. Whether you're into media, marketing, tech, or strategy, you'll work on real projects, build meaningful connections, and leave with a skillset that sticks.</p>
-    <img src="#" alt="uip graphic image">
+     <div class="hero-container">
+    <div class="firstsection-container">
+  <svg viewBox="0 0 500 500" preserveAspectRatio="none">
+    <!-- curved cut rectangle -->
+    <path d="M0,0 H450 Q320,250 450,500 H0 Z" fill="#145374"/>
+  </svg>
+
+  <div class="content-first-section">
+    <h2>Grow your future with us</h2>
+    <hr>
+    <p>
+      Our internship program is built to help you grow — personally and professionally. 
+      Whether you're into media, marketing, tech, or strategy, you'll work on real projects, 
+      build meaningful connections, and leave with a skillset that sticks.
+    </p>
+  </div>
+  </div>  
+<div class="image-hero-wrapper">
+    <img src="/Assets/images/program-computer-illustration.svg" 
+         alt="uip graphic image">
+  </div>
+</div>
+
+
     <!-- second section -->
+  <section class="second-section">
+  <div class="second-section-content">
     <h3>Programs</h3>
     <hr>
+  </div> 
     <!-- dropdown -->
-     <div class="dropdown-box">
-        <div class="collapsible">
-            <div class="collapsing-text">
-                <h2>Technology</h2>
-                <p><h3><b>Computer Science</b></h3>
-                As an intern in computer science, you will have the opportunity to gain practical experience and contribute to various aspects of computer science projects and initiatives.
-                </p>
-                <p><h3><b>Information Technology</b></h3>
-                As an intern in information technology (IT), you will have the opportunity to gain practical experience and contribute to various aspects of IT projects and operations.
-                </p>
+  <div class="dropdown-wrapper">
+    <div class="collapsible">
+      <input type="checkbox" id="collapsible-head">
+      <label for="collapsible-head">Technology</label>
+    <div class="collapsible-text">
+        <p><h3>Computer Science</h3> 
+        As an intern in computer science, you will have the opportunity to gain practical experience and contribute to various aspects of computer science projects and initiatives. 
+        </p>
+        <br>
+        <p> <h3>Information Technology</h3>
+        As an intern in information technology (IT), you will have the opportunity to gain practical experience and contribute to various aspects of IT projects and operations.
+        </p>
+    </div>
+    </div>
+  </div>
 
-                <h2>Business</h2>
-                <p><h3><b>Accountancy</b></h3>
-                As an intern in accountancy, you will have the opportunity to gain practical experience and contribute to various aspects of accounting processes and financial management.
-                </p>
-                <p><h3><b>Entrepreneurship</b></h3>
-                As an intern in entrepreneurship, you will have the opportunity to gain practical experience and contribute to various aspects of entrepreneurial ventures and initiatives.
-                </p>
-                <p><h3><b>Office Administration</b></h3>
-                As an intern in office administration, you will have the opportunity to gain practical experience and contribute to various administrative tasks and processes within an organization.
-                </p>
-                <p><h3><b>Marketing Management</b></h3>
-                As an intern in marketing management, you will have the opportunity to gain practical experience and contribute to various aspects of marketing initiatives and strategies.
-                <p><h3><b>Human Resources</b></h3>
-                As an intern in human resources (HR), you will have the opportunity to gain practical experience and contribute to various aspects of HR functions and initiatives.
-                </p>
-                <p><h3><b>Business Administration</b></h3>
-                As an intern in business administration with a focus on communication, you will have the opportunity to gain practical experience and contribute to various aspects of communication strategies and initiatives within an organization.
-                </p>
-                <p><h3><b>Financial Administration</b></h3>
-                As an intern in financial management, you will have the opportunity to gain practical experience and contribute to various financial tasks and processes within an organization.
-            
-                <h2>Engineering</h2>
-                <p><h3><b>Civil Engineering</b></h3>
-                As an intern in civil engineering, your role will involve assisting and supporting the engineering team in various aspects of civil engineering projects
-                <p><h3><b>Computer Engineering</b></h3>
-                As an intern in computer engineering, you will have the opportunity to gain practical experience and contribute to various aspects of computer engineering projects.
-                </p>
-                <p><h3><b>Electronic Engineering</b></h3>
-                As an intern in electronics engineering, your role will involve assisting and supporting the engineering team in various aspects of electronics engineering projects.
-                </p>
-                <p><h3><b>Mechanical Engineering</b></h3>
-                As an intern in mechanical engineering, your role will involve assisting and supporting the engineering team in various aspects of electronics engineering projects.
-                </p>
+    <div class="dropdown-wrapper">
+    <div class="collapsible">
+      <input type="checkbox" id="collapsible-business">
+      <label for="collapsible-business">Business</label>
+    <div class="collapsible-text">
+      <p><h3>Accountancy</h3>
+      As an intern in accountancy, you will have the opportunity to gain practical experience and contribute to various aspects of accounting processes and financial management.
+      </p>
+      <br>
+      <p><h3>Entrepreneurship</h3>
+      As an intern in entrepreneurship, you will have the opportunity to gain practical experience and contribute to various aspects of entrepreneurial ventures and initiatives.
+      </p>
+      <br>
+      <p><h3>Office Administration</h3>
+      As an intern in office administration, you will have the opportunity to gain practical experience and contribute to various administrative tasks and processes within an organization.
+      </p>
+      <br>
+      <p><h3>Marketing Management</h3>
+      As an intern in marketing management, you will have the opportunity to gain practical experience and contribute to various aspects of marketing initiatives and strategies.
+      </p>
+      <br>
+      <p><h3>Human Resources</h3>
+      As an intern in human resources (HR), you will have the opportunity to gain practical experience and contribute to various aspects of HR functions and initiatives.
+      </p>
+      <br>
+      <p><h3>Business Administration</h3>
+      As an intern in business administration with a focus on communication, you will have the opportunity to gain practical experience and contribute to various aspects of communication strategies and initiatives within an organization.
+      </p>
+      <br>
+      <p><h3>Financial Administration</h3>
+      As an intern in financial management, you will have the opportunity to gain practical experience and contribute to various financial tasks and processes within an organization.    
+    </div>
+    </div>
+  </div>
 
-                <h2>Multimedia Arts</h2>
-                As an intern in the Multimedia Arts Department (MMA) with a focus on arts & design, you will have the opportunity to gain practical experience and contribute to various aspects of creative creations within an organization.
-                </p>
+  <div class="dropdown-wrapper">
+    <div class="collapsible">
+      <input type="checkbox" id="collapsible-engineering">
+      <label for="collapsible-engineering">Engineering</label>
+    <div class="collapsible-text">
+        <p><h3>Civil Engineering</h3>
+        As an intern in civil engineering, your role will involve assisting and supporting the engineering team in various aspects of civil engineering projects
+        </p>
+        <br>
+        <p><h3>Computer Engineering</h3>
+        As an intern in computer engineering, you will have the opportunity to gain practical experience and contribute to various aspects of computer engineering projects.
+        </p>
+        <br>
+        <p><h3>Electronic Engineering</h3>
+        As an intern in electronics engineering, your role will involve assisting and supporting the engineering team in various aspects of electronics engineering projects.
+        </p>
+        <br>
+        <p><h3>Mechanical Engineering</h3>
+        As an intern in mechanical engineering, your role will involve assisting and supporting the engineering team in various aspects of electronics engineering projects.
+        </p>
+        </div>
+    </div>
+  </div>
 
-                <h2>Psychology</h2>
-                 As an intern in psychology, you will have the opportunity to gain practical experience and contribute to various aspects of psychological research, assessment, and intervention.
-                </p>
-            </div>
-     </div>
+  <div class="dropdown-wrapper">
+    <div class="collapsible">
+      <input type="checkbox" id="collapsible-multimedia">
+      <label for="collapsible-multimedia">Multimedia Arts</label>
+    <div class="collapsible-text">
+          <p>As an intern in the Multimedia Arts Department (MMA) with a focus on arts & design, you will have the opportunity to gain practical experience and contribute to various aspects of creative creations within an organization.
+            </p>
+        </div>
+    </div>
+  </div>
 
+  <div class="dropdown-wrapper">
+    <div class="collapsible">
+      <input type="checkbox" id="collapsible-psychology">
+      <label for="collapsible-psychology">Psychology</label>
+    <div class="collapsible-text">
+          <p>As an intern in psychology, you will have the opportunity to gain practical experience and contribute to various aspects of psychological research, assessment, and intervention.
+          </p> 
+        </div>
+    </div>
+  </div>
+  </section>
+
+                
+                
+
+                
+        
+                 
+ 
      <!-- Third section -->
-      <hr> <h3>Internships</h3>
+      <!-- <hr> <h3>Internships</h3> -->
       <p>At UIP (Unified Internship Program), we believe that the best kind of learning happens through real-world experience. Our internship program offers passionate students the chance to grow and explore their potential through hands-on work in departments like media, marketing, design, admin, and more — all alongside our purpose-driven partner organizations.</p>
 
     <div class="container">
@@ -89,21 +180,25 @@
         <p>This is it. At UIP, you’ll gain real-world experience, build confidence, and meet people who just get it. You’ll forge your future, inspire others (and yourself), and connect with a purpose-driven crew that wants to make things happen. FORGE. INSPIRE. CONNECT.</p>
         <button class="join-button">JOIN US</button>
     </div>
+
 <!-- footer -->
       <footer>
         <h2 div="main-title">Unified Internship Program</h2> <h3 div="sub-title">Incorporated</h3>
-        <p><b>Extra Link:</b></p>
+        <p>Extra Link:</p>
         <a href="#">About</a>
         <a href="#">FAQs</a>
         <a href="#">Internships</a>
         <a href="#">Attedance Tracker</a>
         
-        <p><b>Contact Us</b></p>
+        <p>Contact Us</p>
         <a href="mailto:info@uip.com">info@uip.com</a>
         <hr>
         <p>Terms of Service</p> 
         <p>Privacy Policy</p>
         <p>&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
     </footer> 
+
+    <!-- SCRIPT LINK -->
+     <script src="Assets/js/navigation-bar.js"></script>
     </body>
 </html>
