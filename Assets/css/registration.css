@@ -21,22 +21,6 @@
                         overflow-x: hidden;
                     }
 
-                    /* Animated Background
-                    body::before {
-                        content: '';
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: 
-                            radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                            radial-gradient(circle at 80% 80%, rgba(255, 118, 117, 0.3) 0%, transparent 50%),
-                            radial-gradient(circle at 40% 40%, rgba(79, 172, 254, 0.2) 0%, transparent 50%);
-                        z-index: -2;
-                        animation: backgroundFloat 20s ease-in-out infinite;
-                    } */
-
                     @keyframes backgroundFloat {
                         0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
                         33% { transform: translate(30px, -30px) rotate(120deg); }
