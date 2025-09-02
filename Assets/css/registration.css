@@ -583,6 +583,8 @@
                         z-index: 0;
                     }
 
+                    /* Responsive Design */
+
                     @media (max-width: 932px) {
 
                         .selection-header p {
@@ -590,7 +592,7 @@
                         }
                     }
 
-                    /* Responsive Design */
+                    
                     @media (max-width: 768px) {
                         
                         .section-header h2 {
