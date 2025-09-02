@@ -267,7 +267,7 @@ h3 span{
 
         /* Main Content */
         .main-content {
-            max-width: 1400px;
+            max-width: 1250px;
             margin: 0 auto;
             padding: 10px 10px 30px;
         }
@@ -478,7 +478,7 @@ h3 span{
         }
 
         /*======== FOOTER =========*/
-footer{
+        footer{
     width: 100%;
     position: static;
     bottom: 0;
@@ -583,7 +583,6 @@ footer{
 
 .hero-footer h3{
     font-size: clamp(17px, 2vw, 22px);
-      /*asjdbajksdbajkdbsad  */
 }
 
 hr{
@@ -621,7 +620,6 @@ hr{
     }
 }
 
-
 /* UNDERLINE HOVER EFFECTS */
 .footer-link, 
 .email, 
@@ -653,9 +651,11 @@ li a:hover::after {
   width: 100%;
 }
 
-
 /* RESPONSIVE FOR MOBILE OR SMALLER SCREEN */
 @media (max-width: 768px) {
+    footer{
+        border-top-radius: 35px 0;
+    }
     .col{
         flex-basis: 100%;
     }
