@@ -321,19 +321,8 @@ h3 span{
 }
 
 .Title h1{
-    font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    font-size: clamp(1.8rem, 2vw + 1rem, 2.5rem);
 }
-
-.title-paragraph{
-    text-align: center;
-    margin: 0 auto;
-    width: 60%;
-    padding: 1rem;
-    font-size: clamp(0.9rem, 0.5vw + 0.8rem, 1rem);
-    font-weight: 500;
-    line-height: 1.6;
-}
-
 
 .privacy-section {
   max-width: 800px;       
@@ -341,6 +330,7 @@ h3 span{
   padding: 2rem;          
   border-radius: 10px;    
   margin-bottom: 100px;
+  line-height: 1.6;
 }
 
 .privacy-section h2 {
@@ -354,6 +344,11 @@ h3 span{
   color: #021D2B;
 }
 
+.data-information a{
+    color: #021D2B;
+    text-decoration: underline;
+    font-size: 1.2rem;
+}
 
 
 /*======== FOOTER =========*/
