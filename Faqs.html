@@ -175,7 +175,7 @@
                     <h3>DEPLOYMENT AND ATTENDANCE TRACKER</h3>
                     <p>You will be assigned to one of our esteemed partnered companies.</p>
                     <p>Register on the attendance tracker. It can be accessed through 
-                        <a href="https://www.uip.ph/attendance" target="_blank" class="underline-link">https://www.uip.ph/attendance</a>.</p>
+                        <a href="https://www.uip.ph/attendance" target="_blank" class="underline-link">https://www.uip.ph/attendance.</a></p>
                 </div>
                 
                 <div class="process-step">
@@ -183,7 +183,7 @@
                     <img src="Assets/images/onboarding-5.svg" alt="Join Icon" class="step-icon">
                     <h3>JOIN UIP AND COMPANY DISCORD SERVERS</h3>
                     <p>Join both the UIP and your assigned company's Discord server. The UIP's main discord can be found here: 
-                        <a href="https://discord.gg/NcRqGFWeQd" target="_blank" class="underline-link">https://discord.gg/NcRqGFWeQd</a>.</p>
+                        <a href="https://discord.gg/NcRqGFWeQd" target="_blank" class="underline-link">https://discord.gg/NcRqGFWeQd</a></p>
                     <p>It will serve as the primary communication platform with your team.</p>
                 </div>
             </div>
@@ -197,38 +197,45 @@
                 <div class="process-step">
                     <div class="step-number">Step 1</div>
                     <img src="Assets/images/offboarding-1.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>VISIT THE UIP WEBSITE AND REGISTER</h3>
-                    <p>Click on the JOIN US hatdog button on our website.</p>
-                    <p>Completely fill up the application form with complete and accurate details.</p>
+                    <h3>VISIT THE WEBSITE AND REGISTER</h3>
+                    <p>Register at <a href="https://uip.ph/exit/" target="_blank" class="underline-link">https://uip.ph/exit/</a></p>
+                    <p>Make sure that all the requirements are accomplished accordingly.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">Step 2</div>
                     <img src="Assets/images/offboarding-2.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>CHECK YOUR INBOX FOR REGISTRATION STATUS</h3>
-                    <p>Once your offboarding approval email arrives, you may now choose whether you wish to physically or digitally submit your COC.</p>
+                    <h3>CHECK EMAIL INBOX FOR REGISTRATION STATUS</h3>
+                    <p>Once your offboarding registration is approved, you'll receive an email that contains the file name of your COC template.</p>
+                    <p>You can now choose whether you want to request a hard copy or a scanned copy of your COC.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">Step 3</div>
                     <img src="Assets/images/offboarding-3.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>PROVIDE FOR A HARD COPY OF YOUR COC</h3>
-                    <p>If you wish to receive a hard copy of your COC, then you should be using the following link to book a schedule: (8075525738)</p>
+                    <h3>REQUEST FOR A HARD COPY OF YOUR COC</h3>
+                    <p>If you wish to receive a hard copy of your COC, kindly place an order on Shopee using the following link:
+                    <a href="https://shopee.ph/product/990492443/18879237781/" target="_blank" class="underline-link">https://shopee.ph/product
+                    /990492443/18879237781/</a></p>
                 </div>
-                
+            </div>
+
+            <div class="secondrow-steps">
                 <div class="process-step">
                     <div class="step-number">Step 4</div>
                     <img src="Assets/images/offboarding-4.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>PROVIDE A SCANNED COPY OF YOUR COC</h3>
-                    <p>If you prefer a digital COC, just copy of your COC will be sent to you. We will be following the GDPR/PDPA rules in handling personal information, and we will be providing relevant data when providing you with the email address provided.</p>
+                    <h3>REQUEST FOR A SCANNED COPY OF YOUR COC</h3>
+                    <p>If you prefer a scanned copy of your COC, please complete the request form at the following link:
+                        <a href="https://forms.gle/uConWScrGJum2Jbp7" target="_blank" class="underline-link">https://forms.gle/uConWScrGJum2Jbp7.</a></p> 
+                    <p>Fill out all required information, and we will process your request. The scanned copy will be sent to the email address provided.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">Step 5</div>
                     <img src="Assets/images/offboarding-5.svg" alt="Visit Website Icon" class="step-icon">
                     <h3>DELIVERY / SENDING OF COC</h3>
-                    <p>We will now wait for your COC. The hard copy will be delivered to your specified address. The soft copy, if soft copy, will be sent to you via email.</p>
-                    <p>Ensure that all issued equipment is fully returned back to the specific department. Failure to do so may result in delays or delays in processing.</p>
+                    <p>Please wait patiently for the release of your COC. A physical copy will be delivered to you, while those who requested for a scanned copy will receive it via email.</p>
+                    <p>Ensure that all issued equipment and materials are returned to the company. This includes any borrowed tools, devices, and documents. Failure to do so may result in charges or delays in your clearance process.</p>
                 </div>
             </div>
         </div>
@@ -298,24 +305,6 @@
         <p class="copyright">&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
     </footer> 
 
-    <script>
-        function toggleAnswer(element) {
-            const answer = element.nextElementSibling;
-            const isCurrentlyOpen = answer.classList.contains('show');
-            
-            // Close all other answers
-            const allAnswers = document.querySelectorAll('.faq-answer');
-            const allQuestions = document.querySelectorAll('.faq-question');
-            
-            allAnswers.forEach(ans => ans.classList.remove('show'));
-            allQuestions.forEach(q => q.classList.remove('active'));
-            
-            // If this answer wasn't open, open it
-            if (!isCurrentlyOpen) {
-                answer.classList.add('show');
-                element.classList.add('active');
-            }
-        }
-    </script>
+    <script src="Assets/js/faqs-dropdown.js"></script>
 </body>
 </html>
