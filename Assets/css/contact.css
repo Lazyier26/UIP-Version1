@@ -1,14 +1,16 @@
         body {
             font-family: 'Montserrat';
-            max-width: 1250px;
-            margin: 0 auto;
             padding: 10px 10px 30px;
             background-color: #EFEEEA;
+            color: #000000;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
         }
 
     /* Main Content */
         .main-content {
-            max-width: 1250px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
@@ -125,7 +127,7 @@
         }
 
         .form-group textarea {
-            height: 180px;
+            height: 200px;
             resize: vertical;
         }
 
@@ -220,5 +222,4 @@
         /* Footer positioning - ensures it stays at bottom */
         footer {
             position: relative;
-            z-index: 0;
         }

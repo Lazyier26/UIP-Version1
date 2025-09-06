@@ -1,6 +1,6 @@
         body {
             font-family: 'Montserrat';
-            max-width: 850px;
+            max-width: 1300px;
             margin: 0 auto;
             padding-top: 100px;;
             background-color: #EFEEEA;
@@ -161,7 +161,6 @@
         }
         
         .help-section {
-            background: #f8f9fa;
             border-radius: 10px;
             padding: 40px;
             margin: 50px 0;
@@ -172,7 +171,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 80px;
             flex-wrap: wrap;
         }
         
@@ -181,11 +180,8 @@
         }
         
         .help-icon {
-            font-size: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 250px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -193,30 +189,36 @@
         }
         
         .help-text h3 {
-            color: #333;
+            color: #000000;
+            text-align: center;
             margin-bottom: 15px;
-            font-size: 20px;
+            font-size: 25px;
+            font-weight: 700;
         }
         
         .help-text p {
-            color: #666;
+            color: #000000;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.5;
             margin-bottom: 25px;
             max-width: 400px;
         }
         
         .submit-concern-btn {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            background: #FB7847;
             color: white;
+            font-weight: 600;
             border: none;
             padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
         
         .submit-concern-btn:hover {
+            background-color: #d1633b;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
         }
