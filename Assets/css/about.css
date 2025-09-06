@@ -170,10 +170,16 @@ body {
 
 .white-bg {
     background-color: #ffffff;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 10px 30px;
 }
 
 .light-bg {
     background-color: #EFEEEA;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 10px 30px;
 }
 
 .wfh-content p {
