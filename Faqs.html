@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs</title>
+    <title>UIP Inc. | FAQ's</title>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link rel="stylesheet" href="Assets/css/faqs.css">
     <link rel="stylesheet" href="Assets/components/nav.css">
-    <!-- <link rel="stylesheet" href="Assets/components/footer-css.css"> -->
+    <link rel="stylesheet" href="Assets/components/footer-css.css">
+    <link rel="stylesheet" href="Assets/css/faqs.css">
     
 </head>
 <body>
@@ -36,248 +36,250 @@
         </div>
     </header>
 
-    <h1>Do you have questions?</h1>
-    <p class="subtitle">Below, you will find answers to frequently asked questions related to onboarding, offboarding, and navigating your experience as a new intern.</p>
+    <main>
+        <h1>Do you have questions?</h1>
+        <p class="subtitle">Below, you will find answers to frequently asked questions related to onboarding, offboarding, and navigating your experience as a new intern.</p>
 
-        <div class="faq-section">
-            <div class="section-title">New Intern</div>
+            <div class="faq-section">
+                <div class="section-title">New Intern</div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                        Where can I get my application ID?
+                        </div>
+                        <div class="faq-answer">
+                            The application ID will be provided once you've registered for the pre-orientation attendance form.
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Where should I ask if I have more concerns?
+                        </div>
+                        <div class="faq-answer">
+                            If you have additional concerns or questions, you can reach out to our onboarding team through either Discord or email. For Discord, please use the Newbies channel to connect with the team.
+                        </div>
+                    </div>
+                
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            What should I do if I want to withdraw from my internship at your company?
+                        </div>
+                        <div class="faq-answer">
+                            Simply send us an email along with your withdrawal letter.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            There's no MOA between the company and our school. What should I do?
+                        </div>
+                        <div class="faq-answer">
+                            You can request a Memorandum of Agreement (MOA) from your school, and we're more than willing to sign it.
+                    </div>
+                </div>
+            
+            <div class="faq-section">
+                <div class="section-title">Onboarding</div>
+                
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleAnswer(this)">
-                       Where can I get my application ID?
+                        Can interns start with their internship without undergoing company orientation?
                     </div>
                     <div class="faq-answer">
-                        The application ID will be provided once you've registered for the pre-orientation attendance form.
-                    </div>
-                </div>
-            
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        Where should I ask if I have more concerns?
-                    </div>
-                    <div class="faq-answer">
-                        If you have additional concerns or questions, you can reach out to our onboarding team through either Discord or email. For Discord, please use the Newbies channel to connect with the team.
-                    </div>
-                </div>
-            
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        What should I do if I want to withdraw from my internship at your company?
-                    </div>
-                    <div class="faq-answer">
-                        Simply send us an email along with your withdrawal letter.
+                        No, we highly recommend attending the preboarding orientation to get acquainted with our procedures and FAQs.
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleAnswer(this)">
-                        There's no MOA between the company and our school. What should I do?
+                        Who is the contact person that I should put on my required documents?
                     </div>
                     <div class="faq-answer">
-                        You can request a Memorandum of Agreement (MOA) from your school, and we're more than willing to sign it.
-                </div>
-            </div>
-        
-        <div class="faq-section">
-            <div class="section-title">Onboarding</div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(this)">
-                    Can interns start with their internship without undergoing company orientation?
-                </div>
-                <div class="faq-answer">
-                    No, we highly recommend attending the preboarding orientation to get acquainted with our procedures and FAQs.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(this)">
-                    Who is the contact person that I should put on my required documents?
-                </div>
-                <div class="faq-answer">
-                    The contact person you should put is Mrs. Jonalyn Estrada, our UIP Director.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(this)">
-                    What should I put in the remaining hours of my daily journal #1?
-                </div>
-                <div class="faq-answer">
-                    Deduct the hours used on your first day from your total hours, and that's what you'll record in the remaining hours on your daily journal #1.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(this)">
-                    I want to ask for an advance Certificate of Completion (COC). Is it possible to request it?
-                </div>
-                <div class="faq-answer">
-                    To ensure fairness, please complete your internship hours at UIP before requesting an advance COC.
-                </div>
-            </div>
-        </div>
-        
-        <div class="faq-section">
-            <div class="section-title">Offboarding</div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(this)">
-                    Who do I contact for the offboarding process?
-                </div>
-                <div class="faq-answer">
-                    The contact person is Mrs. Jonalyn Estrada. You may ping her on the offboarding channel in UIP's discord server.
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleAnswer(this)">
-                    How do I know if I went to offboard?
-                </div>
-                <div class="faq-answer">
-                    After you completed OJT hours, you may check it on your tracker account.
-                </div>
-            </div>
-        
-        <!-- Onboarding Process Section -->
-        <div class="process-section">
-            <h2>ONBOARDING PROCESS</h2>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">Step 1</div>
-                    <img src="Assets/images/onboarding-1.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>VISIT THE WEBSITE AND REGISTER</h3>
-                    <p>Click on the <span class="highlights">JOIN US</span> button on our website.</p>
-                    <p>Completely fill up the application form with complete and accurate details.</p>
+                        The contact person you should put is Mrs. Jonalyn Estrada, our UIP Director.
+                    </div>
                 </div>
                 
-                <div class="process-step">
-                    <div class="step-number">Step 2</div>
-                    <img src="Assets/images/onboarding-2.svg" alt="Check Email Icon" class="step-icon">
-                    <h3>CHECK EMAIL INBOX FOR CONFIRMATION EMAIL</h3>
-                    <p><span class="highlights">Monitor</span> your email as our team will be sending a confirmation email.</p>
-                    <p>This will include the <span class="highlights">link</span> to access our pre-boarding orientation.</p>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        What should I put in the remaining hours of my daily journal #1?
+                    </div>
+                    <div class="faq-answer">
+                        Deduct the hours used on your first day from your total hours, and that's what you'll record in the remaining hours on your daily journal #1.
+                    </div>
                 </div>
                 
-                <div class="process-step">
-                    <div class="step-number">Step 3</div>
-                    <img src="Assets/images/onboarding-3.svg" alt="Attend Boarding Icon" class="step-icon">
-                    <h3>ATTEND THE PRE-BOARDING ORIENTATION</h3>
-                    <p>We highly recommend your attendance at the pre-boarding orientation.</p>
-                    <p>This will provide important information and instructions to start your internship.</p>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        I want to ask for an advance Certificate of Completion (COC). Is it possible to request it?
+                    </div>
+                    <div class="faq-answer">
+                        To ensure fairness, please complete your internship hours at UIP before requesting an advance COC.
+                    </div>
                 </div>
             </div>
+            
+            <div class="faq-section">
+                <div class="section-title">Offboarding</div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        Who do I contact for the offboarding process?
+                    </div>
+                    <div class="faq-answer">
+                        The contact person is Mrs. Jonalyn Estrada. You may ping her on the offboarding channel in UIP's discord server.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        How do I know if I went to offboard?
+                    </div>
+                    <div class="faq-answer">
+                        After you completed OJT hours, you may check it on your tracker account.
+                    </div>
+                </div>
+            
+            <!-- Onboarding Process Section -->
+            <div class="process-section">
+                <h2>ONBOARDING PROCESS</h2>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">Step 1</div>
+                        <img src="Assets/images/onboarding-1.svg" alt="Visit Website Icon" class="step-icon">
+                        <h3>VISIT THE WEBSITE AND REGISTER</h3>
+                        <p>Click on the <span class="highlights">JOIN US</span> button on our website.</p>
+                        <p>Completely fill up the application form with complete and accurate details.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">Step 2</div>
+                        <img src="Assets/images/onboarding-2.svg" alt="Check Email Icon" class="step-icon">
+                        <h3>CHECK EMAIL INBOX FOR CONFIRMATION EMAIL</h3>
+                        <p><span class="highlights">Monitor</span> your email as our team will be sending a confirmation email.</p>
+                        <p>This will include the <span class="highlights">link</span> to access our pre-boarding orientation.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">Step 3</div>
+                        <img src="Assets/images/onboarding-3.svg" alt="Attend Boarding Icon" class="step-icon">
+                        <h3>ATTEND THE PRE-BOARDING ORIENTATION</h3>
+                        <p>We highly recommend your attendance at the pre-boarding orientation.</p>
+                        <p>This will provide important information and instructions to start your internship.</p>
+                    </div>
+                </div>
 
-            <div class="secondrow-steps">
-                <div class="process-step">
-                    <div class="step-number">Step 4</div>
-                    <img src="Assets/images/onboarding-4.svg" alt="Deployment Icon" class="step-icon">
-                    <h3>DEPLOYMENT AND ATTENDANCE TRACKER</h3>
-                    <p>You will be assigned to one of our esteemed partnered companies.</p>
-                    <p>Register on the attendance tracker. It can be accessed through 
-                        <a href="https://www.uip.ph/attendance" target="_blank" class="underline-link">https://www.uip.ph/attendance.</a></p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">Step 5</div>
-                    <img src="Assets/images/onboarding-5.svg" alt="Join Icon" class="step-icon">
-                    <h3>JOIN UIP AND COMPANY DISCORD SERVERS</h3>
-                    <p>Join both the UIP and your assigned company's Discord server. The UIP's main discord can be found here: 
-                        <a href="https://discord.gg/NcRqGFWeQd" target="_blank" class="underline-link">https://discord.gg/NcRqGFWeQd</a></p>
-                    <p>It will serve as the primary communication platform with your team.</p>
+                <div class="secondrow-steps">
+                    <div class="process-step">
+                        <div class="step-number">Step 4</div>
+                        <img src="Assets/images/onboarding-4.svg" alt="Deployment Icon" class="step-icon">
+                        <h3>DEPLOYMENT AND ATTENDANCE TRACKER</h3>
+                        <p>You will be assigned to one of our esteemed partnered companies.</p>
+                        <p>Register on the attendance tracker. It can be accessed through 
+                            <a href="https://www.uip.ph/attendance" target="_blank" class="underline-link">https://www.uip.ph/attendance.</a></p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">Step 5</div>
+                        <img src="Assets/images/onboarding-5.svg" alt="Join Icon" class="step-icon">
+                        <h3>JOIN UIP AND COMPANY DISCORD SERVERS</h3>
+                        <p>Join both the UIP and your assigned company's Discord server. The UIP's main discord can be found here: 
+                            <a href="https://discord.gg/NcRqGFWeQd" target="_blank" class="underline-link">https://discord.gg/NcRqGFWeQd</a></p>
+                        <p>It will serve as the primary communication platform with your team.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Offboarding Process Section -->
-        <div class="process-section">
-            <h2>OFFBOARDING PROCESS</h2>
             
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">Step 1</div>
-                    <img src="Assets/images/offboarding-1.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>VISIT THE WEBSITE AND REGISTER</h3>
-                    <p>Register at <a href="https://uip.ph/exit/" target="_blank" class="underline-link">https://uip.ph/exit/</a></p>
-                    <p>Make sure that all the requirements are accomplished accordingly.</p>
-                </div>
+            <!-- Offboarding Process Section -->
+            <div class="process-section">
+                <h2>OFFBOARDING PROCESS</h2>
                 
-                <div class="process-step">
-                    <div class="step-number">Step 2</div>
-                    <img src="Assets/images/offboarding-2.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>CHECK EMAIL INBOX FOR REGISTRATION STATUS</h3>
-                    <p>Once your offboarding registration is approved, you'll receive an email that contains the file name of your COC template.</p>
-                    <p>You can now choose whether you want to request a hard copy or a scanned copy of your COC.</p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">Step 1</div>
+                        <img src="Assets/images/offboarding-1.svg" alt="Visit Website Icon" class="step-icon">
+                        <h3>VISIT THE WEBSITE AND REGISTER</h3>
+                        <p>Register at <a href="https://uip.ph/exit/" target="_blank" class="underline-link">https://uip.ph/exit/</a></p>
+                        <p>Make sure that all the requirements are accomplished accordingly.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">Step 2</div>
+                        <img src="Assets/images/offboarding-2.svg" alt="Visit Website Icon" class="step-icon">
+                        <h3>CHECK EMAIL INBOX FOR REGISTRATION STATUS</h3>
+                        <p>Once your offboarding registration is approved, you'll receive an email that contains the file name of your COC template.</p>
+                        <p>You can now choose whether you want to request a hard copy or a scanned copy of your COC.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">Step 3</div>
+                        <img src="Assets/images/offboarding-3.svg" alt="Visit Website Icon" class="step-icon">
+                        <h3>REQUEST FOR A HARD COPY OF YOUR COC</h3>
+                        <p>If you wish to receive a hard copy of your COC, kindly place an order on Shopee using the following link:
+                        <a href="https://shopee.ph/product/990492443/18879237781/" target="_blank" class="underline-link">https://shopee.ph/product
+                        /990492443/18879237781/</a></p>
+                    </div>
                 </div>
-                
-                <div class="process-step">
-                    <div class="step-number">Step 3</div>
-                    <img src="Assets/images/offboarding-3.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>REQUEST FOR A HARD COPY OF YOUR COC</h3>
-                    <p>If you wish to receive a hard copy of your COC, kindly place an order on Shopee using the following link:
-                    <a href="https://shopee.ph/product/990492443/18879237781/" target="_blank" class="underline-link">https://shopee.ph/product
-                    /990492443/18879237781/</a></p>
-                </div>
-            </div>
 
-            <div class="secondrow-steps">
-                <div class="process-step">
-                    <div class="step-number">Step 4</div>
-                    <img src="Assets/images/offboarding-4.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>REQUEST FOR A SCANNED COPY OF YOUR COC</h3>
-                    <p>If you prefer a scanned copy of your COC, please complete the request form at the following link:
-                        <a href="https://forms.gle/uConWScrGJum2Jbp7" target="_blank" class="underline-link">https://forms.gle/uConWScrGJum2Jbp7.</a></p> 
-                    <p>Fill out all required information, and we will process your request. The scanned copy will be sent to the email address provided.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">Step 5</div>
-                    <img src="Assets/images/offboarding-5.svg" alt="Visit Website Icon" class="step-icon">
-                    <h3>DELIVERY / SENDING OF COC</h3>
-                    <p>Please wait patiently for the release of your COC. A physical copy will be delivered to you, while those who requested for a scanned copy will receive it via email.</p>
-                    <p>Ensure that all issued equipment and materials are returned to the company. This includes any borrowed tools, devices, and documents. Failure to do so may result in charges or delays in your clearance process.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Help Section -->
-        <div class="help-section">
-            <div class="help-content">
-                <div class="help-illustration">
-                    <img src="Assets/images/submit-concern.svg" alt="Submit Concern" class="help-icon">
-                </div>
-                <div class="help-text">
-                    <h3>Hello there, how can we help you?</h3>
-                    <p>We're here to help with what you need and can connect you with the information you're looking for.</p>
-                    <button class="submit-concern-btn" onclick="openConcernModal()">Submit Concern</button>
+                <div class="secondrow-steps">
+                    <div class="process-step">
+                        <div class="step-number">Step 4</div>
+                        <img src="Assets/images/offboarding-4.svg" alt="Visit Website Icon" class="step-icon">
+                        <h3>REQUEST FOR A SCANNED COPY OF YOUR COC</h3>
+                        <p>If you prefer a scanned copy of your COC, please complete the request form at the following link:
+                            <a href="https://forms.gle/uConWScrGJum2Jbp7" target="_blank" class="underline-link">https://forms.gle/uConWScrGJum2Jbp7.</a></p> 
+                        <p>Fill out all required information, and we will process your request. The scanned copy will be sent to the email address provided.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">Step 5</div>
+                        <img src="Assets/images/offboarding-5.svg" alt="Visit Website Icon" class="step-icon">
+                        <h3>DELIVERY / SENDING OF COC</h3>
+                        <p>Please wait patiently for the release of your COC. A physical copy will be delivered to you, while those who requested for a scanned copy will receive it via email.</p>
+                        <p>Ensure that all issued equipment and materials are returned to the company. This includes any borrowed tools, devices, and documents. Failure to do so may result in charges or delays in your clearance process.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>-
+            
+            <!-- Help Section -->
+            <div class="help-section">
+                <div class="help-content">
+                    <div class="help-illustration">
+                        <img src="Assets/images/submit-concern.png" alt="Submit Concern" class="help-icon">
+                    </div>
+                    <div class="help-text">
+                        <h3>Hello there, how can we help you?</h3>
+                        <p>We're here to help with what you need and can connect you with the information you're looking for.</p>
+                        <button class="submit-concern-btn" onclick="openConcernModal()">Submit Concern</button>
+                    </div>
+                </div>
+            </div>
+        </div>-
+    </main>
 
+    <!-- FOOTER SECTION -->
     <footer>
         <div class="row">
             <div class="col">
                 <div class="hero-footer">
-                    <a href="Home.html" class="logo-link">
+                    <a href="Home.html" class="logo-link-footer">
                     <img src="Assets/images/small-logo-uip.png" alt="UIP logo" width="64" height="64"></a>
                     
                     <div class="title-wrapper">
-                        <h2>Unified Internship Program</h2> 
-                        <h3>Incorporated</h3>
+                        <h2>UIP Incorporated</h2> 
                     </div>
                 </div>
                 <div class="social-icon">
-                    <a href="https://www.facebook.com/uipinc" target="_blank" class="social-icons">
+                    <a data-social="Facebook" href="https://www.facebook.com/uipinc" target="_blank" class="social-icons">
                         <img src="Assets/images/facebook.svg" alt="Facebook">
                     </a>
-                    <a href="https://www.instagram.com/uip_incorporated/" target="_blank" class="social-icons">
+                    <a data-social="Instagram" href="https://www.instagram.com/uip_incorporated/" target="_blank" class="social-icons">
                         <img src="Assets/images/instagram.svg" alt="Instagram">
                     </a>
-                    <a href="https://open.spotify.com/show/5bDTPJsg5QV6l7Brc5sT1U?si=384a7d1a40734c27" target="_blank" class="social-icons">
+                    <a data-social="Spotify" href="https://open.spotify.com/show/5bDTPJsg5QV6l7Brc5sT1U?si=384a7d1a40734c27" target="_blank" class="social-icons">
                         <img src="Assets/images/spotify.svg" alt="Spotify">
                     </a>
-                    <a href="https://www.youtube.com/@UIPIncorporated" target="_blank" class="social-icons">
+                    <a data-social="YouTube" href="https://www.youtube.com/@UIPIncorporated" target="_blank" class="social-icons">
                         <img src="Assets/images/footer-yt.svg" alt="YouTube">
                     </a>
                 </div>
@@ -289,6 +291,7 @@
                 <li><a href="About.html">About</a></li>
                 <li><a href="Faqs.html">FAQs</a></li>
                 <li><a href="program_page.html">Internships</a></li>
+                <li><a href="Developer.html">Developer</a></li>
                 <li><a href="#">Attendance Tracker</a></li>
             </ul>
         </div>
@@ -305,6 +308,8 @@
         <p class="copyright">&copy; 2025 Unified Internship Program Inc. All rights reserved.</p>
     </footer> 
 
-    <script src="Assets/js/faqs-dropdown.js"></script>
+    <script src="Assets/js/navigation-bar.js"></script>
+    <script src="Assets/js/footer.js"></script>
+        
 </body>
 </html>

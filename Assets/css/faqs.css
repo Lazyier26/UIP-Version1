@@ -1,9 +1,12 @@
         body {
             font-family: 'Montserrat';
-            max-width: 1300px;
             margin: 0 auto;
-            padding-top: 100px;;
             background-color: #EFEEEA;
+        }
+
+        main {
+            max-width: 1300px;
+            padding-top: 100px;
         }
         
         .faq-container {
@@ -171,7 +174,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 80px;
+            gap: 30px;
             flex-wrap: wrap;
         }
         
@@ -180,12 +183,16 @@
         }
         
         .help-icon {
-            width: 250px;
-            height: 250px;
+            width: 230px;
+            height: 230px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
+        }
+
+        .help-text {
+            max-width: 550px;
         }
         
         .help-text h3 {
@@ -202,7 +209,6 @@
             text-align: center;
             line-height: 1.5;
             margin-bottom: 25px;
-            max-width: 400px;
         }
         
         .submit-concern-btn {
@@ -223,129 +229,12 @@
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
         }
         
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            animation: fadeIn 0.3s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            animation: slideIn 0.3s;
-        }
-        
-        @keyframes slideIn {
-            from { 
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to { 
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 1;
-        }
-        
-        .close:hover,
-        .close:focus {
-            color: #000;
-        }
-        
-        .modal-content h3 {
-            color: #333;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-            font-weight: bold;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, #2c5aa0, #1e3d72);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background: linear-gradient(135deg, #1e3d72, #2c5aa0);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-            
-            .help-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .modal-content {
-                width: 95%;
-                margin: 10% auto;
-                padding: 20px;
-            }
-        }
 
-        /* Footer positioning - ensures it stays at bottom */
+         /* Footer positioning - ensures it stays at bottom */
         footer {
             position: relative;
-            z-index: 0;
+            /* bottom: 0;
+            left: 0;
+            width: 100%; */
+            z-index: 1000;
         }
