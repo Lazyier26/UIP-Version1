@@ -2,7 +2,7 @@ body {
     font-family: 'Montserrat';
     color: #000000;
     line-height: 1.6;
-    position: relative;
+    /* position: relative; */
     min-height: 100vh;
 }
 
