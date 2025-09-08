@@ -102,6 +102,12 @@ footer{
     transition: all 0.3s ease;
 }
 
+.social-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .social-icon img{
     width: 45px;
     height: 45px;
