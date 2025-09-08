@@ -16,8 +16,8 @@ body {
 .about-header h1 {
     font-size: 40px;
     font-weight: 700;
-    margin-top: 120px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     color: #021D2B;
 }
 
@@ -42,7 +42,7 @@ body {
 .stats-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    /* gap: 40px; */
 }
 
 .stat-item {
@@ -60,7 +60,7 @@ body {
 .growth-position {
     display: flex; 
     justify-content: center; 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .targetedskills-leadership-position {
@@ -69,16 +69,15 @@ body {
     justify-content: center;
 }
 
-.stat-icon img {
-    width: 85px;
-    height: 85px;
+/* .stat-icon img {
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
-    object-fit: cover;
-}
+} */
 
 .stat-icon {
-    width: 50px;
-    height: 50px;
+    width: 85px;
+    height: 85px;
     border-radius: 10px;
     display: flex;
     align-items: center;
