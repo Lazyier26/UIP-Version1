@@ -226,8 +226,8 @@
         
         .submit-concern-btn:hover {
             background-color: #d1633b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+            /* transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4); */
         }
         
 
