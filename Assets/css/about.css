@@ -326,3 +326,289 @@ footer {
     position: relative;
     z-index: 0;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .about-header {
+        padding: 30px 20px 0 20px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px 0px 20px;
+    }
+    
+    .targetedskills-leadership-position {
+        gap: 60px;
+    }
+    
+    .mission-vision {
+        gap: 60px;
+        margin: 30px 60px;
+    }
+    
+    .wfh-illustration img {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .wfh-content h2 {
+        font-size: 24px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .about-header h1 {
+        font-size: 32px;
+        margin-top: 100px;
+    }
+    
+    .about-header {
+        padding: 20px 15px 0 15px;
+    }
+    
+    .about-content {
+        padding: 0 15px 0px 15px;
+        gap: 30px;
+    }
+    
+    .about-text p {
+        font-size: 16px;
+        text-align: left;
+    }
+    
+    .wfh-section {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+        margin: 30px 0;
+        gap: 20px;
+    }
+    
+    .wfh-illustration img {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .wfh-content h2 {
+        font-size: 22px;
+    }
+    
+    .wfh-content p {
+        font-size: 15px;
+    }
+    
+    .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin: 30px 20px;
+    }
+    
+    .mission-card, .vision-card {
+        padding: 25px 20px;
+        font-size: 16px;
+    }
+    
+    .mission-card h3, .vision-card h3 {
+        font-size: 24px;
+    }
+    
+    .partners-section h2 {
+        font-size: 26px;
+    }
+    
+    .partners-section > p {
+        font-size: 18px;
+        padding: 0 15px;
+    }
+    
+    .partner-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    
+    .partner-logo {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .vocoease-logo,
+    .aureal-logo,
+    .visvis-logo,
+    .anafara-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .company-name {
+        text-align: center;
+        font-size: 17px;
+    }
+    
+    .company-description {
+        text-align: center;
+        font-size: 15px;
+    }
+    
+    .faq-content {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+    
+    .faq-text {
+        margin-left: 0;
+        margin-bottom: 20px;
+        max-width: none;
+    }
+    
+    .faq-section h2 {
+        font-size: 24px;
+    }
+    
+    .faq-section p {
+        font-size: 16px;
+    }
+    
+    .faq-image img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .targetedskills-leadership-position {
+        gap: 40px;
+    }
+    
+    .stat-icon img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .stat-text h3 {
+        font-size: 14px;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .about-header h1 {
+        font-size: 28px;
+        margin-top: 90px;
+    }
+    
+    .about-header {
+        padding: 15px 10px 0 10px;
+    }
+    
+    .about-content {
+        padding: 0 10px 0px 10px;
+        gap: 25px;
+    }
+    
+    .about-text p {
+        font-size: 15px;
+    }
+    
+    .wfh-section {
+        padding: 25px 10px;
+        margin: 25px 0;
+    }
+    
+    .wfh-illustration img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .wfh-content h2 {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+    
+    .wfh-content p {
+        font-size: 14px;
+    }
+    
+    .mission-vision {
+        margin: 20px 10px;
+        gap: 20px;
+    }
+    
+    .mission-card, .vision-card {
+        padding: 20px 15px;
+        font-size: 15px;
+    }
+    
+    .mission-card h3, .vision-card h3 {
+        font-size: 22px;
+    }
+    
+    .partners-section h2 {
+        font-size: 24px;
+    }
+    
+    .partners-section > p {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+    
+    .partner-card {
+        padding: 20px 15px;
+    }
+    
+    .vocoease-logo,
+    .aureal-logo,
+    .visvis-logo,
+    .anafara-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .company-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .company-description {
+        font-size: 14px;
+    }
+    
+    .faq-content {
+        padding: 0 10px;
+    }
+    
+    .faq-section h2 {
+        font-size: 22px;
+    }
+    
+    .faq-section p {
+        font-size: 15px;
+    }
+    
+    .faq-btn {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+    
+    .faq-image img {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .targetedskills-leadership-position {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    
+    .stat-icon img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .stat-text h3 {
+        font-size: 13px;
+        margin-top: 15px;
+    }
+}
