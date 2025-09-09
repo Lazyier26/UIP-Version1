@@ -2,6 +2,8 @@
             font-family: 'Montserrat';
             margin: 0 auto;
             background-color: #EFEEEA;
+            line-height: 1.6;
+            color: #fff;
         }
 
         main {
@@ -15,7 +17,7 @@
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        } 
         
         h1 {
             text-align: center;
@@ -67,6 +69,7 @@
         .faq-question:hover {
             background-color: #e9ecef;
         }
+
         .faq-question::after {
             content: '';
             background-image: url('../images/arrow-down.svg');
@@ -226,8 +229,6 @@
         
         .submit-concern-btn:hover {
             background-color: #d1633b;
-            /* transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4); */
         }
         
 

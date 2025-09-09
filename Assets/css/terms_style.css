@@ -38,13 +38,13 @@
 html {
     overflow-y: overlay;
     max-width: 100%;
+    line-height: 1.6;
 
 }
 
 body{
     min-height: 100vh;
     color: var(--color-text);
-
 }
 
 
