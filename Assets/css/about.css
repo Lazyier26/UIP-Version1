@@ -2,7 +2,6 @@ body {
     font-family: 'Montserrat';
     color: #000000;
     line-height: 1.6;
-    /* position: relative; */
     min-height: 100vh;
 }
 
@@ -68,12 +67,6 @@ body {
     gap: 100px; 
     justify-content: center;
 }
-
-/* .stat-icon img {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-} */
 
 .stat-icon {
     width: 85px;

@@ -18,7 +18,7 @@
             font-size: 40px;
             font-weight: 700;
             color: #000000;
-            margin-top: 180px;
+            margin-top: 70px;
             margin-bottom: 60px;
         }
 
@@ -228,3 +228,233 @@
             z-index: 1000;
         }
 
+        /* MOBILE RESPONSIVE STYLES */
+
+        /* Tablet styles (768px and below) */
+        @media screen and (max-width: 768px) {
+            .main-content {
+                padding: 0 20px;
+            }
+
+            .page-title {
+                font-size: 32px;
+                margin-top: 60px;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .top-section {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .contact-info {
+                padding: 25px;
+            }
+
+            .contact-form-container {
+                padding: 25px;
+            }
+
+            .internship-section {
+                padding: 25px;
+            }
+
+            .benefits-container {
+                padding: 25px;
+            }
+
+            .form-title {
+                font-size: 22px;
+            }
+
+            .internship-title {
+                font-size: 18px;
+            }
+        }
+
+        /* Mobile styles (480px and below) */
+        @media screen and (max-width: 480px) {
+            .main-content {
+                padding: 0 15px;
+            }
+
+            .page-title {
+                font-size: 28px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            .top-section {
+                gap: 20px;
+                margin-bottom: 20px;
+            }
+
+            .contact-info {
+                padding: 20px;
+            }
+
+            .email-ko {
+                font-size: 18px;
+                margin-bottom: 25px;
+            }
+
+            .social-icons {
+                gap: 12px;
+            }
+
+            .facebook-icon, .instagram-icon, .spotify-icon, .youtube-icon {
+                height: 45px;
+                width: 45px;
+            }
+
+            .contact-form-container {
+                padding: 20px;
+            }
+
+            .form-title {
+                font-size: 20px;
+            }
+
+            .form-subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group label {
+                font-size: 14px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .form-group textarea {
+                height: 150px;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 11px;
+            }
+
+            .internship-section {
+                padding: 20px;
+            }
+
+            .internship-title {
+                font-size: 17px;
+                margin-bottom: 10px;
+            }
+
+            .internship-subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .internship-btn {
+                font-size: 16px;
+                padding: 11px 0;
+                margin-bottom: 20px;
+            }
+
+            .benefits-container {
+                padding: 20px;
+            }
+
+            .benefits-list li {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .checkmark-icon {
+                height: 20px;
+                width: 20px;
+                margin-right: 15px;
+            }
+        }
+
+        /* Extra small mobile styles (360px and below) */
+        @media screen and (max-width: 360px) {
+            .main-content {
+                padding: 0 10px;
+            }
+
+            .page-title {
+                font-size: 24px;
+                margin-top: 40px;
+                margin-bottom: 25px;
+            }
+
+            .contact-info,
+            .contact-form-container,
+            .internship-section,
+            .benefits-container {
+                padding: 15px;
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .facebook-icon, .instagram-icon, .spotify-icon, .youtube-icon {
+                height: 40px;
+                width: 40px;
+            }
+
+            .form-title {
+                font-size: 18px;
+            }
+
+            .form-subtitle {
+                font-size: 13px;
+            }
+
+            .internship-title {
+                font-size: 16px;
+            }
+
+            .internship-subtitle {
+                font-size: 13px;
+            }
+
+            .benefits-list li {
+                font-size: 13px;
+            }
+        }
+
+        /* Ensure box-sizing for all elements */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Fix for input and textarea width issues on mobile */
+        .form-group input,
+        .form-group textarea {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* Prevent horizontal scrolling on mobile */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Touch-friendly buttons */
+        @media (hover: none) and (pointer: coarse) {
+            .submit-btn,
+            .internship-btn {
+                min-height: 44px;
+            }
+            
+            .facebook-icon, .instagram-icon, .spotify-icon, .youtube-icon {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
