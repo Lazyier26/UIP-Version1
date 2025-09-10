@@ -241,13 +241,13 @@
             z-index: 1000;
         }
 
-        /* Mobile Responsive Styles - Add this to your existing faqs.css */
+        /* Mobile Responsive Styles*/
 
 /* Tablet styles */
 @media screen and (max-width: 1024px) {
     main {
         max-width: 95%;
-        padding-top: 80px;
+        padding-top: 60px;
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -269,14 +269,14 @@
     }
     
     .process-steps, .secondrow-steps {
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
         gap: 15px;
     }
     
     .process-step {
         width: 400px;
         flex: 1;
-        min-width: 350px;
+        min-width: 100px;
     }
     
     .help-content {
@@ -296,7 +296,7 @@
 /* Mobile styles */
 @media screen and (max-width: 768px) {
     main {
-        padding-top: 100px;
+        padding-top: 60px;
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -350,7 +350,7 @@
     }
     
     .process-section {
-        margin: 30px 0;
+        margin: 80px 0;
         padding: 20px 0;
     }
     
@@ -361,8 +361,6 @@
     }
     
     .process-steps, .secondrow-steps {
-        flex-direction: column;
-        align-items: center;
         gap: 20px;
     }
     
@@ -398,18 +396,20 @@
     }
     
     .help-section {
-        padding: 30px 15px;
+        padding: 0px 45px;
         margin: 30px 0;
     }
     
     .help-content {
-        flex-direction: column;
+        display: flex;
+        flex-direction: column-reverse;
         gap: 20px;
     }
     
     .help-icon {
-        width: 150px;
-        height: 150px;
+        margin-top: 10px;
+        width: 170px;
+        height: 170px;
     }
     
     .help-text {
@@ -423,7 +423,7 @@
     
     .help-text p {
         font-size: 16px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     
     .submit-concern-btn {
@@ -435,7 +435,7 @@
 /* Small mobile styles */
 @media screen and (max-width: 480px) {
     main {
-        padding-top: 120px;
+        padding-top: 50px;
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -490,14 +490,25 @@
         line-height: 1.3;
     }
     
+    .process-section {
+        margin: 55px 0;
+        padding: 15px 0;
+    }
+
     .process-section h2 {
         font-size: 20px;
         margin-bottom: 25px;
     }
     
+    .process-steps, .secondrow-steps {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
     .process-step {
         max-width: 100%;
-        padding: 12px;
+        padding: 15px;
     }
     
     .step-icon {
@@ -526,13 +537,13 @@
     }
     
     .help-section {
-        padding: 20px 10px;
+        padding: 20px;
         margin: 20px 0;
     }
     
     .help-icon {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
     }
     
     .help-text h3 {
@@ -542,7 +553,7 @@
     
     .help-text p {
         font-size: 14px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         line-height: 1.4;
     }
     
@@ -567,7 +578,7 @@
     }
     
     .process-step {
-        padding: 10px;
+        padding: 15px;
     }
     
     .step-icon {

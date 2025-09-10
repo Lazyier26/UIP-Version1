@@ -230,6 +230,53 @@
 
         /* MOBILE RESPONSIVE STYLES */
 
+        /* Large tablet/small desktop styles (1024px and below) */
+        @media screen and (max-width: 1024px) {
+            .main-content {
+                max-width: 95%;
+                padding: 0 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+
+            .top-section {
+                gap: 25px;
+            }
+
+            .contact-info {
+                padding: 30px;
+            }
+
+            .contact-form-container {
+                padding: 30px;
+            }
+
+            .internship-section {
+                padding: 30px;
+            }
+
+            .benefits-container {
+                padding: 30px;
+            }
+
+            .form-title {
+                font-size: 23px;
+            }
+
+            .internship-title {
+                font-size: 19px;
+            }
+
+            .facebook-icon, .instagram-icon, .spotify-icon, .youtube-icon {
+                height: 45px;
+                width: 45px;
+            }
+        }
+
         /* Tablet styles (768px and below) */
         @media screen and (max-width: 768px) {
             .main-content {
@@ -398,7 +445,7 @@
             .contact-form-container,
             .internship-section,
             .benefits-container {
-                padding: 15px;
+                padding: 25px;
             }
 
             .social-icons {

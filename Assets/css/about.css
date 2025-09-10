@@ -78,6 +78,10 @@ body {
     font-size: 25px;
 }
 
+.stat-text {
+    text-align: center;
+}
+
 .stat-text h3 {
     margin-top: 20px;
     font-size: 16px;
@@ -323,6 +327,11 @@ footer {
 
 /* Tablet styles */
 @media (max-width: 1024px) {
+
+    .white-bg, .light-bg {
+        padding: 30px 40px 30px;
+    }
+
     .about-header {
         padding: 30px 20px 0 20px;
     }
@@ -333,8 +342,13 @@ footer {
         padding: 0 20px 0px 20px;
     }
     
+    .stats-container {
+        align-content: center;
+        gap: 40px;
+    }
+
     .targetedskills-leadership-position {
-        gap: 60px;
+        gap: 120px;
     }
     
     .mission-vision {
@@ -350,13 +364,18 @@ footer {
     .wfh-content h2 {
         font-size: 24px;
     }
+
+    .partners-section {
+        margin: 130px 0;
+    }
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
+
     .about-header h1 {
         font-size: 32px;
-        margin-top: 100px;
+        margin-top: 10px;
     }
     
     .about-header {
@@ -370,7 +389,7 @@ footer {
     
     .about-text p {
         font-size: 16px;
-        text-align: left;
+        text-align: justify;
     }
     
     .wfh-section {
@@ -381,8 +400,8 @@ footer {
     }
     
     .wfh-illustration img {
-        width: 220px;
-        height: 220px;
+        width: 240px;
+        height: 240px;
     }
     
     .wfh-content h2 {
@@ -400,12 +419,16 @@ footer {
     }
     
     .mission-card, .vision-card {
-        padding: 25px 20px;
+        padding: 30px 25px;
         font-size: 16px;
     }
     
     .mission-card h3, .vision-card h3 {
         font-size: 24px;
+    }
+
+    .partners-section {
+        margin: 100px 0;
     }
     
     .partners-section h2 {
@@ -420,7 +443,7 @@ footer {
     .partner-card {
         flex-direction: column;
         text-align: center;
-        padding: 25px 20px;
+        padding: 25px 25px;
     }
     
     .partner-logo {
@@ -432,8 +455,8 @@ footer {
     .aureal-logo,
     .visvis-logo,
     .anafara-logo {
-        width: 100px;
-        height: 100px;
+        width: 175px;
+        height: 175px;
     }
     
     .company-name {
@@ -452,8 +475,9 @@ footer {
     }
     
     .faq-text {
+        padding: 0px 70px;
         margin-left: 0;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         max-width: none;
     }
     
@@ -486,13 +510,18 @@ footer {
 
 /* Small mobile styles */
 @media (max-width: 480px) {
+
+    .white-bg, .light-bg {
+        padding: 20px 25px 20px;
+    }
+
     .about-header h1 {
         font-size: 28px;
-        margin-top: 90px;
+        margin-top: 10px;
     }
     
     .about-header {
-        padding: 15px 10px 0 10px;
+        padding: 10px 10px 0 10px;
     }
     
     .about-content {
@@ -501,17 +530,18 @@ footer {
     }
     
     .about-text p {
+        text-align: justify;
         font-size: 15px;
     }
     
     .wfh-section {
         padding: 25px 10px;
-        margin: 25px 0;
+        margin: 30px 0;
     }
     
     .wfh-illustration img {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
     }
     
     .wfh-content h2 {
@@ -524,19 +554,27 @@ footer {
     }
     
     .mission-vision {
-        margin: 20px 10px;
+        margin: 20px 20px;
         gap: 20px;
     }
     
     .mission-card, .vision-card {
-        padding: 20px 15px;
+        padding: 30px 30px;
         font-size: 15px;
     }
     
     .mission-card h3, .vision-card h3 {
         font-size: 22px;
     }
+
+    .mission-card p, .vision-card p {
+        font-size: 15px;
+    }
     
+    .partners-section {
+        margin: 80px 0;
+    }
+
     .partners-section h2 {
         font-size: 24px;
     }
@@ -547,15 +585,15 @@ footer {
     }
     
     .partner-card {
-        padding: 20px 15px;
+        padding: 30px 30px;
     }
     
     .vocoease-logo,
     .aureal-logo,
     .visvis-logo,
     .anafara-logo {
-        width: 80px;
-        height: 80px;
+        width: 175px;
+        height: 175px;
     }
     
     .company-name {
@@ -583,14 +621,19 @@ footer {
         padding: 10px 30px;
         font-size: 16px;
     }
+
+    .faq-text {
+        margin-bottom: 15px;
+    }
+
     
     .faq-image img {
-        width: 160px;
-        height: 160px;
+        width: 200px;
+        height: 200px;
     }
     
     .targetedskills-leadership-position {
-        gap: 30px;
+        gap: 70px;
         flex-wrap: wrap;
     }
     
@@ -601,6 +644,6 @@ footer {
     
     .stat-text h3 {
         font-size: 13px;
-        margin-top: 15px;
+        margin-top: 0px;
     }
 }
