@@ -256,11 +256,11 @@
                     .form-group input[type="file"] {
                         width: 100%;
                         padding: 1rem 1.5rem;
-                        border: 2px solid #ffffff;
+                        border: 2px solid #000000;
                         border-radius: 12px;
                         font-size: 1rem;
                         transition: all 0.3s ease;
-                        background: white;
+                        background: rgb(255, 255, 255);
                         backdrop-filter: blur(10px);
                     }
 
@@ -278,17 +278,24 @@
 
                     /* Enhanced File Input Styles */
                     .form-group input[type="file"] {
+                        width: 100%;
                         padding: 1.5rem;
-                        border: 2px dashed #ffffff;
-                        background: white;
                         cursor: pointer;
                         text-align: center;
                         position: relative;
+                        width: 100%;
+                        border: 2px solid #000000;
+                        border-radius: 12px;
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+                        background: rgb(255, 255, 255);
+                        backdrop-filter: blur(10px);
+                        color: #000000;
                     }
 
                     .form-group input[type="file"]:hover {
                         border-color: #000000;
-                        background: #f1f3f4;
+                        background: #cbcbcb;
                         transform: translateY(-2px);
                         box-shadow: 0 5px 15px rgba(102, 126, 234, 0.10);
                     }
