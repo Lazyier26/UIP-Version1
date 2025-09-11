@@ -1,7 +1,7 @@
         body {
             font-family: 'Montserrat';
             /* padding: 10px 10px 30px; */
-            background-color: #EFEEEA;
+            background-color: white;
             color: #ffffff;
             line-height: 1.6;
             position: relative;
@@ -19,7 +19,7 @@
             font-size: 40px;
             font-weight: 700;
             color: #000000;
-            margin-top: 70px;
+            margin-top: 90px;
             margin-bottom: 60px;
         }
 
