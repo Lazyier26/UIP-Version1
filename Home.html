@@ -31,6 +31,7 @@
             <li><a href="Contact.html" class="nav-link">Contact</a></li>
         </ul>
 
+        
         <div class="attendance-button">
             <a href="#" class="attendance-button-link">Attendance Tracker</a>
         </div>
@@ -103,7 +104,7 @@
    <!-- Video -->
     <div class="testimonial">
             <iframe width="750" height="450"
-                src="https://www.youtube.com/embed/D8yle1V-NVE"
+                src="https://www.youtube.com/embed/Txsj75qQPPk?si=vQlpNazptJZITau3"
                 frameborder="1"
                 allow="autoplay; encrypted-media"
         allowfullscreen></iframe>
@@ -198,7 +199,15 @@
         <div class="donation-content">
             <h2>Empower Tomorrow's Leaders</h2>
             <p>Support the Future! Your generosity enables us to offer meaningful internship opportunities that shape the careers of bright young minds. Together, we're fostering talent and driving innovation. Thank you for making a difference!</p>
-            <button class="donate-button">DONATE</button>
+            <button onclick="showQR()">DONATE</button>
+
+            <div id="overlay" onclick="closePopup(event)">
+                <div id="popup">
+                <h3 style="color:rgb(0, 0, 0)">Scan to Donate</h3>
+                <img src="/Assets/images/UIP_Inc__Donation_Form.png" alt="Donation QR Code" width="200">
+                <button onclick="closePopup()">Close</button>
+                </div>
+            </div>
         </div>
      </div>
 
@@ -209,7 +218,6 @@
                 <div class="hero-footer">
                     <a href="/Home.html" class="logo-link-footer">
                     <img src="/Assets/images/small-logo-uip.png" alt="UIP logo" width="64" height="64"></a>
-                    
                     <div class="title-wrapper">
                         <h2>UIP Incorporated</h2> 
                     </div>
@@ -237,7 +245,8 @@
                 <li><a href="/Faqs.html">FAQs</a></li>
                 <li><a href="/program_page.html">Internships</a></li>
                 <li><a href="/developer_page.html">Developer</a></li>
-                <li><a href="#">Attendance Tracker</a></li>
+                <!-- ATTENDANCE TRACKER BUTTON LINK -->
+                <li><a href="#">Attendance Tracker</a></li> 
             </ul>
         </div>
 

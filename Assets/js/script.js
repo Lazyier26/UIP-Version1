@@ -39,6 +39,21 @@ const slider = document.getElementById("slider");
       slider.scrollLeft = scrollLeft - walk;
     });
 
+// DONATION POPUP
+function showQR() {
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "flex";
+    setTimeout(() => overlay.classList.add("active"), 10);
+  }
+
+  function closePopup(event) {
+    const overlay = document.getElementById("overlay");
+    if (!event || event.target === overlay || event.target.tagName === "BUTTON") {
+      overlay.classList.remove("active");
+      setTimeout(() => (overlay.style.display = "none"), 300);
+    }
+  }
+
 
 
 
