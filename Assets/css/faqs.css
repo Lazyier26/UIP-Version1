@@ -142,6 +142,11 @@
             font-weight: bold;
             font-size: 20px;
         }
+
+        .highlights {
+            color: #145374;
+            font-weight: 600;
+        }
         
         .process-step h3 {
             color: #000000;
