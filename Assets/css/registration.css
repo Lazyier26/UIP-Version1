@@ -798,6 +798,32 @@
                         animation: pulse 2s ease-in-out infinite;
                     }
 
+                    .error-message {
+                        background-color: #fee;
+                        border: 1px solid #fcc;
+                        color: #c33;
+                        padding: 10px;
+                        border-radius: 4px;
+                        margin: 10px 0;
+                    }
+
+                    .form-error {
+                        color: #c33;
+                        font-size: 0.875em;
+                        margin-top: 5px;
+                        display: none;
+                    }
+
+                    .form-error.show {
+                        display: block;
+                    }
+
+                    .form-group.error input,
+                    .form-group.error select,
+                    .form-group.error textarea {
+                        border-color: #c33;
+                    }
+
                     /* Smooth Scrolling Behavior */
                     html {
                         scroll-behavior: smooth;
