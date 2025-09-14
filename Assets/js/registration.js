@@ -369,16 +369,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Show floating action button on scroll
     const fab = document.querySelector('.fab');
-        if (fab) {
-            window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            fab.classList.add('show');
-        } else {
-            fab.classList.remove('show');
-        }
-    });
-}
-
+    if (fab) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                fab.classList.add('show');
+            } else {
+                fab.classList.remove('show');
+            }
+        });
+    }
 });
 
 // Handle page visibility change (for debugging)
