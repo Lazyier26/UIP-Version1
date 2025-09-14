@@ -7,3 +7,4 @@ menu.onclick = () => {
   navbar.classList.toggle('open');
   document.body.classList.toggle('sidebar-open');
 };
+
