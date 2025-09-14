@@ -1,472 +1,399 @@
-// Assets/js/registration.js
+// registration.js
 
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
-
-// Main initialization function
-function initializeApp() {
-    initializeFormHandling();
-    initializeUIFeatures();
-    initializeValidation();
-    initializeFAB();
-}
-
-// ===== FORM HANDLING =====
-function initializeFormHandling() {
-    const form = document.getElementById('incoming-form-form');
-    if (!form) return;
-
-    const submitButton = form.querySelector('button[type="submit"]');
-
-    // Form submission handler
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Clear previous errors
-        clearFormErrors();
-        
-        // Validate form before submission
-        if (!validateForm()) {
-            return;
-        }
-        
-        // Show loading state
-        setLoadingState(true);
-        
-        try {
-            // Create FormData object
-            const formData = new FormData(form);
-            
-            // Submit form via AJAX
-            const response = await fetch('submit-incoming.php', {
-                method: 'POST',
-                body: formData
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                // Show success message
-                showSuccessMessage('Registration submitted successfully! We\'ll contact you soon.');
-                
-                // Reset form
-                form.reset();
-                
-                // Optionally redirect after delay
-                setTimeout(() => {
-                    window.location.href = 'registration-success.html';
-                }, 3000);
-                
-            } else {
-                throw new Error(result.message || 'Registration failed');
-            }
-            
-        } catch (error) {
-            console.error('Registration error:', error);
-            showErrorMessage(error.message || 'An error occurred during registration. Please try again.');
-            
-        } finally {
-            setLoadingState(false);
-        }
-    });
-}
-
-// ===== FORM VALIDATION =====
-function initializeValidation() {
-    const form = document.getElementById('incoming-form-form');
-    if (!form) return;
-
-    // File upload validation
-    const fileInputs = form.querySelectorAll('input[type="file"]');
-    fileInputs.forEach(input => {
-        input.addEventListener('change', function() {
-            validateFileInput(this);
-        });
-    });
+// Toggle form visibility
+function toggleForm(formType) {
+    const incomingForm = document.getElementById('incoming-form');
     
-    // Real-time validation
-    const inputs = form.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(this);
-        });
-        
-        input.addEventListener('input', function() {
-            clearFieldError(this);
-        });
-    });
-}
-
-function validateForm() {
-    let isValid = true;
-    
-    // Validate required text fields
-    const requiredFields = [
-        { id: 'incoming-name', message: 'Full Name is required.' },
-        { id: 'incoming-email', message: 'Valid Email is required.' },
-        { id: 'incoming-contact', message: 'Contact Number is required.' },
-        { id: 'incoming-birthday', message: 'Valid date is required.' },
-        { id: 'incoming-address', message: 'Valid Address is required.' },
-        { id: 'incoming-school', message: 'School/University is required.' },
-        { id: 'incoming-program', message: 'College Program is required.' },
-        { id: 'incoming-school-address', message: 'University Address is required.' },
-        { id: 'incoming-ojt-hours', message: 'Total OJT Hours is required.' }
-    ];
-    
-    requiredFields.forEach(field => {
-        const input = document.getElementById(field.id);
-        if (!input) return;
-        
-        if (!input.value.trim()) {
-            showFieldError(field.id, field.message);
-            isValid = false;
-        } else {
-            clearFieldError(input);
-        }
-    });
-    
-    // Validate email format
-    const email = document.getElementById('incoming-email');
-    if (email && email.value && !isValidEmail(email.value)) {
-        showFieldError('incoming-email', 'Please enter a valid email address.');
-        isValid = false;
-    }
-    
-    // Validate contact number
-    const contact = document.getElementById('incoming-contact');
-    if (contact && contact.value && !isValidPhone(contact.value)) {
-        showFieldError('incoming-contact', 'Please enter a valid contact number.');
-        isValid = false;
-    }
-    
-    // Validate birthday
-    const birthday = document.getElementById('incoming-birthday');
-    if (birthday && birthday.value && !isValidAge(birthday.value)) {
-        showFieldError('incoming-birthday', 'You must be at least 16 years old.');
-        isValid = false;
-    }
-    
-    // Validate OJT hours
-    const ojtHours = document.getElementById('incoming-ojt-hours');
-    if (ojtHours && ojtHours.value && (parseInt(ojtHours.value) <= 0 || parseInt(ojtHours.value) > 2000)) {
-        showFieldError('incoming-ojt-hours', 'OJT hours must be between 1 and 2000.');
-        isValid = false;
-    }
-    
-    // Validate available days
-    const days = document.querySelectorAll('input[name="days[]"]:checked');
-    if (days.length === 0) {
-        showFieldError('incoming-days', 'Please select at least one available day.');
-        isValid = false;
-    }
-    
-    // Validate required files
-    const cvFile = document.getElementById('incoming-cv');
-    if (cvFile && !cvFile.files.length) {
-        showFieldError('incoming-cv', 'Please upload your CV or resume.');
-        isValid = false;
-    }
-    
-    const pictureFile = document.getElementById('incoming-picture');
-    if (pictureFile && !pictureFile.files.length) {
-        showFieldError('incoming-picture', 'Please upload your 2x2 picture.');
-        isValid = false;
-    }
-    
-    // Validate terms acceptance
-    const termsCheckbox = document.getElementById('terms-checkbox');
-    if (termsCheckbox && !termsCheckbox.checked) {
-        showFieldError('terms', 'You must agree to the Terms and Conditions.');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-function validateField(field) {
-    const fieldId = field.id;
-    const value = field.value.trim();
-    
-    clearFieldError(field);
-    
-    switch(fieldId) {
-        case 'incoming-email':
-            if (value && !isValidEmail(value)) {
-                showFieldError(fieldId, 'Please enter a valid email address.');
-            }
-            break;
-        case 'incoming-contact':
-            if (value && !isValidPhone(value)) {
-                showFieldError(fieldId, 'Please enter a valid contact number.');
-            }
-            break;
-        case 'incoming-birthday':
-            if (value && !isValidAge(value)) {
-                showFieldError(fieldId, 'You must be at least 16 years old.');
-            }
-            break;
-        case 'incoming-ojt-hours':
-            const hours = parseInt(value);
-            if (value && (hours <= 0 || hours > 2000)) {
-                showFieldError(fieldId, 'OJT hours must be between 1 and 2000.');
-            }
-            break;
+    if (formType === 'incoming') {
+        incomingForm.style.display = 'block';
+        // Scroll to form
+        incomingForm.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
-function validateFileInput(input) {
-    const file = input.files[0];
-    if (!file) return;
-    
-    const maxSize = 10 * 1024 * 1024; // 10MB
-    const fieldId = input.id;
-    
-    // Check file size
-    if (file.size > maxSize) {
-        showFieldError(fieldId, 'File size must be less than 10MB.');
-        input.value = '';
-        return;
-    }
-    
-    // Check file type based on input
-    let allowedTypes = [];
-    if (fieldId === 'incoming-cv') {
-        allowedTypes = ['pdf'];
-    } else if (fieldId === 'incoming-picture') {
-        allowedTypes = ['jpg', 'jpeg', 'png'];
-    } else if (fieldId === 'incoming-endorsement' || fieldId === 'incoming-moa') {
-        allowedTypes = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'];
-    }
-    
-    const fileExtension = file.name.split('.').pop().toLowerCase();
-    if (allowedTypes.length && !allowedTypes.includes(fileExtension)) {
-        showFieldError(fieldId, `Allowed file types: ${allowedTypes.join(', ')}`);
-        input.value = '';
-        return;
-    }
-    
-    clearFieldError(input);
-}
-
-// ===== VALIDATION HELPER FUNCTIONS =====
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function isValidPhone(phone) {
-    return /^[0-9+\-\s()]{7,}$/.test(phone);
-}
-
-function isValidAge(birthdate) {
-    const today = new Date();
-    const birth = new Date(birthdate);
-    const age = today.getFullYear() - birth.getFullYear();
-    
-    if (today.getMonth() < birth.getMonth() || 
-        (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate())) {
-        return age - 1 >= 16;
-    }
-    
-    return age >= 16;
-}
-
-// ===== ERROR HANDLING =====
-function showFieldError(fieldId, message) {
-    const field = document.getElementById(fieldId);
-    if (!field) return;
-    
-    const formGroup = field.closest('.form-group');
-    const errorDiv = document.getElementById(`error-${fieldId}`);
-    
-    if (formGroup) formGroup.classList.add('error');
-    if (errorDiv) {
-        errorDiv.textContent = message;
-        errorDiv.classList.add('show');
-    }
-}
-
-function clearFieldError(field) {
-    const fieldId = field.id;
-    const formGroup = field.closest('.form-group');
-    const errorDiv = document.getElementById(`error-${fieldId}`);
-    
-    if (formGroup) formGroup.classList.remove('error');
-    if (errorDiv) {
-        errorDiv.classList.remove('show');
-    }
-}
-
-function clearFormErrors() {
-    const errorDivs = document.querySelectorAll('.form-error');
-    const formGroups = document.querySelectorAll('.form-group.error');
-    
-    errorDivs.forEach(div => div.classList.remove('show'));
-    formGroups.forEach(group => group.classList.remove('error'));
-    
-    const errorMessage = document.getElementById('error-message');
-    if (errorMessage) errorMessage.style.display = 'none';
-}
-
-function showSuccessMessage(message) {
-    const successDiv = document.getElementById('success-message');
-    if (successDiv) {
-        successDiv.textContent = message;
-        successDiv.style.display = 'block';
-        successDiv.scrollIntoView({ behavior: 'smooth' });
-        
-        // Auto-hide after 5 seconds
-        setTimeout(() => {
-            successDiv.style.display = 'none';
-        }, 5000);
-    }
-}
-
-function showErrorMessage(message) {
-    const errorDiv = document.getElementById('error-message');
-    if (errorDiv) {
-        errorDiv.textContent = message;
-        errorDiv.style.display = 'block';
-        errorDiv.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-function setLoadingState(loading) {
-    const submitButton = document.querySelector('#incoming-form-form button[type="submit"]');
-    const loadingOverlay = document.getElementById('loading-overlay');
-    
-    if (submitButton) {
-        if (loading) {
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span class="loading"></span> Submitting...';
-            if (loadingOverlay) loadingOverlay.style.display = 'block';
-        } else {
-            submitButton.disabled = false;
-            submitButton.textContent = 'Submit Registration';
-            if (loadingOverlay) loadingOverlay.style.display = 'none';
-        }
-    }
-}
-
-// ===== UI FEATURES =====
-function initializeUIFeatures() {
-    // Initialize smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Initialize input focus animations
-    document.querySelectorAll('input').forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-        
-        input.addEventListener('blur', function() {
-            if (!this.value) {
-                this.parentElement.classList.remove('focused');
-            }
-        });
-    });
-    
-    // Initialize active navigation state
-    const currentPage = window.location.hash || '#home';
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-            link.style.color = '#a0c4ff';
-        }
-    });
-    
-    // Initialize terms and conditions modal
-    initializeTermsModal();
-}
-
-// ===== FLOATING ACTION BUTTON (FAB) =====
-function initializeFAB() {
-    const fab = document.querySelector('.fab');
-    if (!fab) return;
-    
-    // Initialize FAB visibility
-    fab.style.opacity = '0';
-    fab.style.pointerEvents = 'none';
-    fab.style.transition = 'all 0.3s ease';
-    
-    // Show/hide FAB based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            fab.style.opacity = '1';
-            fab.style.pointerEvents = 'all';
-        } else {
-            fab.style.opacity = '0';
-            fab.style.pointerEvents = 'none';
-        }
-    });
-}
-
-//  Terms and Conditions Functions (Original Implementation)
-function showTerms(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const modal = document.getElementById('terms-modal');
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+// Terms modal functions
+function showTerms(event) {
+    event.preventDefault();
+    document.getElementById('terms-modal').style.display = 'flex';
 }
 
 function closeTerms() {
-    const modal = document.getElementById('terms-modal');
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    document.getElementById('terms-modal').style.display = 'none';
 }
 
-function initializeTermsModal() {
-    // Close modal when clicking outside the content
-    document.getElementById('terms-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeTerms();
+// Scroll to top function
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Form validation functions
+function validateForm(formData) {
+    const errors = [];
+    
+    // Required fields validation
+    const requiredFields = [
+        { key: 'name', message: 'Full Name is required' },
+        { key: 'email', message: 'Email is required' },
+        { key: 'contact', message: 'Contact Number is required' },
+        { key: 'birthday', message: 'Birthday is required' },
+        { key: 'address', message: 'Address is required' },
+        { key: 'school', message: 'School/University is required' },
+        { key: 'program', message: 'College Program is required' },
+        { key: 'school_address', message: 'University Address is required' },
+        { key: 'ojt_hours', message: 'OJT Hours is required' }
+    ];
+    
+    requiredFields.forEach(field => {
+        const value = formData.get(field.key);
+        if (!value || value.toString().trim() === '') {
+            errors.push(field.message);
         }
     });
     
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeTerms();
-        }
-    });
+    // Email validation
+    const email = formData.get('email');
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errors.push('Please enter a valid email address');
+    }
+    
+    // Contact number validation
+    const contact = formData.get('contact');
+    if (contact && !/^[0-9+\-\s()]{7,}$/.test(contact)) {
+        errors.push('Please enter a valid contact number');
+    }
+    
+    // OJT hours validation
+    const ojtHours = formData.get('ojt_hours');
+    if (ojtHours && (isNaN(ojtHours) || parseInt(ojtHours) < 1)) {
+        errors.push('OJT hours must be a positive number');
+    }
+    
+    // Available days validation
+    const days = formData.getAll('days[]');
+    if (!days || days.length === 0) {
+        errors.push('Please select at least one available day');
+    }
+    
+    return errors;
 }
 
-// ===== UTILITY FUNCTIONS =====
-function toggleForm(type) {
-    const form = document.getElementById(type + '-form');
-    if (form) {
-        form.classList.toggle('active');
-        // Also support the original style-based approach
-        if (form.style.display === 'none' || !form.style.display) {
-            form.style.display = 'block';
+function validateFiles(form) {
+    const errors = [];
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    
+    // Required files
+    const cvFile = form.querySelector('#incoming-cv').files[0];
+    const pictureFile = form.querySelector('#incoming-picture').files[0];
+    
+    if (!cvFile) {
+        errors.push('CV/Resume is required');
+    } else {
+        if (cvFile.size > maxSize) {
+            errors.push('CV file is too large (max 10MB)');
+        }
+        if (!cvFile.type.includes('pdf')) {
+            errors.push('CV must be a PDF file');
+        }
+    }
+    
+    if (!pictureFile) {
+        errors.push('2x2 Picture is required');
+    } else {
+        if (pictureFile.size > maxSize) {
+            errors.push('Picture file is too large (max 10MB)');
+        }
+        if (!['image/jpeg', 'image/jpg', 'image/png'].includes(pictureFile.type)) {
+            errors.push('Picture must be JPG, JPEG, or PNG');
+        }
+    }
+    
+    // Optional files validation
+    const endorsementFile = form.querySelector('#incoming-endorsement').files[0];
+    if (endorsementFile && endorsementFile.size > maxSize) {
+        errors.push('Endorsement letter file is too large (max 10MB)');
+    }
+    
+    const moaFile = form.querySelector('#incoming-moa').files[0];
+    if (moaFile && moaFile.size > maxSize) {
+        errors.push('MOA file is too large (max 10MB)');
+    }
+    
+    return errors;
+}
+
+function showError(message) {
+    const errorDiv = document.getElementById('error-message');
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+    
+    // Scroll to error message
+    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Hide after 10 seconds
+    setTimeout(() => {
+        errorDiv.style.display = 'none';
+    }, 10000);
+}
+
+function showSuccess(message) {
+    const successDiv = document.getElementById('success-message');
+    successDiv.textContent = message || 'Registration submitted successfully! We will contact you soon.';
+    successDiv.style.display = 'block';
+    
+    // Scroll to success message
+    successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Hide after 5 seconds
+    setTimeout(() => {
+        successDiv.style.display = 'none';
+    }, 5000);
+}
+
+function showLoading(show = true) {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = show ? 'block' : 'none';
+}
+
+function resetForm(form) {
+    form.reset();
+    // Hide all error messages
+    const errorDivs = form.querySelectorAll('.form-error');
+    errorDivs.forEach(div => div.style.display = 'none');
+}
+
+// Main form submission handler - Updated Version
+async function handleFormSubmission(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    // Hide previous messages
+    document.getElementById('error-message').style.display = 'none';
+    document.getElementById('success-message').style.display = 'none';
+    
+    // Validate form data
+    const validationErrors = validateForm(formData);
+    const fileErrors = validateFiles(form);
+    const allErrors = [...validationErrors, ...fileErrors];
+    
+    if (allErrors.length > 0) {
+        showError(allErrors.join('\n'));
+        return;
+    }
+    
+    // Check terms acceptance
+    const termsCheckbox = document.getElementById('terms-checkbox');
+    if (!termsCheckbox.checked) {
+        showError('You must agree to the Terms and Conditions');
+        return;
+    }
+    
+    try {
+        showLoading(true);
+        
+        // Fixed URL determination
+        let submitUrl = 'submit-incoming.php'; // Default relative path
+        
+        // Only change if running on file:// protocol (which shouldn't be used)
+        if (window.location.protocol === 'file:') {
+            // For XAMPP default setup
+            submitUrl = 'http://localhost/UIP-Version1/submit-incoming.php';
+            // Show warning about file:// protocol
+            console.warn('Running from file:// protocol. Please use a web server instead.');
+        }
+        
+        console.log('Submitting to:', submitUrl);
+        console.log('Form data fields:', Array.from(formData.keys()));
+        
+        const response = await fetch(submitUrl, {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin', // Add this for better CORS handling
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+        
+        console.log('Response status:', response.status);
+        
+        // Check if response is OK
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Server error response:', errorText);
+            throw new Error(`Server error (${response.status}): ${response.statusText}`);
+        }
+        
+        // Try to parse JSON response
+        const contentType = response.headers.get('content-type');
+        let result;
+        
+        if (contentType && contentType.includes('application/json')) {
+            result = await response.json();
         } else {
-            form.style.display = 'none';
+            // If not JSON, get text and try to parse
+            const text = await response.text();
+            console.log('Raw response:', text);
+            
+            try {
+                result = JSON.parse(text);
+            } catch (parseError) {
+                console.error('Failed to parse JSON:', parseError);
+                console.error('Response text:', text);
+                
+                // Show more specific error message
+                if (text.includes('<br') || text.includes('<html') || text.includes('<!DOCTYPE')) {
+                    throw new Error('Server returned HTML instead of JSON. This usually means there are PHP errors. Check the browser console and server logs.');
+                } else {
+                    throw new Error(`Invalid JSON response: ${text.substring(0, 100)}...`);
+                }
+            }
         }
+        
+        console.log('Parsed result:', result);
+        
+        if (result.success) {
+            showSuccess(result.message);
+            resetForm(form);
+            
+            // Scroll to top after successful submission
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 2000);
+        } else {
+            showError(result.message || 'Registration failed. Please try again.');
+        }
+        
+    } catch (error) {
+        console.error('Form submission error:', error);
+        
+        let errorMessage = 'An error occurred while submitting your registration. ';
+        
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            errorMessage += 'Please check your internet connection and ensure you are accessing this page through a web server (http://localhost), not file://.';
+        } else if (error.message.includes('CORS')) {
+            errorMessage += 'Please ensure you are accessing this page through a web server (http://localhost), not directly from file explorer.';
+        } else if (error.message.includes('Server error')) {
+            errorMessage += 'Server error occurred. Please check the PHP error logs and try again.';
+        } else {
+            errorMessage += error.message || 'Please try again or contact support if the problem persists.';
+        }
+        
+        showError(errorMessage);
+    } finally {
+        showLoading(false);
     }
 }
 
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Registration page loaded');
+    
+    // Attach form submission handler
+    const form = document.getElementById('incoming-form-form');
+    if (form) {
+        form.addEventListener('submit', handleFormSubmission);
+        console.log('Form submission handler attached');
+    } else {
+        console.error('Form not found!');
+    }
+    
+    // Close modal when clicking outside
+    const modal = document.getElementById('terms-modal');
+    if (modal) {
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeTerms();
+            }
+        });
+    }
+    
+    // Add real-time validation
+    const inputs = form ? form.querySelectorAll('input[required]') : [];
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            const errorDiv = document.getElementById(`error-${this.id}`);
+            if (errorDiv) {
+                if (this.value.trim() === '') {
+                    errorDiv.style.display = 'block';
+                } else {
+                    errorDiv.style.display = 'none';
+                }
+            }
+        });
+    });
+    
+    // Email validation
+    const emailInput = document.getElementById('incoming-email');
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            const errorDiv = document.getElementById('error-incoming-email');
+            if (errorDiv) {
+                if (this.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+                    errorDiv.textContent = 'Please enter a valid email address';
+                    errorDiv.style.display = 'block';
+                } else if (this.value) {
+                    errorDiv.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    // Contact number validation
+    const contactInput = document.getElementById('incoming-contact');
+    if (contactInput) {
+        contactInput.addEventListener('blur', function() {
+            const errorDiv = document.getElementById('error-incoming-contact');
+            if (errorDiv) {
+                if (this.value && !/^[0-9+\-\s()]{7,}$/.test(this.value)) {
+                    errorDiv.textContent = 'Please enter a valid contact number';
+                    errorDiv.style.display = 'block';
+                } else if (this.value) {
+                    errorDiv.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    // File size validation
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    fileInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file && file.size > 10 * 1024 * 1024) {
+                alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                this.value = '';
+            }
+        });
+    });
+    
+    // Show floating action button on scroll
+    const fab = document.querySelector('.fab');
+        if (fab) {
+            window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            fab.classList.add('show');
+        } else {
+            fab.classList.remove('show');
+        }
     });
 }
 
-// ===== GLOBAL EVENT HANDLERS =====
-// Close modal when clicking outside (fallback)
-window.onclick = function(event) {
-    const modal = document.getElementById('terms-modal');
-    if (event.target === modal) {
-        closeTerms();
+});
+
+// Handle page visibility change (for debugging)
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') {
+        console.log('Page became visible');
     }
-}
+});
+
+// Global error handler for unhandled errors
+window.addEventListener('error', function(event) {
+    console.error('Global error:', event.error);
+});
+
+// Handle unhandled promise rejections
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled promise rejection:', event.reason);
+});

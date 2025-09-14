@@ -1,6 +1,5 @@
 <?php
 // config/database.php
-
 class Database {
     private $host = 'localhost';
     private $db_name = 'uip_registration';
@@ -13,23 +12,20 @@ class Database {
 
         try {
             $this->conn = new PDO(
-                "mysql:host={$this->host};dbname={$this->db_name}",
+                "mysql:host={$this->host};dbname={$this->db_name};charset=utf8",
                 $this->username,
-                $this->password
+                $this->password,
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false
+                ]
             );
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch(PDOException $exception) {
-            error_log("Connection error: " . $exception->getMessage());
-            throw new Exception("Database connection failed");
+            throw new Exception("Database connection failed: " . $exception->getMessage());
         }
 
         return $this->conn;
-    }
-
-    // Optional: Explicitly close the connection
-    public function closeConnection() {
-        $this->conn = null;
     }
 }
 ?>
