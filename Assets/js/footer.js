@@ -1,6 +1,7 @@
 // EMAIL LINK FUNCTION
 function openEmail(e) {
-  e.preventDefault(); // stop default link
+  e.preventDefault(); 
+
   // Try Gmail first
   const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=info@uip.ph";
   const mailtoUrl = "mailto:info@uip.ph";
