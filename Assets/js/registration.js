@@ -82,8 +82,8 @@ function validateFiles(form) {
     const maxSize = 10 * 1024 * 1024; // 10MB
     
     // Required files
-    const cvFile = form.querySelector('#incoming-cv').files[0];
-    const pictureFile = form.querySelector('#incoming-picture').files[0];
+    const cvFile = form.querySelector('#incoming-cv')?.files[0];
+    const pictureFile = form.querySelector('#incoming-picture')?.files[0];
     
     if (!cvFile) {
         errors.push('CV/Resume is required');
@@ -108,12 +108,12 @@ function validateFiles(form) {
     }
     
     // Optional files validation
-    const endorsementFile = form.querySelector('#incoming-endorsement').files[0];
+    const endorsementFile = form.querySelector('#incoming-endorsement')?.files[0];
     if (endorsementFile && endorsementFile.size > maxSize) {
         errors.push('Endorsement letter file is too large (max 10MB)');
     }
     
-    const moaFile = form.querySelector('#incoming-moa').files[0];
+    const moaFile = form.querySelector('#incoming-moa')?.files[0];
     if (moaFile && moaFile.size > maxSize) {
         errors.push('MOA file is too large (max 10MB)');
     }
@@ -123,7 +123,13 @@ function validateFiles(form) {
 
 function showError(message) {
     const errorDiv = document.getElementById('error-message');
-    errorDiv.textContent = message;
+    if (!errorDiv) {
+        console.error('Error message div not found');
+        alert('Error: ' + message);
+        return;
+    }
+    
+    errorDiv.innerHTML = message.replace(/\n/g, '<br>');
     errorDiv.style.display = 'block';
     
     // Scroll to error message
@@ -137,6 +143,12 @@ function showError(message) {
 
 function showSuccess(message) {
     const successDiv = document.getElementById('success-message');
+    if (!successDiv) {
+        console.error('Success message div not found');
+        alert('Success: ' + message);
+        return;
+    }
+    
     successDiv.textContent = message || 'Registration submitted successfully! We will contact you soon.';
     successDiv.style.display = 'block';
     
@@ -151,7 +163,9 @@ function showSuccess(message) {
 
 function showLoading(show = true) {
     const loadingOverlay = document.getElementById('loading-overlay');
-    loadingOverlay.style.display = show ? 'block' : 'none';
+    if (loadingOverlay) {
+        loadingOverlay.style.display = show ? 'block' : 'none';
+    }
 }
 
 function resetForm(form) {
@@ -161,7 +175,7 @@ function resetForm(form) {
     errorDivs.forEach(div => div.style.display = 'none');
 }
 
-// Main form submission handler - Updated Version
+// Improved form submission handler with better error handling
 async function handleFormSubmission(event) {
     event.preventDefault();
     
@@ -169,8 +183,10 @@ async function handleFormSubmission(event) {
     const formData = new FormData(form);
     
     // Hide previous messages
-    document.getElementById('error-message').style.display = 'none';
-    document.getElementById('success-message').style.display = 'none';
+    const errorDiv = document.getElementById('error-message');
+    const successDiv = document.getElementById('success-message');
+    if (errorDiv) errorDiv.style.display = 'none';
+    if (successDiv) successDiv.style.display = 'none';
     
     // Validate form data
     const validationErrors = validateForm(formData);
@@ -184,7 +200,7 @@ async function handleFormSubmission(event) {
     
     // Check terms acceptance
     const termsCheckbox = document.getElementById('terms-checkbox');
-    if (!termsCheckbox.checked) {
+    if (!termsCheckbox?.checked) {
         showError('You must agree to the Terms and Conditions');
         return;
     }
@@ -192,68 +208,105 @@ async function handleFormSubmission(event) {
     try {
         showLoading(true);
         
-        // Fixed URL determination
-        let submitUrl = 'submit-incoming.php'; // Default relative path
+        // Determine submit URL with better logic
+        const currentUrl = window.location.href;
+        let submitUrl;
         
-        // Only change if running on file:// protocol (which shouldn't be used)
         if (window.location.protocol === 'file:') {
-            // For XAMPP default setup
-            submitUrl = 'http://localhost/UIP-Version1/submit-incoming.php';
-            // Show warning about file:// protocol
-            console.warn('Running from file:// protocol. Please use a web server instead.');
+            // File protocol - show error
+            throw new Error('This form cannot be submitted when opened directly from file explorer. Please use a web server like XAMPP, WAMP, or run "php -S localhost:8000" in your project folder.');
+        } else {
+            // Use relative path - works for both localhost and production
+            submitUrl = './submit-incoming.php';
         }
         
+        console.log('Current URL:', currentUrl);
         console.log('Submitting to:', submitUrl);
         console.log('Form data fields:', Array.from(formData.keys()));
+        
+        // Log form data for debugging
+        for (let [key, value] of formData.entries()) {
+            if (value instanceof File) {
+                console.log(`${key}: File - ${value.name} (${value.size} bytes)`);
+            } else {
+                console.log(`${key}: ${value}`);
+            }
+        }
         
         const response = await fetch(submitUrl, {
             method: 'POST',
             body: formData,
-            credentials: 'same-origin', // Add this for better CORS handling
+            credentials: 'same-origin',
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
         });
         
         console.log('Response status:', response.status);
+        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+        
+        // Get the raw response text first
+        const responseText = await response.text();
+        console.log('Raw response:', responseText);
         
         // Check if response is OK
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Server error response:', errorText);
-            throw new Error(`Server error (${response.status}): ${response.statusText}`);
+            console.error('Server error response:', responseText);
+            
+            // More specific error messages based on status code
+            let errorMessage = '';
+            switch (response.status) {
+                case 404:
+                    errorMessage = `File not found: ${submitUrl}. Please check if the PHP file exists.`;
+                    break;
+                case 500:
+                    errorMessage = 'Server internal error. Please check PHP error logs.';
+                    break;
+                case 413:
+                    errorMessage = 'File too large. Please reduce file sizes.';
+                    break;
+                default:
+                    errorMessage = `Server error (${response.status}): ${response.statusText}`;
+            }
+            
+            throw new Error(errorMessage);
         }
         
         // Try to parse JSON response
-        const contentType = response.headers.get('content-type');
         let result;
-        
-        if (contentType && contentType.includes('application/json')) {
-            result = await response.json();
-        } else {
-            // If not JSON, get text and try to parse
-            const text = await response.text();
-            console.log('Raw response:', text);
-            
-            try {
-                result = JSON.parse(text);
-            } catch (parseError) {
-                console.error('Failed to parse JSON:', parseError);
-                console.error('Response text:', text);
+        try {
+            // Check if response looks like JSON
+            const trimmedResponse = responseText.trim();
+            if (trimmedResponse.startsWith('{') || trimmedResponse.startsWith('[')) {
+                result = JSON.parse(trimmedResponse);
+            } else {
+                // Response is not JSON - likely HTML error page
+                console.error('Non-JSON response received:', trimmedResponse);
                 
-                // Show more specific error message
-                if (text.includes('<br') || text.includes('<html') || text.includes('<!DOCTYPE')) {
-                    throw new Error('Server returned HTML instead of JSON. This usually means there are PHP errors. Check the browser console and server logs.');
+                // Check for common PHP errors in the HTML
+                if (trimmedResponse.includes('Parse error') || 
+                    trimmedResponse.includes('Fatal error') || 
+                    trimmedResponse.includes('Warning:') ||
+                    trimmedResponse.includes('Notice:')) {
+                    throw new Error('PHP error detected. Please check the submit-incoming.php file for syntax errors. Check browser console for details.');
+                } else if (trimmedResponse.includes('<!DOCTYPE') || 
+                          trimmedResponse.includes('<html')) {
+                    throw new Error('Server returned HTML instead of JSON. This usually means the PHP file has errors or is not found.');
                 } else {
-                    throw new Error(`Invalid JSON response: ${text.substring(0, 100)}...`);
+                    throw new Error(`Unexpected response format: ${trimmedResponse.substring(0, 200)}...`);
                 }
             }
+        } catch (parseError) {
+            console.error('Failed to parse JSON:', parseError);
+            console.error('Response text:', responseText);
+            throw new Error('Invalid server response. Please check the PHP file and server logs.');
         }
         
         console.log('Parsed result:', result);
         
-        if (result.success) {
-            showSuccess(result.message);
+        // Handle the response
+        if (result && result.success) {
+            showSuccess(result.message || 'Registration submitted successfully!');
             resetForm(form);
             
             // Scroll to top after successful submission
@@ -261,7 +314,8 @@ async function handleFormSubmission(event) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 2000);
         } else {
-            showError(result.message || 'Registration failed. Please try again.');
+            const errorMessage = result?.message || result?.error || 'Registration failed. Please try again.';
+            showError(errorMessage);
         }
         
     } catch (error) {
@@ -270,11 +324,9 @@ async function handleFormSubmission(event) {
         let errorMessage = 'An error occurred while submitting your registration. ';
         
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            errorMessage += 'Please check your internet connection and ensure you are accessing this page through a web server (http://localhost), not file://.';
+            errorMessage += 'Network error. Please check your internet connection and try again.';
         } else if (error.message.includes('CORS')) {
             errorMessage += 'Please ensure you are accessing this page through a web server (http://localhost), not directly from file explorer.';
-        } else if (error.message.includes('Server error')) {
-            errorMessage += 'Server error occurred. Please check the PHP error logs and try again.';
         } else {
             errorMessage += error.message || 'Please try again or contact support if the problem persists.';
         }
@@ -288,6 +340,14 @@ async function handleFormSubmission(event) {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Registration page loaded');
+    console.log('Current URL:', window.location.href);
+    console.log('Protocol:', window.location.protocol);
+    
+    // Check if running from file://
+    if (window.location.protocol === 'file:') {
+        console.warn('⚠️ Running from file:// protocol. Form submission will not work. Please use a web server.');
+        showError('Please open this page through a web server (http://localhost) instead of opening the HTML file directly.');
+    }
     
     // Attach form submission handler
     const form = document.getElementById('incoming-form-form');
@@ -295,7 +355,8 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', handleFormSubmission);
         console.log('Form submission handler attached');
     } else {
-        console.error('Form not found!');
+        console.error('Form with ID "incoming-form-form" not found!');
+        console.log('Available forms:', document.querySelectorAll('form'));
     }
     
     // Close modal when clicking outside
@@ -390,9 +451,11 @@ document.addEventListener('visibilitychange', function() {
 // Global error handler for unhandled errors
 window.addEventListener('error', function(event) {
     console.error('Global error:', event.error);
+    showError('An unexpected error occurred. Please refresh the page and try again.');
 });
 
 // Handle unhandled promise rejections
 window.addEventListener('unhandledrejection', function(event) {
     console.error('Unhandled promise rejection:', event.reason);
+    showError('An unexpected error occurred. Please refresh the page and try again.');
 });
