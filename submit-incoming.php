@@ -1,359 +1,341 @@
 <?php
-// submit-incoming.php - Enhanced with better error handling
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// submit-incoming.php
 
-// Set proper headers first
+// Turn off HTML error display to prevent breaking JSON responses
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+
+// Log errors instead of displaying them
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/php_errors.log');
+
+// Set proper headers
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
 
-// Log the request for debugging
-file_put_contents('form_debug.log', date('Y-m-d H:i:s') . " - Form submission received\n", FILE_APPEND);
+// Handle preflight requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0);
+}
 
-try {
-    // Check if files exist before including
-    $requiredFiles = [
-        'config/database.php',
-        'classes/FileUploadHandler.php', 
-        'classes/RegistrationValidator.php'
+// Only allow POST requests
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Only POST method allowed']);
+    exit;
+}
+
+// Database configuration
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root'); // Change this to your MySQL username
+define('DB_PASS', ''); // Change this to your MySQL password - leave empty for XAMPP default
+define('DB_NAME', 'uip_registration');
+
+// File upload configuration
+define('UPLOAD_DIR', __DIR__ . '/uploads/');
+define('MAX_FILE_SIZE', 10485760); // 10MB in bytes
+
+// Create uploads directory if it doesn't exist
+function createUploadDirectories() {
+    if (!file_exists(UPLOAD_DIR)) {
+        if (!mkdir(UPLOAD_DIR, 0755, true)) {
+            error_log('Failed to create main upload directory');
+            return false;
+        }
+    }
+    
+    // Create subdirectories for different file types
+    $subdirs = ['cv', 'pictures', 'endorsements', 'moa'];
+    foreach ($subdirs as $subdir) {
+        $path = UPLOAD_DIR . $subdir . '/';
+        if (!file_exists($path)) {
+            if (!mkdir($path, 0755, true)) {
+                error_log("Failed to create upload directory: $path");
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// Database connection function
+function getDBConnection() {
+    try {
+        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+        $pdo = new PDO($dsn, DB_USER, DB_PASS, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ]);
+        return $pdo;
+    } catch(PDOException $e) {
+        error_log("Database connection failed: " . $e->getMessage());
+        return false;
+    }
+}
+
+// Function to create database and table if they don't exist
+function initializeDatabase() {
+    try {
+        // First connect without specifying database
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";charset=utf8mb4", DB_USER, DB_PASS, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
+        
+        // Create database if it doesn't exist
+        $pdo->exec("CREATE DATABASE IF NOT EXISTS " . DB_NAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+        
+        // Now connect to the specific database
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ]);
+        
+        // Create table if it doesn't exist
+        $createTableSQL = "
+        CREATE TABLE IF NOT EXISTS incoming_interns (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            contact VARCHAR(50) NOT NULL,
+            birthday DATE NOT NULL,
+            address TEXT NOT NULL,
+            school VARCHAR(255) NOT NULL,
+            program VARCHAR(255) NOT NULL,
+            school_address TEXT NOT NULL,
+            ojt_hours INT NOT NULL,
+            available_days VARCHAR(255) NOT NULL,
+            cv_file VARCHAR(255),
+            picture_file VARCHAR(255),
+            endorsement_file VARCHAR(255),
+            moa_file VARCHAR(255),
+            status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            INDEX idx_email (email),
+            INDEX idx_status (status),
+            INDEX idx_created_at (created_at)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+        
+        $pdo->exec($createTableSQL);
+        
+        return $pdo;
+        
+    } catch(PDOException $e) {
+        error_log("Database initialization failed: " . $e->getMessage());
+        return false;
+    }
+}
+
+// Function to sanitize input
+function sanitizeInput($input) {
+    if (is_string($input)) {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+    return $input;
+}
+
+// Function to validate email
+function isValidEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+}
+
+// Function to validate phone number
+function isValidPhone($phone) {
+    return preg_match('/^[0-9+\-\s()]{7,}$/', $phone);
+}
+
+// Function to generate unique filename
+function generateUniqueFilename($originalName) {
+    $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+    return uniqid() . '_' . date('YmdHis') . '.' . strtolower($extension);
+}
+
+// Function to handle file upload
+function handleFileUpload($fileKey, $targetDir) {
+    if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] === UPLOAD_ERR_NO_FILE) {
+        return null; // No file uploaded
+    }
+    
+    $file = $_FILES[$fileKey];
+    
+    // Check for upload errors
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        throw new Exception("File upload error for $fileKey: " . $file['error']);
+    }
+    
+    // Check file size
+    if ($file['size'] > MAX_FILE_SIZE) {
+        throw new Exception(ucfirst($fileKey) . " file is too large (max 10MB)");
+    }
+    
+    // Validate file type based on file key
+    $allowedTypes = [
+        'cv' => ['application/pdf'],
+        'picture' => ['image/jpeg', 'image/jpg', 'image/png'],
+        'endorsement' => ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'],
+        'moa' => ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png']
     ];
     
-    foreach ($requiredFiles as $file) {
-        if (!file_exists($file)) {
-            throw new Exception("Required file not found: $file");
-        }
-        require_once $file;
+    if (!isset($allowedTypes[$fileKey]) || !in_array($file['type'], $allowedTypes[$fileKey])) {
+        throw new Exception(ucfirst($fileKey) . " file type not allowed");
     }
+    
+    // Generate unique filename
+    $filename = generateUniqueFilename($file['name']);
+    $targetPath = $targetDir . $filename;
+    
+    // Move uploaded file
+    if (!move_uploaded_file($file['tmp_name'], $targetPath)) {
+        throw new Exception("Failed to save $fileKey file");
+    }
+    
+    return $filename;
+}
 
-    class RegistrationHandler {
-        private $db;
-        private $fileHandler;
-        private $validator;
-        private $uploadDir = 'uploads/';
-
-        public function __construct() {
-            try {
-                $database = new Database();
-                $this->db = $database->getConnection();
-                $this->fileHandler = new FileUploadHandler();
-                $this->validator = new RegistrationValidator();
-                
-                // Create upload directory if it doesn't exist
-                $this->createUploadDirectories();
-                
-            } catch (Exception $e) {
-                file_put_contents('form_debug.log', "Constructor error: " . $e->getMessage() . "\n", FILE_APPEND);
-                throw $e;
-            }
-        }
+// Main processing starts here
+try {
+    // Initialize upload directories
+    if (!createUploadDirectories()) {
+        throw new Exception("Failed to create upload directories");
+    }
+    
+    // Initialize database
+    $pdo = initializeDatabase();
+    if (!$pdo) {
+        throw new Exception("Database connection failed. Please check your MySQL server and credentials.");
+    }
+    
+    // Get and sanitize form data
+    $name = isset($_POST['name']) ? sanitizeInput($_POST['name']) : '';
+    $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
+    $contact = isset($_POST['contact']) ? sanitizeInput($_POST['contact']) : '';
+    $birthday = isset($_POST['birthday']) ? sanitizeInput($_POST['birthday']) : '';
+    $address = isset($_POST['address']) ? sanitizeInput($_POST['address']) : '';
+    $school = isset($_POST['school']) ? sanitizeInput($_POST['school']) : '';
+    $program = isset($_POST['program']) ? sanitizeInput($_POST['program']) : '';
+    $school_address = isset($_POST['school_address']) ? sanitizeInput($_POST['school_address']) : '';
+    $ojt_hours = isset($_POST['ojt_hours']) ? (int)$_POST['ojt_hours'] : 0;
+    $days = isset($_POST['days']) ? $_POST['days'] : [];
+    
+    // Validation
+    $errors = [];
+    
+    if (empty($name)) $errors[] = 'Full Name is required';
+    if (empty($email)) {
+        $errors[] = 'Email is required';
+    } elseif (!isValidEmail($email)) {
+        $errors[] = 'Invalid email format';
+    }
+    if (empty($contact)) {
+        $errors[] = 'Contact Number is required';
+    } elseif (!isValidPhone($contact)) {
+        $errors[] = 'Invalid contact number format';
+    }
+    if (empty($birthday)) $errors[] = 'Birthday is required';
+    if (empty($address)) $errors[] = 'Address is required';
+    if (empty($school)) $errors[] = 'School/University is required';
+    if (empty($program)) $errors[] = 'College Program is required';
+    if (empty($school_address)) $errors[] = 'University Address is required';
+    if ($ojt_hours <= 0) $errors[] = 'OJT Hours must be greater than 0';
+    if (empty($days)) $errors[] = 'At least one available day is required';
+    
+    // Check for required files
+    if (!isset($_FILES['cv']) || $_FILES['cv']['error'] === UPLOAD_ERR_NO_FILE) {
+        $errors[] = 'CV/Resume is required';
+    }
+    if (!isset($_FILES['picture']) || $_FILES['picture']['error'] === UPLOAD_ERR_NO_FILE) {
+        $errors[] = '2x2 Picture is required';
+    }
+    
+    // If there are validation errors, return them
+    if (!empty($errors)) {
+        echo json_encode([
+            'success' => false,
+            'message' => implode(', ', $errors)
+        ]);
+        exit;
+    }
+    
+    // Check if email already exists
+    $checkEmailStmt = $pdo->prepare("SELECT id FROM incoming_interns WHERE email = ?");
+    $checkEmailStmt->execute([$email]);
+    if ($checkEmailStmt->fetch()) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'An application with this email already exists'
+        ]);
+        exit;
+    }
+    
+    // Process file uploads
+    $uploadedFiles = [];
+    
+    // Required files
+    $uploadedFiles['cv'] = handleFileUpload('cv', UPLOAD_DIR . 'cv/');
+    $uploadedFiles['picture'] = handleFileUpload('picture', UPLOAD_DIR . 'pictures/');
+    
+    // Optional files
+    $uploadedFiles['endorsement'] = handleFileUpload('endorsement', UPLOAD_DIR . 'endorsements/');
+    $uploadedFiles['moa'] = handleFileUpload('moa', UPLOAD_DIR . 'moa/');
+    
+    // Insert into database
+    $insertSQL = "
+        INSERT INTO incoming_interns (
+            name, email, contact, birthday, address, school, program, 
+            school_address, ojt_hours, available_days, cv_file, 
+            picture_file, endorsement_file, moa_file
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ";
+    
+    $stmt = $pdo->prepare($insertSQL);
+    $result = $stmt->execute([
+        $name, $email, $contact, $birthday, $address, $school, $program,
+        $school_address, $ojt_hours, implode(', ', $days),
+        $uploadedFiles['cv'], $uploadedFiles['picture'],
+        $uploadedFiles['endorsement'], $uploadedFiles['moa']
+    ]);
+    
+    if ($result) {
+        $insertedId = $pdo->lastInsertId();
         
-        private function createUploadDirectories() {
-            $dirs = [
-                $this->uploadDir,
-                $this->uploadDir . 'cv/',
-                $this->uploadDir . 'pictures/',
-                $this->uploadDir . 'documents/'
-            ];
-            
-            foreach ($dirs as $dir) {
-                if (!file_exists($dir)) {
-                    if (!mkdir($dir, 0755, true)) {
-                        throw new Exception("Failed to create directory: $dir");
-                    }
-                }
-            }
-        }
-
-        public function handleSubmission() {
-            try {
-                file_put_contents('form_debug.log', "Starting form processing\n", FILE_APPEND);
-                
-                // Validate request method
-                if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-                    throw new Exception('Invalid request method');
-                }
-
-                // Check if form data exists
-                if (empty($_POST)) {
-                    throw new Exception('No form data received');
-                }
-                
-                file_put_contents('form_debug.log', "POST data: " . print_r($_POST, true) . "\n", FILE_APPEND);
-                file_put_contents('form_debug.log', "FILES data: " . print_r($_FILES, true) . "\n", FILE_APPEND);
-
-                // Validate and sanitize input data
-                $formData = $this->validator->validateAndSanitize($_POST);
-                file_put_contents('form_debug.log', "Form data validated\n", FILE_APPEND);
-                
-                // Validate required files
-                $this->validator->validateRequiredFiles($_FILES);
-                file_put_contents('form_debug.log', "Files validated\n", FILE_APPEND);
-                
-                // Handle file uploads
-                $uploadedFiles = $this->handleFileUploads($_FILES);
-                file_put_contents('form_debug.log', "Files uploaded\n", FILE_APPEND);
-                
-                // Insert registration
-                $registrationId = $this->insertRegistration($formData, $uploadedFiles);
-                file_put_contents('form_debug.log', "Registration inserted with ID: $registrationId\n", FILE_APPEND);
-                
-                // Send success response
-                $this->sendSuccessResponse($registrationId);
-                
-            } catch (Exception $e) {
-                file_put_contents('form_debug.log', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
-                file_put_contents('form_debug.log', "Stack trace: " . $e->getTraceAsString() . "\n", FILE_APPEND);
-                $this->sendErrorResponse($e->getMessage());
-            }
-        }
-
-        private function handleFileUploads($files) {
-            $uploadedFiles = [];
-            
-            try {
-                // Handle CV upload (required)
-                if (isset($files['cv']) && $files['cv']['error'] === UPLOAD_ERR_OK) {
-                    $uploadedFiles['cv'] = $this->fileHandler->uploadFile(
-                        $files['cv'], 
-                        $this->uploadDir . 'cv/', 
-                        ['pdf']
-                    );
-                }
-                
-                // Handle picture upload (required)
-                if (isset($files['picture']) && $files['picture']['error'] === UPLOAD_ERR_OK) {
-                    $uploadedFiles['picture'] = $this->fileHandler->uploadFile(
-                        $files['picture'], 
-                        $this->uploadDir . 'pictures/', 
-                        ['jpg', 'jpeg', 'png']
-                    );
-                }
-                
-                // Handle endorsement letter (optional)
-                if (isset($files['endorsement']) && $files['endorsement']['error'] === UPLOAD_ERR_OK) {
-                    $uploadedFiles['endorsement'] = $this->fileHandler->uploadFile(
-                        $files['endorsement'], 
-                        $this->uploadDir . 'documents/', 
-                        ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png']
-                    );
-                }
-                
-                // Handle MOA (optional)
-                if (isset($files['moa']) && $files['moa']['error'] === UPLOAD_ERR_OK) {
-                    $uploadedFiles['moa'] = $this->fileHandler->uploadFile(
-                        $files['moa'], 
-                        $this->uploadDir . 'documents/', 
-                        ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png']
-                    );
-                }
-                
-            } catch (Exception $e) {
-                file_put_contents('form_debug.log', "File upload error: " . $e->getMessage() . "\n", FILE_APPEND);
-                throw new Exception("File upload failed: " . $e->getMessage());
-            }
-            
-            return $uploadedFiles;
-        }
-
-        private function insertRegistration($formData, $uploadedFiles) {
-            $this->db->beginTransaction();
-            
-            try {
-                // Check if email already exists
-                if ($this->validator->checkEmailExists($formData['email'], $this->db)) {
-                    throw new Exception('Email address is already registered. Please use a different email or contact support.');
-                }
-                
-                // Insert or get university
-                $universityId = $this->getOrCreateUniversity(
-                    $formData['school'], 
-                    $formData['school_address']
-                );
-                
-                // Insert or get program
-                $programId = $this->getOrCreateProgram($formData['program']);
-                
-                // Insert registration
-                $sql = "INSERT INTO registrations (
-                    full_name, email, contact_number, birthday, complete_address,
-                    university_id, program_id, total_ojt_hours,
-                    cv_file_path, cv_original_name, cv_file_size,
-                    picture_file_path, picture_original_name, picture_file_size,
-                    endorsement_file_path, endorsement_original_name, endorsement_file_size,
-                    moa_file_path, moa_original_name, moa_file_size,
-                    terms_accepted, terms_accepted_at, terms_ip_address
-                ) VALUES (
-                    :full_name, :email, :contact_number, :birthday, :complete_address,
-                    :university_id, :program_id, :total_ojt_hours,
-                    :cv_file_path, :cv_original_name, :cv_file_size,
-                    :picture_file_path, :picture_original_name, :picture_file_size,
-                    :endorsement_file_path, :endorsement_original_name, :endorsement_file_size,
-                    :moa_file_path, :moa_original_name, :moa_file_size,
-                    :terms_accepted, :terms_accepted_at, :terms_ip_address
-                )";
-                
-                $stmt = $this->db->prepare($sql);
-                
-                $params = [
-                    ':full_name' => $formData['name'],
-                    ':email' => $formData['email'],
-                    ':contact_number' => $formData['contact'],
-                    ':birthday' => $formData['birthday'],
-                    ':complete_address' => $formData['address'],
-                    ':university_id' => $universityId,
-                    ':program_id' => $programId,
-                    ':total_ojt_hours' => $formData['ojt_hours'],
-                    ':cv_file_path' => $uploadedFiles['cv']['path'] ?? null,
-                    ':cv_original_name' => $uploadedFiles['cv']['original_name'] ?? null,
-                    ':cv_file_size' => $uploadedFiles['cv']['size'] ?? null,
-                    ':picture_file_path' => $uploadedFiles['picture']['path'] ?? null,
-                    ':picture_original_name' => $uploadedFiles['picture']['original_name'] ?? null,
-                    ':picture_file_size' => $uploadedFiles['picture']['size'] ?? null,
-                    ':endorsement_file_path' => $uploadedFiles['endorsement']['path'] ?? null,
-                    ':endorsement_original_name' => $uploadedFiles['endorsement']['original_name'] ?? null,
-                    ':endorsement_file_size' => $uploadedFiles['endorsement']['size'] ?? null,
-                    ':moa_file_path' => $uploadedFiles['moa']['path'] ?? null,
-                    ':moa_original_name' => $uploadedFiles['moa']['original_name'] ?? null,
-                    ':moa_file_size' => $uploadedFiles['moa']['size'] ?? null,
-                    ':terms_accepted' => 1,
-                    ':terms_accepted_at' => date('Y-m-d H:i:s'),
-                    ':terms_ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
-                ];
-                
-                $stmt->execute($params);
-                $registrationId = $this->db->lastInsertId();
-                
-                // Insert available days
-                $this->insertAvailableDays($registrationId, $formData['days']);
-                
-                // Insert file upload audit records
-                $this->insertFileAuditRecords($registrationId, $uploadedFiles);
-                
-                $this->db->commit();
-                return $registrationId;
-                
-            } catch (Exception $e) {
-                $this->db->rollback();
-                throw $e;
-            }
-        }
-
-        private function getOrCreateUniversity($universityName, $universityAddress) {
-            // Check if university exists
-            $sql = "SELECT id FROM universities WHERE university_name = :name LIMIT 1";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute([':name' => $universityName]);
-            
-            $result = $stmt->fetch();
-            if ($result) {
-                return $result['id'];
-            }
-            
-            // Insert new university
-            $sql = "INSERT INTO universities (university_name, university_address) VALUES (:name, :address)";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute([
-                ':name' => $universityName,
-                ':address' => $universityAddress
-            ]);
-            
-            return $this->db->lastInsertId();
-        }
-
-        private function getOrCreateProgram($programName) {
-            // Check if program exists
-            $sql = "SELECT id FROM programs WHERE program_name = :name LIMIT 1";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute([':name' => $programName]);
-            
-            $result = $stmt->fetch();
-            if ($result) {
-                return $result['id'];
-            }
-            
-            // Insert new program
-            $sql = "INSERT INTO programs (program_name) VALUES (:name)";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute([':name' => $programName]);
-            
-            return $this->db->lastInsertId();
-        }
-
-        private function insertAvailableDays($registrationId, $days) {
-            if (empty($days)) return;
-            
-            $sql = "INSERT INTO available_days (registration_id, day_of_week) VALUES (:registration_id, :day)";
-            $stmt = $this->db->prepare($sql);
-            
-            foreach ($days as $day) {
-                $stmt->execute([
-                    ':registration_id' => $registrationId,
-                    ':day' => $day
-                ]);
-            }
-        }
-
-        private function insertFileAuditRecords($registrationId, $uploadedFiles) {
-            $sql = "INSERT INTO file_uploads_audit (
-                registration_id, file_type, original_filename, stored_filename, 
-                file_path, file_size, mime_type, upload_ip_address
-            ) VALUES (
-                :registration_id, :file_type, :original_filename, :stored_filename,
-                :file_path, :file_size, :mime_type, :upload_ip_address
-            )";
-            
-            $stmt = $this->db->prepare($sql);
-            
-            foreach ($uploadedFiles as $fileType => $fileInfo) {
-                $stmt->execute([
-                    ':registration_id' => $registrationId,
-                    ':file_type' => $fileType,
-                    ':original_filename' => $fileInfo['original_name'],
-                    ':stored_filename' => basename($fileInfo['path']),
-                    ':file_path' => $fileInfo['path'],
-                    ':file_size' => $fileInfo['size'],
-                    ':mime_type' => $fileInfo['mime_type'],
-                    ':upload_ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
-                ]);
-            }
-        }
-
-        private function sendSuccessResponse($registrationId) {
-            http_response_code(200);
-            echo json_encode([
-                'success' => true,
-                'message' => 'Registration submitted successfully! We will contact you soon.',
-                'registration_id' => $registrationId
-            ]);
-            exit;
-        }
-
-        private function sendErrorResponse($message) {
-            http_response_code(400);
-            echo json_encode([
-                'success' => false,
-                'message' => $message
-            ]);
-            exit;
-        }
-    }
-
-    // Handle the request
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $handler = new RegistrationHandler();
-        $handler->handleSubmission();
+        // Log successful registration
+        error_log("New registration: ID $insertedId, Email: $email, Name: $name");
+        
+        // Return success response
+        echo json_encode([
+            'success' => true,
+            'message' => 'Registration submitted successfully! We will contact you soon.',
+            'data' => [
+                'id' => $insertedId,
+                'name' => $name,
+                'email' => $email,
+                'files_uploaded' => array_filter($uploadedFiles)
+            ]
+        ]);
     } else {
-        throw new Exception('Method not allowed');
+        throw new Exception('Failed to save registration to database');
     }
-
+    
 } catch (Exception $e) {
-    file_put_contents('form_debug.log', "Fatal error: " . $e->getMessage() . "\n", FILE_APPEND);
-    http_response_code(500);
+    error_log('Registration error: ' . $e->getMessage());
+    
+    // Clean up uploaded files if database insert failed
+    if (isset($uploadedFiles)) {
+        foreach ($uploadedFiles as $file) {
+            if ($file && file_exists(UPLOAD_DIR . $file)) {
+                unlink(UPLOAD_DIR . $file);
+            }
+        }
+    }
+    
     echo json_encode([
         'success' => false,
-        'message' => 'Server error: ' . $e->getMessage()
+        'message' => 'Registration failed: ' . $e->getMessage()
     ]);
 }
 ?>
