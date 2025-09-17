@@ -217,7 +217,7 @@ async function handleFormSubmission(event) {
             throw new Error('This form cannot be submitted when opened directly from file explorer. Please use a web server like XAMPP, WAMP, or run "php -S localhost:8000" in your project folder.');
         } else {
             // Use relative path - works for both localhost and production
-            submitUrl = './submit-incoming.php';
+            submitUrl = '/Backend/submit-incoming.php';
         }
         
         console.log('Current URL:', currentUrl);
