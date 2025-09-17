@@ -1,4 +1,3 @@
-
             // Form submission handler
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault(); // Prevent actual form submission
