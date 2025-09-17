@@ -41,20 +41,26 @@
             background-color: #145374;
             color: white;
             padding: 35px;
-            border-radius: 8px;
+            border-radius: 20px;
             height:fit-content;
+        }
+
+        .email-link{
+            color: #ffffff;
+            font-size: 1.2rem;
         }
 
         .email-label {
             font-size: 16px;
             font-weight: 400;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .email-uip {
             font-size: 20px;
             font-weight: 600;
+            color: white;
             letter-spacing: 1px;
             margin-bottom: 35px;
         }
@@ -63,6 +69,7 @@
             font-size: 16px;
             font-weight: 400;
             letter-spacing: 1px;
+            margin-top: 1rem;
             margin-bottom: 15px;
         }
 
@@ -77,11 +84,11 @@
             display: flex;
         }
 
-        /* Contact Form */
+        /* Submit Concern Form */
         .contact-form-container {
             background-color: #D9D9D9;
             padding: 35px;
-            border-radius: 8px;
+            border-radius: 20px;
         }
 
         .form-title {
@@ -121,7 +128,7 @@
             width: 100%;
             padding: 12px 14px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             font-size: 14px;
             background-color: white;
             font-family: inherit;
@@ -143,7 +150,7 @@
             color: white;
             padding: 12px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             font-size: 17px;
             font-weight: 600;
             cursor: pointer;
@@ -158,7 +165,7 @@
         .internship-section {
             background-color: #D9D9D9;
             padding: 35px;
-            border-radius: 8px;
+            border-radius: 20px;
         }
 
         .internship-title {
@@ -181,7 +188,7 @@
             color: white;
             padding: 12px 0;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             font-size: 17px;
             font-weight: 600;
             cursor: pointer;
@@ -196,7 +203,7 @@
         .benefits-container {
             background-color: white;
             padding: 35px;
-            border-radius: 6px;
+            border-radius: 10px;
         }
 
         .benefits-list {
@@ -350,7 +357,7 @@
                 padding: 25px;
             }
 
-            .email-ko {
+            .email-uip {
                 font-size: 18px;
                 margin-bottom: 25px;
             }

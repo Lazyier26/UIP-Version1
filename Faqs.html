@@ -15,6 +15,8 @@
     
 </head>
 <body>
+
+    <!-- Navigation Bar -->
     <header>
          <a href="Home.html" class="logo-link">
             <img src="Assets/images/logo-uip.webp" alt="UIP logo" width="64" height="64">
@@ -42,9 +44,14 @@
     </header>
 
     <main>
-        <h1>Do you have questions?</h1>
-        <p class="subtitle">Below, you will find answers to frequently asked questions related to onboarding, offboarding, and navigating your experience as a new intern.</p>
 
+        <!-- FAQs Questions -->
+        <h1>Do you have questions?</h1>
+        <p class="subtitle">
+            Below, you will find answers to frequently asked questions related to onboarding, offboarding, and navigating your experience as a new intern.
+        </p>
+
+            <!-- New Intern -->
             <div class="faq-section">
                 <div class="section-title">New Intern</div>
                     <div class="faq-item">
@@ -83,66 +90,69 @@
                     </div>
                 </div>
             
+            <!-- Onboarding -->
             <div class="faq-section">
                 <div class="section-title">Onboarding</div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        Can interns start with their internship without undergoing company orientation?
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Can interns start with their internship without undergoing company orientation?
+                        </div>
+                        <div class="faq-answer">
+                            No, we highly recommend attending the preboarding orientation to get acquainted with our procedures and FAQ's.
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        No, we highly recommend attending the preboarding orientation to get acquainted with our procedures and FAQ's.
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Who is the contact person that I should put on my required documents?
+                        </div>
+                        <div class="faq-answer">
+                            The contact person you should put is <span class="highlights">Ms. Jamaika Mondigo</span>, our UIP Head of Institutional Relations and Programs Development.
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        Who is the contact person that I should put on my required documents?
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            What should I put in the remaining hours of my daily journal #1?
+                        </div>
+                        <div class="faq-answer">
+                            Deduct the hours used on your first day from your total hours, and that's what you'll record in the remaining hours on your daily journal #1.
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        The contact person you should put is <span class="highlights">Ms. Jamaika Mondigo</span>, our UIP Head of Institutional Relations and Programs Development.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        What should I put in the remaining hours of my daily journal #1?
-                    </div>
-                    <div class="faq-answer">
-                        Deduct the hours used on your first day from your total hours, and that's what you'll record in the remaining hours on your daily journal #1.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        I want to ask for an advance Certificate of Completion (COC). Is it possible to request it?
-                    </div>
-                    <div class="faq-answer">
-                        To ensure fairness, please complete your internship hours at UIP before requesting an advance COC.
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            I want to ask for an advance Certificate of Completion (COC). Is it possible to request it?
+                        </div>
+                        <div class="faq-answer">
+                            To ensure fairness, please complete your internship hours at UIP before requesting an advance COC.
                     </div>
                 </div>
             </div>
             
+            <!-- Offboarding -->
             <div class="faq-section">
                 <div class="section-title">Offboarding</div>
                 
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        Who do I contact for the offboarding process?
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            Who do I contact for the offboarding process?
+                        </div>
+                        <div class="faq-answer">
+                            The contact person is <span class="highlights">Mr. Deanver Lucena</span>. You may ping him on the offboarding channel in UIP's discord server.
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        The contact person is <span class="highlights">Mr. Deanver Lucena</span>. You may ping him on the offboarding channel in UIP's discord server.
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            How do I know if I went to offboard?
+                        </div>
+                        <div class="faq-answer">
+                            After you completed OJT hours, you may check it on your tracker account.
+                        </div>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleAnswer(this)">
-                        How do I know if I went to offboard?
-                    </div>
-                    <div class="faq-answer">
-                        After you completed OJT hours, you may check it on your tracker account.
-                    </div>
-                </div>
+            </div>
             
             <!-- Onboarding Process Section -->
             <div class="process-section">
@@ -253,7 +263,9 @@
                     <div class="help-text">
                         <h3>Hello there, how can we help you?</h3>
                         <p>We're here to help with what you need and can connect you with the information you're looking for.</p>
-                        <a href="Contact.html" class="submit-concern-btn">Submit Concern</a>
+                        <a href="Contact.html">
+                            <button class="submit-concern-btn">Submit Concern</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -295,6 +307,7 @@
                 <li><a href="Faqs.html">FAQs</a></li>
                 <li><a href="program_page.html">Internships</a></li>
                 <li><a href="developer_page.html">Developer</a></li>
+
                 <!-- ATTENDANCE TRACKER BUTTON LINK -->
                 <li><a href="#">Attendance Tracker</a></li>
             </ul>
@@ -315,5 +328,6 @@
     <script src="Assets/js/navigation-bar.js"></script>
     <script src="Assets/js/footer.js"></script>
     <script src="Assets/js/faqs-dropdown.js"></script>
+
 </body>
 </html>
